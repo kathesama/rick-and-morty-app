@@ -1,7 +1,7 @@
 {
     "arrowParens": "always",
     "singleQuote": true,
-    "printWidth": 130,
+    "printWidth": 250,
     "withNodeModules": true,
     "endOfLine": "auto",
     "tabWidth": 2,
