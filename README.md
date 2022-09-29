@@ -6,23 +6,26 @@
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![YARN](https://img.shields.io/badge/YARN-%23000000.svg?style=for-the-badge&logo=yarn&logoColor=white)
 <br>
-[![GitHub issues](https://img.shields.io/github/issues/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)](https://github.com/kathesama/react-typescript-prettier-eslint-with-husky/issues)
-[![GitHub forks](https://img.shields.io/github/forks/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)](https://github.com/kathesama/react-typescript-prettier-eslint-with-husky/network)
-[![GitHub stars](https://img.shields.io/github/stars/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)](https://github.com/kathesama/react-typescript-prettier-eslint-with-husky/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/issues)
+[![GitHub forks](https://img.shields.io/github/forks/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/network)
+[![GitHub stars](https://img.shields.io/github/stars/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/stargazers)
 <br>
-![GitHub last commit](https://img.shields.io/github/last-commit/kathesama/react-typescript-prettier-eslint-with-husky?color=red&style=plastic)
-![GitHub version commits](https://img.shields.io/github/commits-since/kathesama/react-typescript-prettier-eslint-with-husky/V2.0.0.svg?color=yellow&style=plastic)
-![GitHub top language](https://img.shields.io/github/languages/top/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/kathesama/rick-and-morty-app?color=red&style=plastic)
+![GitHub version commits](https://img.shields.io/github/commits-since/kathesama/rick-and-morty-app/V2.0.0.svg?color=yellow&style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/kathesama/rick-and-morty-app?style=plastic)
 <br>
-![Maintaned](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=plastic)
+![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=plastic)
 
 [comment]: <> (![OWASP]&#40;https://img.shields.io/badge/OWASP%3F-yes-green.svg?style=plastic&#41;)
 
 [comment]: <> (![CleanCode]&#40;https://img.shields.io/badge/CleanCode%3F-yes-green.svg?style=plastic&#41;)
-[![GitHub license](https://img.shields.io/github/license/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)](https://github.com/kathesama/react-typescript-prettier-eslint-with-husky/blob/main/LICENSE)
-![GitHub repo size](https://img.shields.io/github/repo-size/kathesama/react-typescript-prettier-eslint-with-husky?style=plastic)
+[![GitHub license](https://img.shields.io/github/license/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/blob/main/LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/kathesama/rick-and-morty-app?style=plastic)
 <br>
+---
+# Rick and Morty App
 
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -60,9 +63,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project. So you have full control over them. All the commands except `eject` will still work, but they will point to the copied scripts, so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
