@@ -1,0 +1,16 @@
+{
+  "signUp": "Iniciar sesión",
+  "username": "Nombre de usuario",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "passwordRepeat": "Repetir contraseña",
+  "signUpBtn": "Crear Usuario",
+  "passwordMismatchValidation": "Contraseñas no coinciden",
+  "headerPage": "Cabecera",
+  "linkGoHome": "Inicio",
+  "logIn": "Acceder",
+  "users": "Users",
+  "nextPage": "next >",
+  "previousPage": "< previous",
+  "login": "Login"
+}
