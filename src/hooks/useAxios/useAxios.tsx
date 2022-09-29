@@ -47,7 +47,7 @@ const useAxios = () => {
       setError({
         ...response,
         message,
-      } );
+      });
     } finally {
       setLoading(false);
     }

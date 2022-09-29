@@ -10,7 +10,7 @@ const Status = {
 const UserEmptyState: User = {
   name: '',
   gender: '',
-  status: ''
+  status: '',
 };
 
 export { Status, UserEmptyState };
