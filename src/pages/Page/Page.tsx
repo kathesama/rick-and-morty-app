@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Header } from './Header';
+import { Header } from '../../components/UI/Header/Header';
 import './page.css';
 
 type User = {
   name: string;
 };
 
-const Page: React.VFC = () => {
+const Page: React.FC = () => {
   const [user, setUser] = React.useState<User>();
 
   return (
@@ -45,7 +45,7 @@ const Page: React.VFC = () => {
         </ul>
         <p>
           Get a guided tutorial on component-driven development at{' '}
-          <a href="https://storybook.js.org/tutorials/" target="_blank" rel="noopener noreferrer">
+          <a href="pages/Page/Page" target="_blank" rel="noopener noreferrer">
             Storybook tutorials
           </a>
           . Read more in the{' '}

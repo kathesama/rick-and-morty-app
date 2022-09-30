@@ -1,8 +1,8 @@
 Use this folder for redux management purposes
 Template <br>
 `<redux>` <br>
- `- store.tsx` <br>
-`- rootReducer.tsx` <br>
+ `- storeListingCharacters.module.css` <br>
+`- rootReducerListingCharacters.module.css` <br>
 `--<reducerFolderName>` <br>
 `----<reducerName>.slice.js` <br>
 `----<reducerName>.actions.js`

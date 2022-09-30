@@ -4,7 +4,6 @@ module.exports = {
     es2021: true,
     jest: true
   },
-  // eslint-disable-next-line max-len
   extends: ['plugin:react/recommended', 'airbnb', 'plugin:jest/recommended', 'plugin:@typescript-eslint/recommended', 'airbnb/hooks', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -15,6 +14,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', '@typescript-eslint', 'security', 'react-hooks', 'prettier', 'jest'],
+  'ignorePatterns': ['*.test.js', '*.test.tsx', '*.css', '*.svg', '*.scss'],
   rules: {
     'semi': ['error', 'always'],
     'linebreak-style': 'off',
@@ -30,7 +30,11 @@ module.exports = {
       devDependencies: true
     }],
     'react/jsx-filename-extension': ['error', {
-      extensions: ['.tsx']
+      extensions: [
+        '*.module.css',
+        '.ts',
+        '.tsx'
+      ]
     }],
     'react/function-component-definition': [2, {
       namedComponents: 'arrow-function',
@@ -69,7 +73,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.ts', '.tsx', '.svg'],
+        extensions: ['.ts', '*.module.css', '.svg'],
         moduleDirectory: ['node_modules', './src/**/*']
       }
     }

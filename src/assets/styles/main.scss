@@ -1,0 +1,80 @@
+/* color background */
+$colorBackground: #f8f8f8;
+/* White */
+$colorWhite: #FFFFFF;
+/* Black */
+$colorFont: #222222;
+/* Navy */
+$colorHeritageBlue: #004c98;
+/* Red */
+$colorError: red;
+/* Light gray */
+$colorFontSecondary: rgba(88, 88, 88, 0.8);
+/* Disabled gray */
+$colorFontDisabledGray: rgba(34, 34, 34, 0.25);
+/* color stone */
+$colorStone: rgba(219, 226, 233, 1);
+/* color vivid teal */
+$colorVividReal: rgba(65, 182, 230, 1);
+/* color garden green */
+$colorGardenGreen: rgba(0, 179, 136, 1);
+/* color coral */
+$colorCoral: rgba(237, 86, 86, 1);
+/* color purple */
+$colorPurple: rgba(125, 85, 199, 1);
+/* color disabled */
+$colorDisabled: rgba(34, 34, 34, 0.08);
+/* wraper default value column */
+$withDefault: 30px;
+/* font default size */
+$fontDefaultSize: 14px;
+
+:root {
+  --data-color-white-clear: #{$colorWhite};
+  --data-color-disabled-gray: #{$colorFontDisabledGray};
+  --data-color-background-clear: #{$colorBackground};
+  --data-color-primary: #{$colorFont};
+  --data-color-secondary: #{$colorFontSecondary};
+  --data-color-error: #{$colorError};
+  --data-color-button-default: #{$colorHeritageBlue};
+  --data-color-badge-draft: #{$colorStone};
+  --data-color-badge-pending: #{$colorVividReal};
+  --data-color-badge-proposal: #{$colorGardenGreen};
+  --data-color-badge-approved: #{$colorGardenGreen};
+  --data-color-badge-rejected: #{$colorCoral};
+  --data-color-badge-disabled: #{$colorDisabled};
+  --data-color-badge-cw1: #{$colorPurple};
+  --wrapperWidth: #{$withDefault};
+  --fontSize: #{$fontDefaultSize};
+}
+
+@function colorVar($color-name) {
+  @return var(--data-color-#{$color-name});
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: var(--wrapperWidth) 220px;
+  grid-gap: 2px;
+  align-items: center;
+  font-size: var(--fontSize);
+}
+
+.divSpinnerLoading {
+  top: 45%;
+  left: 45%;
+}
+
+.errorMessage {
+  top: 45%;
+  left: 30%;
+  color: colorVar(error);
+}
+
+.noDisplay {
+  display: none;
+}
+
+.bodyPage {
+  background-color: colorVar(background-clear);
+}
