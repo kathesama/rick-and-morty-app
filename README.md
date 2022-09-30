@@ -23,12 +23,12 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/kathesama/rick-and-morty-app?style=plastic)
 <br>
 ---
-# Rick and Morty App
+# Rick and Morty Application
 
 ---
-# Getting Started with Create React App
+# Getting Started with Create React Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React Application](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -69,6 +69,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Create React Application documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
