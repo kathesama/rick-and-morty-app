@@ -1,6 +1,12 @@
 import React from 'react';
+import Avatar from '@mui/material/Avatar';
+import { Badge, Box, Grid, Paper, Stack, styled, Typography } from '@mui/material';
+import * as url from 'url';
+import logo from '../../../assets/img/rickandmortylogo.png';
+import banner from '../../../assets/img/rickandmortyname.png';
 
 import { Button } from '../Button/Button';
+import { styles } from './Header.module';
 import './header.css';
 
 export type User = {
@@ -15,29 +21,52 @@ export interface HeaderProps {
   onCreateAccount: () => void;
 }
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    color: '#44b700',
+    backgroundImage: 'url(\'../../../assets/img/rickandmortylogo.png\')',
+    backgroundRepeat: 'no-repeat',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    '&::after': {
+      position: 'absolute',
+      top: -12,
+      left: -20,
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      animation: 'ripple 1.2s infinite ease-in-out',
+      border: '1px solid currentColor',
+      content: '""',
+    },
+  },
+  '@keyframes ripple': {
+    '0%': {
+      transform: 'scale(.01)',
+      opacity: 1,
+    },
+    '100%': {
+      transform: 'scale(4)',
+      opacity: 0,
+    },
+  },
+}));
+
 // eslint-disable-next-line import/prefer-default-export
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
   <header>
     <div className="wrapper">
-      <div>
-        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" fillRule="evenodd">
-            <path
-              d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
-              fill="#FFF"
-            />
-            <path
-              d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z"
-              fill="#555AB9"
-            />
-            <path
-              d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
-              fill="#91BAF8"
-            />
-          </g>
-        </svg>
-        <h1>Acme</h1>
-      </div>
+      <Stack direction="row" spacing={2}>
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          variant="dot"
+        >
+          <Typography variant="h6" noWrap component="div" sx={styles.typography.large}>
+            Rick and Morty
+            <Avatar alt="Rick and Morty" src={logo}/>
+          </Typography>
+        </StyledBadge>
+      </Stack>
       <div>
         {user ? (
           <>
