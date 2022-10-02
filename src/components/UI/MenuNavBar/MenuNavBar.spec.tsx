@@ -34,21 +34,18 @@ describe('MenuNavBarComponent test', () => {
       document.body.appendChild(container);
     });
     it.each`
-    component         | id
-    ${'App bar'}      | ${'app-bar-id'}
-    ${'Container'}    | ${'container-id'}
-    ${'Toolbar'}      | ${'toolbar-id'}
-    ${'Logo'}         | ${'logo-test-id'}
-    ${'Menu options'} | ${'responsive-box-id'}
-    ${'About me'}     | ${'about-box-ui'}
-  `('Should has: $component', async ({ id }) => {
+      component         | id
+      ${'App bar'}      | ${'app-bar-id'}
+      ${'Container'}    | ${'container-id'}
+      ${'Toolbar'}      | ${'toolbar-id'}
+      ${'Logo'}         | ${'logo-test-id'}
+      ${'Menu options'} | ${'responsive-box-id'}
+      ${'About me'}     | ${'about-box-ui'}
+    `('Should has: $component', async ({ id }) => {
       renderComponent();
       await waitFor(() => {
         expect(screen.getByTestId(id)).toBeInTheDocument();
       });
     });
   });
-
-
-
 });

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {CharactersGridComponent} from './CharactersGrid';
+import { CharactersGridComponent } from './CharactersGrid';
 
 let container: any;
 
@@ -15,7 +15,7 @@ afterEach(async () => {
   document.body.removeChild(container);
   container = null;
 });
-    
+
 describe('CharactersGridComponent test', () => {
   const setup = async () => {
     act(() => {
@@ -27,6 +27,6 @@ describe('CharactersGridComponent test', () => {
     setup();
     expect(screen.getByTestId('CharactersGridComponent')).toBeInTheDocument();
   });
-  
-  // keep with others tests 
+
+  // keep with others tests
 });

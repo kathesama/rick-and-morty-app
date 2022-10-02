@@ -7,20 +7,16 @@ import React, { useState, FC } from 'react';
 import cssStyle from './CharactersGrid.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsCharactersGridComponent {
-}
+interface PropsCharactersGridComponent {}
 
 const CharactersGridComponent: FC<any> = (props: PropsCharactersGridComponent): any => {
   const [state, setState] = useState('');
 
   return (
-    <div className={cssStyle.example} data-testid='CharactersGridComponent'>
+    <div className={cssStyle.example} data-testid="CharactersGridComponent">
       CharactersGridComponent
     </div>
   );
 };
 
-export {
-  CharactersGridComponent,
-  PropsCharactersGridComponent,
-};
+export { CharactersGridComponent, PropsCharactersGridComponent };

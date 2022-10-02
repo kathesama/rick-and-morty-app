@@ -17,7 +17,7 @@ interface MainMenuItem {
   href?: string;
 }
 
-interface PropsMenuItemCustomComponent extends MainMenuItem{
+interface PropsMenuItemCustomComponent extends MainMenuItem {
   children: any;
 }
 
@@ -25,18 +25,22 @@ const MenuItemCustomComponent: FC<any> = ({ keyId, children, component, to, href
   const [menuProperties, setMenuProperties] = useState<MainMenuItem>({});
   useEffect(() => {
     const returnProperties = () => {
-      const baseObj: any= {};
+      const baseObj: any = {};
 
-      if( keyId ){ baseObj.key  = keyId; }
-      if( onClick ){ baseObj.onClick  = onClick; }
-      if( component ){
-        baseObj.component  = component;
-        if(component === 'a' && href){
+      if (keyId) {
+        baseObj.key = keyId;
+      }
+      if (onClick) {
+        baseObj.onClick = onClick;
+      }
+      if (component) {
+        baseObj.component = component;
+        if (component === 'a' && href) {
           baseObj.href = href;
-        }else if(component === 'a' && !href){
+        } else if (component === 'a' && !href) {
           throw new Error(`Expected a href due ${component} but got undefined`);
         }
-        if(component === Link && to){
+        if (component === Link && to) {
           baseObj.to = to;
         }
       }
@@ -47,14 +51,7 @@ const MenuItemCustomComponent: FC<any> = ({ keyId, children, component, to, href
     setMenuProperties(objProps);
   }, [keyId, component, to, href, onClick]);
 
-  return (
-    <MenuItem {...menuProperties}>
-      {children}
-    </MenuItem>
-  );
+  return <MenuItem {...menuProperties}>{children}</MenuItem>;
 };
 
-export {
-  MenuItemCustomComponent,
-  PropsMenuItemCustomComponent,
-};
+export { MenuItemCustomComponent, PropsMenuItemCustomComponent };

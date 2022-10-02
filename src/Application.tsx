@@ -11,18 +11,18 @@ export interface IApplicationProps {}
 const Application: FC<IApplicationProps> = () => (
   <BrowserRouter>
     <Routes>
-      <Route element={<HeaderPage />} >
+      <Route element={<HeaderPage />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/characters" >
-          <Route index element={<UnderConstructionPage url='characters'/>} />
+        <Route path="/characters">
+          <Route index element={<UnderConstructionPage url="characters" />} />
         </Route>
-        <Route path="/locations" >
-          <Route index element={<UnderConstructionPage url='locations'/>} />
+        <Route path="/locations">
+          <Route index element={<UnderConstructionPage url="locations" />} />
         </Route>
-        <Route path="/episodes" >
-          <Route index element={<UnderConstructionPage url='episodes'/>} />
+        <Route path="/episodes">
+          <Route index element={<UnderConstructionPage url="episodes" />} />
         </Route>
-        <Route path="/readme" element={<UnderConstructionPage url='readme' />} />
+        <Route path="/readme" element={<UnderConstructionPage url="readme" />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       {/* <Route path="/*" element={<HeaderPage />} > */}

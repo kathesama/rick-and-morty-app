@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {NotFoundPage} from './NotFound';
+import { NotFoundPage } from './NotFound';
 
 export default {
   title: 'Component/Pages/NotFound',

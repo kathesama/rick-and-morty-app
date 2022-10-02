@@ -40,8 +40,8 @@ describe('App', () => {
   };
 
   it.each`
-    path   | pageTestId
-    ${'/'} | ${'home-page'}
+    path          | pageTestId
+    ${'/'}        | ${'home-page'}
     ${'/unknown'} | ${'not-found-page'}
   `('displays $pageTestId when path is $path', async ({ path, pageTestId }) => {
     await setup(path);

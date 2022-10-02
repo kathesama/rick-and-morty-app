@@ -13,7 +13,7 @@ export default {
         <Story />
       </MemoryRouter>
     ),
-  ]
+  ],
 } as ComponentMeta<typeof AboutComponent>;
 
 const Template: ComponentStory<typeof AboutComponent> = (args) => <AboutComponent {...args} />;

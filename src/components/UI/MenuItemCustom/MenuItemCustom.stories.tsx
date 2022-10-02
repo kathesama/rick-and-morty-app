@@ -1,5 +1,5 @@
 import React from 'react';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Link, MemoryRouter } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ MenuItemWithAHref.args = {
   to: '',
   href: '/url/to/go',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: () => {}
+  onClick: () => {},
 };
 
 export const MenuItemWithALink = Template.bind({});
@@ -40,5 +40,5 @@ MenuItemWithALink.args = {
   to: '/url/to/go',
   href: '',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: () => {}
+  onClick: () => {},
 };

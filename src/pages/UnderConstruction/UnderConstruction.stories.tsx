@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {UnderConstructionPage} from './UnderConstruction';
+import { UnderConstructionPage } from './UnderConstruction';
 
 export default {
   title: 'Component/Pages/UnderConstructionPage',

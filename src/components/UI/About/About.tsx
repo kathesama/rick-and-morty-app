@@ -4,7 +4,7 @@ On: 01/10/2022 : 01/10/2022
 Project: rick-and-morty-app
 */
 import React, { FC } from 'react';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -51,19 +51,19 @@ const AboutComponent: FC<any> = ({ handleOpenUserMenu, anchorElUser, handleClose
       data-testid="about-menu-ui"
     >
       {settings?.map((setting) => (
-          <div key={ uuidv4() }>
-            <MenuItemCustomComponent
-              keyId={ uuidv4() }
-              onClick={handleCloseUserMenu}
-              component={setting?.component === 'a' ? 'a' : Link }
-              to={setting?.component === 'link' ? setting?.pageURL : undefined }
-              href={setting?.component === 'a' ? setting?.pageURL : undefined }
-            >
-              {setting?.icon}
-              <Typography textAlign="center">{setting?.menuTitle}</Typography>
-            </MenuItemCustomComponent>
-          </div>
-        ))}
+        <div key={uuidv4()}>
+          <MenuItemCustomComponent
+            keyId={uuidv4()}
+            onClick={handleCloseUserMenu}
+            component={setting?.component === 'a' ? 'a' : Link}
+            to={setting?.component === 'link' ? setting?.pageURL : undefined}
+            href={setting?.component === 'a' ? setting?.pageURL : undefined}
+          >
+            {setting?.icon}
+            <Typography textAlign="center">{setting?.menuTitle}</Typography>
+          </MenuItemCustomComponent>
+        </div>
+      ))}
     </Menu>
   </Box>
 );

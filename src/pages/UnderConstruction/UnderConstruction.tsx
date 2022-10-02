@@ -11,13 +11,10 @@ interface PropsUnderConstructionPage {
   url?: string;
 }
 
-const UnderConstructionPage: FC<any> = ({url = 'new'}: PropsUnderConstructionPage): any => (
-  <div className={cssStyle.example} data-testid='UnderConstructionPage'>
+const UnderConstructionPage: FC<any> = ({ url = 'new' }: PropsUnderConstructionPage): any => (
+  <div className={cssStyle.example} data-testid="UnderConstructionPage">
     {`Page ${url} under construction`}
   </div>
 );
 
-export {
-  UnderConstructionPage,
-  PropsUnderConstructionPage,
-};
+export { UnderConstructionPage, PropsUnderConstructionPage };
