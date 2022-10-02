@@ -42,9 +42,10 @@ describe('App', () => {
   it.each`
     path   | pageTestId
     ${'/'} | ${'home-page'}
+    ${'/unknown'} | ${'not-found-page'}
   `('displays $pageTestId when path is $path', async ({ path, pageTestId }) => {
     await setup(path);
-    const notFound = await waitFor(() => screen.getByTestId(pageTestId));
+    const notFound = await waitFor(() => screen.queryByTestId(pageTestId));
     expect(notFound).toBeInTheDocument();
   });
 });

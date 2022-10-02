@@ -1,10 +1,18 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { HeaderPage } from '../../pages/Header/HeaderPage';
+import { MemoryRouter } from 'react-router-dom';
+import { HeaderPage } from './HeaderPage';
 
 export default {
   title: 'Component/Pages/Header',
   component: HeaderPage,
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
   parameters: {
     layout: 'fullscreen',
   },

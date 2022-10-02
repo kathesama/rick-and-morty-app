@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { MemoryRouter } from 'react-router-dom';
-import Home from '../../pages/Home/Home';
+import Home from './Home';
 
 export default {
   title: 'Component/Pages/Home',
@@ -23,13 +23,13 @@ export default {
 // eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof Home> = (args) => <Home {...args} />;
 
-export const LoggedOut = Template.bind({});
+export const Default = Template.bind({});
 
-export const LoggedIn = Template.bind({});
+/* export const LoggedIn = Template.bind({});
 
-// More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-LoggedIn.play = async ({ canvasElement }: any) => {
-  const canvas = within(canvasElement);
-  const loginButton = await canvas.getByRole('button', { name: 'navigateButton' });
-  await userEvent.click(loginButton);
-};
+   // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
+   LoggedIn.play = async ({ canvasElement }: any) => {
+     const canvas = within(canvasElement);
+     const loginButton = await canvas.getByRole('button', { name: 'navigateButton' });
+     await userEvent.click(loginButton);
+   }; */

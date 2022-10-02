@@ -28,5 +28,10 @@
   "include": [
     "./src/**/*",
     "src/types/images.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.tsx",
+    "**/*.stories.tsx",
   ]
 }

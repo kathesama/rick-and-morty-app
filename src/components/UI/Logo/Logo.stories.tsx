@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Logo } from '../../components/UI/Logo/Logo';
+import { Logo } from './Logo';
 
 export default {
   title: 'Component/UI/Logo',

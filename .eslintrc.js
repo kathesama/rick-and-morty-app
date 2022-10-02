@@ -14,7 +14,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', '@typescript-eslint', 'security', 'react-hooks', 'prettier', 'jest'],
-  'ignorePatterns': ['*.test.js', '*.test.tsx', '*.css', '*.svg', '*.scss'],
+  'ignorePatterns': ['*.test.js', '*.test.tsx', '*.stories.tsx', '*.css', '*.svg', '*.scss'],
   rules: {
     'semi': ['error', 'always'],
     'linebreak-style': 'off',

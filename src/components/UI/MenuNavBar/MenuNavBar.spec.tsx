@@ -1,18 +1,10 @@
 import React from 'react';
-import { act, render, screen, waitFor } from '@testing-library/react';
-import ReactDOM from 'react-dom/client';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { MenuNavBarComponent } from './MenuNavBar';
-import { HeaderPage } from '../../../pages/Header/HeaderPage';
 
 let container: any;
-
-const setup = async () => {
-  act(() => {
-    ReactDOM.createRoot(container).render(<MenuNavBarComponent />);
-  });
-};
 
 const renderComponent = () =>
   render(
