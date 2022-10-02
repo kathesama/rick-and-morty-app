@@ -11,12 +11,14 @@ const HomePage: FunctionComponent<IHomePageProps> = (props) => {
     <div>
       <p>This is the home page.</p>
       <p>
-         <Link to="/about">Go to the About Page!</Link>
+        <Link to="/about">Go to the About Page!</Link>
       </p>
       <p>
-         <Link to="/test">Go to the Test Page!</Link>
+        <Link to="/test">Go to the Test Page!</Link>
       </p>
-      <button type="button" name="navigateButton" onClick={() => navigate('/layout/55')}>Go to layout, with a number</button>
+      <button type="button" name="navigateButton" onClick={() => navigate('/layout/55')}>
+        Go to layout, with a number
+      </button>
     </div>
   );
 };

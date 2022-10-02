@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
-import { ApolloClient, ApolloProvider, gql, HttpLink, InMemoryCache } from '@apollo/client';
-
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import './index.css';
 import Application from './Application';
@@ -13,9 +12,9 @@ import './locale/i18n';
 import store from './redux/store';
 
 const client = new ApolloClient({
-    uri: 'https://rickandmortyapi.com/graphql',
-    cache: new InMemoryCache()
-  });
+  uri: 'https://rickandmortyapi.com/graphql',
+  cache: new InMemoryCache(),
+});
 
 const persistor = persistStore(store);
 const container = document.getElementById('root');

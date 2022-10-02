@@ -29,7 +29,7 @@ const styles = {
       textTransform: 'capitalize',
       align: 'center',
     },
-  }
+  },
 };
 
 // eslint-disable-next-line

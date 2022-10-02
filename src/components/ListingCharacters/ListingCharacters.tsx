@@ -8,18 +8,12 @@ import Card from '@mui/material/Card';
 
 import cssStyle from './ListingCharacters.module.css';
 
-interface Props extends HTMLAttributes<HTMLDivElement>{
+interface Props extends HTMLAttributes<HTMLDivElement> {
   message: string;
   variant?: 'success' | 'warning' | 'danger' | 'info';
   children?: ReactNode;
 }
 
-const ListingCharactersComponent: FC<Props> = ({ children, message, variant }) => (
-  <div>{children || message}</div>
-);
+const ListingCharactersComponent: FC<Props> = ({ children, message, variant }) => <div>{children || message}</div>;
 
-export {
-  ListingCharactersComponent as ListingCharacters,
-  Props,
-};
-
+export { ListingCharactersComponent as ListingCharacters, Props };

@@ -1,9 +1,50 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
+import ReactDOM from 'react-dom/client';
+import userEvent from '@testing-library/user-event';
 import Application from './Application';
+import i18n from './locale/i18n';
 
-test('renders learn react link', () => {
+// it('renders learn react link', () => {
+//   render(<Application />);
+//   const linkElement = screen.getByText(/learn react/i);
+//   expect(linkElement).toBeInTheDocument();
+// });
+
+let container: any;
+
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(async () => {
+  document.body.removeChild(container);
+  container = null;
+  await act(async () => {
+    await i18n.changeLanguage('en');
+  });
+});
+
+const setup = (path: string) => {
+  window.history.pushState({}, '', path);
   render(<Application />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+};
+
+describe('App', () => {
+  const setup = async (path: string) => {
+    act(() => {
+      ReactDOM.createRoot(container).render(<Application />);
+      window.history.pushState({}, '', path);
+    });
+  };
+
+  it.each`
+    path   | pageTestId
+    ${'/'} | ${'home-page'}
+  `('displays $pageTestId when path is $path', async ({ path, pageTestId }) => {
+    await setup(path);
+    const notFound = await waitFor(() => screen.getByTestId(pageTestId));
+    expect(notFound).toBeInTheDocument();
+  });
 });
