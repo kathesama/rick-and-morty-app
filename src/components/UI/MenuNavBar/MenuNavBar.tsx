@@ -41,13 +41,13 @@ const MenuNavBarComponent: FC<any> = (props: Props): any => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const pagesSettings: MenuSettings[] = [
     {
-      menuTitle: `Character`,
+      menuTitle: `Characters`,
       pageURL: '/characters',
       icon: <PersonPinCircleTwoToneIcon />,
       component: 'link',
     },
     {
-      menuTitle: 'Location',
+      menuTitle: 'Locations',
       pageURL: '/locations',
       icon: <MapTwoToneIcon />,
       component: 'link',
