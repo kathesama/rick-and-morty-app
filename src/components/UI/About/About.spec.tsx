@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { act, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
 import { AboutComponent } from './About';

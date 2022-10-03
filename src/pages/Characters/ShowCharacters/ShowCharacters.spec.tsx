@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import { CharactersGridComponent } from './CharactersGrid';
+import {ShowCharactersPage} from './ShowCharacters';
 
 let container: any;
 
@@ -15,18 +15,18 @@ afterEach(async () => {
   document.body.removeChild(container);
   container = null;
 });
-
-describe('CharactersGridComponent test', () => {
+    
+describe('ShowCharactersPage test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(<CharactersGridComponent />);
+      ReactDOM.createRoot(container).render(<ShowCharactersPage />);
     });
   };
 
   it('has header', () => {
     setup();
-    expect(screen.getByTestId('CharactersGridComponent')).toBeInTheDocument();
+    expect(screen.getByTestId('ShowCharactersPage')).toBeInTheDocument();
   });
-
-  // keep with others tests
+  
+  // keep with others tests 
 });

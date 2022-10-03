@@ -6,7 +6,7 @@ import { Link, MemoryRouter } from 'react-router-dom';
 import { MenuItemCustomComponent } from './MenuItemCustom';
 
 export default {
-  title: 'Component/UI/MenuItemCustomComponent',
+  title: 'Component/UI/MenuItemCustom',
   component: MenuItemCustomComponent,
   decorators: [
     (Story) => (

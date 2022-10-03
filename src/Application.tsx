@@ -4,6 +4,7 @@ import { HeaderPage } from './pages/Header/HeaderPage';
 import { NotFoundPage } from './pages/NotFound/NotFound';
 import HomePage from './pages/Home/Home';
 import { UnderConstructionPage } from './pages/UnderConstruction/UnderConstruction';
+import { ShowCharactersPage } from './pages/Characters/ShowCharacters/ShowCharacters';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IApplicationProps {}
@@ -14,7 +15,7 @@ const Application: FC<IApplicationProps> = () => (
       <Route element={<HeaderPage />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/characters">
-          <Route index element={<UnderConstructionPage url="characters" />} />
+          <Route index element={<ShowCharactersPage />} />
         </Route>
         <Route path="/locations">
           <Route index element={<UnderConstructionPage url="locations" />} />

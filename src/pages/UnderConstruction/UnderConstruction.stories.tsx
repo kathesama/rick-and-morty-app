@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { UnderConstructionPage } from './UnderConstruction';
 
 export default {
-  title: 'Component/Pages/UnderConstructionPage',
+  title: 'Component/Pages/UnderConstruction',
   component: UnderConstructionPage,
 } as ComponentMeta<typeof UnderConstructionPage>;
 
