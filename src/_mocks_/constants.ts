@@ -17,29 +17,60 @@ const columnsConfig: GridColDef[] = [
     field: 'id',
     headerName: 'ID',
     width: 90,
+    type: 'string',
     hideable: false
   },
   {
     field: 'image',
     headerName: 'Avatar',
     width: 150,
+    type: 'string',
     hideable: false
   },
   {
     field: 'name',
     headerName: 'Name',
     width: 150,
+    type: 'string',
     hideable: false,
+  },
+  {
+    field: 'gender',
+    headerName: 'Gender',
+    width: 150,
+    type: 'string',
   },
   {
     field: 'status',
     headerName: 'status',
-    type: 'String',
+    type: 'string',
     width: 110,
   },
 ];
 
+const CharactersInitialState = {
+  filter: {
+    filterModel: {
+      items: [
+        {
+          id: 1,
+          columnField: 'name',
+          operatorValue: 'contains',
+          value: 'D',
+        },
+        {
+          id: 2,
+          columnField: 'gender',
+          operatorValue: 'contains',
+          value: 'F',
+        },
+      ],
+    },
+  },
+};
+
 export {
   dataRow,
-  columnsConfig as CharacterColumnsConfig
+  columnsConfig as CharacterColumnsConfig,
+  CharactersInitialState,
 };

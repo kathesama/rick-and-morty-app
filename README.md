@@ -28,6 +28,14 @@
 ---
 # Getting Started with Create React Application
 
+Creation:
+```npx create-react-app my-app --template redux-typescript```
+
+Added:
+```yarn add @apollo/graphql grapqhl```
+
+
+
 This project was bootstrapped with [Create React Application](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

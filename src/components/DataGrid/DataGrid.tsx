@@ -4,11 +4,12 @@ On: 02/10/2022 : 21:04
 Project: rick-and-morty-app
 */
 import React, { useState, FC } from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 
 import cssStyle from './DataGrid.module.scss';
 import { Character } from '../../models/Character';
+import { CharactersInitialState } from '../../_mocks_/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsDataGridComponent {
@@ -25,12 +26,16 @@ const DataGridComponent: FC<any> = ({ data = [], columns = []}: PropsDataGridCom
         <DataGrid
           rows={data}
           columns={columns}
-          pageSize={5}
+          pageSize={20}
           rowsPerPageOptions={[5]}
           checkboxSelection
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           data-testid='datagrid-data-gird-id'
+          components={{
+            Toolbar: GridToolbar,
+          }}
+          initialState={CharactersInitialState}
         />
       </Box>
     </div>

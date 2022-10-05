@@ -1,0 +1,39 @@
+@import '../../assets/styles/main';
+
+.table {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-bottom: 2pt solid transparent;
+}
+
+.body {
+  border: none;
+  border-bottom: 2pt solid transparent;
+}
+
+.tableRow {
+  background: #FFFFFF;
+  border-bottom: 2px solid #F2F2F2;
+  height: 100px;
+}
+
+.tableRow:hover {
+  background: #F2F2F2;
+}
+
+.tableCell {
+  background-color: transparent;
+  border: none transparent;
+  min-width: 100px;
+  width: 300px;
+}
+
+.pagination {
+  font-size: 12px;
+  text-align: right;
+}
+
+.icon {
+  width: 16px;
+}

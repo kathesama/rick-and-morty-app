@@ -17,10 +17,10 @@ afterEach(async () => {
   container = null;
 });
 
-describe('CharactersGridComponent test', () => {
+describe('DataGridComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(<DataGridComponent data={dataRow} columns={CharacterColumnsConfig}/>);
+      ReactDOM.createRoot(container).render(<DataGridComponent data={dataRow} columns={CharacterColumnsConfig} />);
     });
   };
 
