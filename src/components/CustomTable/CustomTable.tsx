@@ -3,9 +3,18 @@ Created by: Katherine Aguirre
 On: 04/10/2022 : 18:04
 Project: rick-and-morty-app
 */
-import React, { useState, FC, useMemo } from 'react';
+import React, { useState, FC, useMemo, ReactElement } from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell, Icon } from '@mui/material';
-import { useFilters, usePagination, useRowSelect, useRowState, useSortBy, useTable } from 'react-table';
+import {
+  Column,
+  useFilters,
+  useGlobalFilter,
+  usePagination,
+  useRowSelect,
+  useRowState,
+  useSortBy,
+  useTable,
+} from 'react-table';
 import { useSelector } from 'react-redux';
 import { PaginationFooterComponent } from '../PaginationFooter/PaginationFooter';
 import { getCharacterPageData } from '../../redux/characters/characters.slice';
@@ -17,37 +26,47 @@ import arrowDown from '../../assets/icons/arrowDown.svg';
 import cssStyle from './CustomTable.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsCustomTableComponent {
-  data: any[],
-  columns?: any[],
+interface PropsCustomTableComponent<T extends object> {
+  data: T[],
+  columns: Column<T>[],
   hideHeader?: boolean,
+  loading?: boolean,
 }
 
-const CustomTableDefaultValues: PropsCustomTableComponent = {
+const CustomTableDefaultValues: PropsCustomTableComponent<any> = {
   data: [],
   columns: [],
   hideHeader: false,
+  loading: false,
 };
 
-const CustomTableComponent: FC<any> = (props = CustomTableDefaultValues): any => {
+const CustomTableComponent = <T extends { id: string }>({
+                           columns,
+                           hideHeader,
+                           data,
+                           loading,
+                         } : PropsCustomTableComponent<T>): ReactElement => {
   const [state, setState] = useState('');
-  // const { data = [] } = useSelector(getCharacterPageData);
 
-  const {
-    columns,
-  } = props;
+  const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+    setGlobalFilter(value);
+  };
 
-  const {
-    hideHeader,
-    data,
-  } = props;
+  const defaultColumn = React.useMemo(
+    () => ({
+      minWidth: 30,
+      width: 50,
+      maxWidth: 200,
+    }),
+    []
+  );
 
   const {
       getTableProps,
       getTableBodyProps,
       headerGroups,
       prepareRow,
-      setFilter,
       page,
       canPreviousPage,
       canNextPage,
@@ -58,15 +77,16 @@ const CustomTableComponent: FC<any> = (props = CustomTableDefaultValues): any =>
       previousPage,
       setPageSize,
       state: { pageIndex, pageSize },
-     } = useTable (
-       {
+      setGlobalFilter,
+     } = useTable<T> ({
          columns,
          data,
+         defaultColumn,
          initialState: {
            pageIndex: 0,
          },
        },
-       useFilters,
+       useGlobalFilter,
        useSortBy,
        usePagination,
        useRowState,
@@ -75,6 +95,7 @@ const CustomTableComponent: FC<any> = (props = CustomTableDefaultValues): any =>
 
   return (
     <div className={cssStyle.example} data-testid='CustomTableComponent'>
+      <input placeholder="Filter" onChange={handleFilterInputChange} />
       <Table {...getTableProps()} className={cssStyle.table} data-testid='table-custom-table-id'>
         <TableHead className={hideHeader ? cssStyle.noDisplay : ''} data-testid='table-head-custom-table-id'>
           {headerGroups?.map((headerGroup) => (

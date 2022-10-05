@@ -3,9 +3,10 @@ Created by: Katherine Aguirre
 On: 02/10/2022 : 02/10/2022
 Project: rick-and-morty-app
 */
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Avatar } from '@mui/material';
+import { Column } from 'react-table';
 
 import cssStyle from './ShowCharacters.module.scss';
 import {
@@ -26,24 +27,25 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
   const dispatch = useDispatch();
   const { loading = false, error = null } = useSelector(getCharacterPageStates);
   const { data } = useSelector(getCharacterPageData);
+  const [dataFilter, setDataFilter] = useState(undefined);
+
   console.log('LOADING: ', loading);
   console.log('ERROR: ', error);
   console.log('DATA: ', data);
 
-  const columns = useMemo(
+  const columns: Column<any>[] = useMemo(
        () => [
          {
            Header: 'ID',
            id: 'id',
            accessor: 'id',
            sortType: 'string',
-           width: 40,
-           Filter: DefaultColumnFilter,
          },
          {
            Header: 'Avatar',
            id: 'image',
            accessor: 'image',
+           disableGlobalFilter: true,
            // eslint-disable-next-line react/no-unstable-nested-components
            Cell: ({ cell }: any) => (
              <div>
@@ -56,7 +58,6 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
            id: 'name',
            accessor: 'name',
            sortType: 'string',
-           filter: 'DefaultColumnFilter',
          },
          {
            Header: 'Status',
@@ -74,8 +75,10 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
 
   useEffect(() => {
     if (!loading && !error)
-      dispatch(fetchAsyncCharactersListing({}));
-  }, [dispatch, error, loading]);
+      dispatch(fetchAsyncCharactersListing({
+        filter: dataFilter,
+      }));
+  }, [dataFilter, dispatch, error, loading]);
 
   if (loading)
     return (
@@ -93,7 +96,7 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
 
   return (
     <div className={cssStyle.example} data-testid='ShowCharactersPage'>
-      {!loading && <CustomTableComponent data={data?.results} columns={columns} />}
+      {!loading && <CustomTableComponent data={data?.results} columns={columns} loading={loading} />}
       {/* ShowCharactersPage */}
     </div>
   );

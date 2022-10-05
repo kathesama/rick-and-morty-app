@@ -107,8 +107,6 @@ Y
 )src/components/DataGrid/DataGrid.spec.tsx,3\0\30f1741edfd3ce766b2c5efbc830fedec9857be5
 <
 .eslintrc.js,d\b\dbc0c31823b8f2e4ed04a397722fed33a67f123f
-Q
-!src/types/react-table-config.d.ts,3\8\38b75c8c27d1d1c78a2a850c6cb3fcaa7d95e6b7
 l
 <src/components/PaginationFooter/PaginationFooter.stories.tsx,e\5\e547fedb30092a5974e9c7f8407a631566390322
 \
