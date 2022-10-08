@@ -26,7 +26,7 @@ interface PropsPaginationFooterComponent {
 }
 
 const PaginationFooterDefaultValues: PropsPaginationFooterComponent = {
-  pageSize: 5,
+  pageSize: 20,
   canPreviousPage: false,
   gotoPage: (val) => {},
   nextPage: () => {},
@@ -53,40 +53,41 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
   } = props;
 
   return (
-    <div className={cssStyle.pagination} data-testid='PaginationFooterComponent'>
-      Rows per page:{' '}
-      <Select
-        value={pageSize}
-        onChange={(e) => {
-          setPageSize(Number(e.target.value));
-        }}
-        variant="standard"
-        style={{
-          width: '50px',
-          fontSize: '12px',
-        }}
-        data-testid='select-pagination-footer'
-      >
-        {[5, 10, 20, 30, 40, 50, 100].map((p) => (
-          <MenuItem
-            key={p}
-            value={p}
-            sx={{
-              fontSize: 12,
-            }}
-          >
-            {p}
-          </MenuItem>
-        ))}
-      </Select>{' '}
-      <span>
-        Page{' '}
-        <strong>
-          {pageIndex + 1} of {pageOptions?.length}
-        </strong>{' '}
-      </span>
-      <span>
-        | Go to page:{' '}
+    <div className={cssStyle.flexContainer} data-testid='PaginationFooterComponent' id="pagination">
+      {/* <div id="pagination-page-size" data-testid="pagination-page-size" className={cssStyle.flexItems} hidden> */}
+      {/*  Rows per page:{' '} */}
+      {/*  <Select */}
+      {/*    value={pageSize} */}
+      {/*    onChange={(e) => { */}
+      {/*      setPageSize(Number(e.target.value)); */}
+      {/*    }} */}
+      {/*    variant="standard" */}
+      {/*    style={{ */}
+      {/*      width: '50px', */}
+      {/*      fontSize: '12px', */}
+      {/*      textAlign: 'center', */}
+      {/*      fontWeight: 'bold', */}
+      {/*    }} */}
+      {/*    data-testid='select-pagination-footer' */}
+      {/*  > */}
+      {/*    {[5, 10, 20, 30, 40, 50, 100].map((p) => ( */}
+      {/*      <MenuItem */}
+      {/*        key={p} */}
+      {/*        value={p} */}
+      {/*        sx={{ */}
+      {/*          fontSize: 12, */}
+      {/*        }} */}
+      {/*      > */}
+      {/*        {p} */}
+      {/*      </MenuItem> */}
+      {/*    ))} */}
+      {/*  </Select> */}
+      {/* </div> */}
+      <div id="pagination-page-counter" data-testid="pagination-page-counter" className={cssStyle.flexItems}>
+        | &nbsp;Page&nbsp;<b>{pageIndex} of {pageOptions?.length}</b>
+      </div>
+      <div id="pagination-page-navigation" data-testid="pagination-page-navigation"className={cssStyle.flexItems}>
+        <span>| Go to page:{' '}</span>
         <TextField
           type="number"
           defaultValue={pageIndex + 1}
@@ -98,10 +99,12 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
             },
             style: {
               fontSize: 12,
-              width: 45,
-              padding: '9px 0 1px 2px',
+              width: 30,
+              padding: '5px 0 1px 2px',
+              fontWeight: 'bold',
             },
           }}
+          sx={{input: {textAlign: 'center'}}}
           onChange={(e) => {
             const p = e.target.value ? Number(e.target.value) - 1 : 0;
             gotoPage(p);
@@ -110,19 +113,21 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
           size="small"
           data-testid='goto-page-pagination-footer'
         />
-      </span>{' '}
-      <IconButton onClick={() => gotoPage(0)} disabled={!canPreviousPage} data-testid='icon-button-first-page-pagination-footer' >
-        <FirstPageIcon className={cssStyle.icon} />
-      </IconButton>{' '}
-      <IconButton onClick={() => previousPage()} disabled={!canPreviousPage} data-testid='icon-button-before-page-pagination-footer' >
-        <NavigateBeforeIcon className={cssStyle.icon} />
-      </IconButton>{' '}
-      <IconButton onClick={() => nextPage()} disabled={!canNextPage} data-testid='icon-button-next-page-pagination-footer' >
-        <NavigateNextIcon className={cssStyle.icon} />
-      </IconButton>{' '}
-      <IconButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} data-testid='icon-button-last-page-pagination-footer' >
-        <LastPageIcon className={cssStyle.icon} />
-      </IconButton>{' '}
+      </div>
+      <div id="buttons-page-navigation" data-testid="buttons-page-navigation" className={cssStyle.flexItems}>
+        <IconButton onClick={() => gotoPage(0)} disabled={!canPreviousPage} data-testid='icon-button-first-page-pagination-footer' size='small'>
+          <FirstPageIcon className={cssStyle.icon} />
+        </IconButton>{' '}
+        <IconButton onClick={() => previousPage()} disabled={!canPreviousPage} data-testid='icon-button-before-page-pagination-footer' size='small'>
+          <NavigateBeforeIcon className={cssStyle.icon} />
+        </IconButton>{' '}
+        <IconButton onClick={() => nextPage()} disabled={!canNextPage} data-testid='icon-button-next-page-pagination-footer' size='small'>
+          <NavigateNextIcon className={cssStyle.icon} />
+        </IconButton>{' '}
+        <IconButton onClick={() => gotoPage(pageCount -1 )} disabled={!canNextPage} data-testid='icon-button-last-page-pagination-footer'  size='small' >
+          <LastPageIcon className={cssStyle.icon} />
+        </IconButton>{' '}
+      </div>
     </div>
   );
 };

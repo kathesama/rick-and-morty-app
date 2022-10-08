@@ -28,6 +28,10 @@ describe('PaginationFooterComponent test', () => {
     component       | id
     ${'Wrapper'}        | ${'PaginationFooterComponent'}
     ${'Select'}        | ${'select-pagination-footer'}
+    ${'Pagination size'}        | ${'pagination-page-size'}
+    ${'Pagination counter'}        | ${'pagination-page-counter'}
+    ${'Pagination input selector'}        | ${'pagination-page-navigation'}
+    ${'Pagination navigation buttons'}        | ${'buttons-page-navigation'}
     ${'TextField ind/dec'}        | ${'goto-page-pagination-footer'}    
     ${'Icon button A'}        | ${'icon-button-first-page-pagination-footer'}    
     ${'Icon button B'}        | ${'icon-button-before-page-pagination-footer'}    

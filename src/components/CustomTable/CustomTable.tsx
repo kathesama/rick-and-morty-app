@@ -3,7 +3,7 @@ Created by: Katherine Aguirre
 On: 04/10/2022 : 18:04
 Project: rick-and-morty-app
 */
-import React, { useState, FC, useMemo, ReactElement } from 'react';
+import React, { useState, FC, useMemo, ReactElement, useEffect } from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell, Icon } from '@mui/material';
 import {
   Column,
@@ -17,7 +17,7 @@ import {
 } from 'react-table';
 import { useSelector } from 'react-redux';
 import { PaginationFooterComponent } from '../PaginationFooter/PaginationFooter';
-import { getCharacterPageData } from '../../redux/characters/characters.slice';
+// import { getCharacterPageData } from '../../redux/characters/characters.slice';
 
 import arrowNeutral from '../../assets/icons/arrowNeutral.svg';
 import arrowUp from '../../assets/icons/arrowUp.svg';
@@ -31,6 +31,9 @@ interface PropsCustomTableComponent<T extends object> {
   columns: Column<T>[],
   hideHeader?: boolean,
   loading?: boolean,
+  pageCount?: number,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  fetchMoreData?(data: any): any;
 }
 
 const CustomTableDefaultValues: PropsCustomTableComponent<any> = {
@@ -38,18 +41,23 @@ const CustomTableDefaultValues: PropsCustomTableComponent<any> = {
   columns: [],
   hideHeader: false,
   loading: false,
+  pageCount: 1,
+  // fetchMoreData(): object[]
 };
 
 const CustomTableComponent = <T extends { id: string }>({
-                           columns,
-                           hideHeader,
-                           data,
-                           loading,
-                         } : PropsCustomTableComponent<T>): ReactElement => {
-  const [state, setState] = useState('');
+                          columns,
+                          data,
+                          hideHeader,
+                          fetchData,
+                          loading,
+                          pageCount: controlledPageCount,
+                         } : any): ReactElement => {
 
+  const [filterValue, setFilterValue] = useState('');
   const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
+    setFilterValue(value);
     setGlobalFilter(value);
   };
 
@@ -76,15 +84,16 @@ const CustomTableComponent = <T extends { id: string }>({
       nextPage,
       previousPage,
       setPageSize,
-      state: { pageIndex, pageSize },
+      state: { pageSize, pageIndex  },
       setGlobalFilter,
      } = useTable<T> ({
-         columns,
-         data,
-         defaultColumn,
-         initialState: {
-           pageIndex: 0,
-         },
+          columns,
+          data,
+
+          /* defaultColumn, */
+          initialState: { pageIndex: 0},
+          manualPagination: true,
+          pageCount: controlledPageCount,
        },
        useGlobalFilter,
        useSortBy,
@@ -92,6 +101,18 @@ const CustomTableComponent = <T extends { id: string }>({
        useRowState,
        useRowSelect
      );
+
+  // Listen for changes in pagination and use the state to fetch our new data
+  React.useEffect(() => {
+    /* if (fetchMoreData) {
+          */
+      console.log('pageIndex Table: ', pageIndex);
+    // eslint-disable-next-line no-param-reassign,no-plusplus
+    //   ++pageIndex;
+      fetchData({ pageIndex, filterValue });
+    // }
+  }, [fetchData, filterValue, pageIndex]);
+
 
   return (
     <div className={cssStyle.example} data-testid='CustomTableComponent'>
@@ -145,19 +166,31 @@ const CustomTableComponent = <T extends { id: string }>({
               </TableRow>
             );
           })}
+          <tr>
+            {loading ? (
+              // Use our custom loading state to show a loading indicator
+              <td>Loading...</td>
+            ) : (
+              <td>
+                Showing {page.length} of ~{controlledPageCount * pageSize}{' '}
+                results
+              </td>
+            )}
+          </tr>
         </TableBody>
       </Table>
       <PaginationFooterComponent
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-        pageIndex={pageIndex}
-        pageOptions={pageOptions}
         gotoPage={gotoPage}
-        previousPage={previousPage}
+        setPageSize={setPageSize}
+        pageSize={pageSize}
         canPreviousPage={canPreviousPage}
+
+        previousPage={previousPage}
         nextPage={nextPage}
         canNextPage={canNextPage}
         pageCount={pageCount}
+        pageIndex={pageIndex}
+        pageOptions={pageOptions}
       />
     </div>
   );

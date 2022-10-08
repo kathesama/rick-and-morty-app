@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof PaginationFooterComponent> = (args) => <Pa
 export const Default = Template.bind({});
 Default.args = {
   ...PaginationFooterDefaultValues,
-  pageSize: 10,
+  pageSize: 20,
 };

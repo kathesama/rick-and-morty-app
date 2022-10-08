@@ -1,6 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
 // A great library for fuzzy filtering/sorting items
-import matchSorter from 'match-sorter';
 import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
 

@@ -69,7 +69,8 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
-    '@typescript-eslint/no-empty-function': 'off'
+    '@typescript-eslint/no-empty-function': 'off',
+    'react/no-array-index-key': 'off',
   },
   settings: {
     'import/resolver': {

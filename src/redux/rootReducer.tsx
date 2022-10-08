@@ -4,7 +4,8 @@ import userAuthReducer from './userAuthentication/userAuth.slice';
 import CharactersSlice from './characters/characters.slice';
 
 const rootReducer = combineReducers({
-  userAuthentication: userAuthReducer,
+  /* userAuthentication: userAuthReducer, */
+
   characters: CharactersSlice,
 });
 

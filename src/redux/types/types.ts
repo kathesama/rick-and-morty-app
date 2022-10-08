@@ -1,9 +1,9 @@
 import { GetCharactersPage } from '../../graphql/__generated__/GetCharactersPage';
+import { FilterCharacter } from '../../../__generated__/globalTypes';
 
 interface ICharactersEmptyState {
-    data: GetCharactersPage[];
-    error: any;
-    loading: boolean;
+    pageIndex: number;
+    filterValue?: FilterCharacter | undefined;
 }
 
 export default ICharactersEmptyState;

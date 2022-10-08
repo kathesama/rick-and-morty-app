@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import './locale/i18n';
 import store from './redux/store';
 import apolloClient from './graphql';
+import CharactersProviderComponent from './context/CharactersProvider';
 
 const persistor = persistStore(store);
 const container = document.getElementById('root');
@@ -18,15 +19,17 @@ const root = ReactDOM.createRoot(container as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ApolloProvider client={apolloClient}>
-          <div className="container">
-            <Application />
-          </div>
-        </ApolloProvider>
-      </PersistGate>
-    </Provider>
+    {/* <CharactersProviderComponent > */}
+       <Provider store={store}>
+        {/* <PersistGate persistor={persistor}> */}
+            <ApolloProvider client={apolloClient}>
+              <div className="container">
+                <Application />
+              </div>
+            </ApolloProvider>
+        {/* </PersistGate> */}
+       </Provider>
+    {/* </CharactersProviderComponent> */}
   </React.StrictMode>
 );
 
