@@ -7,7 +7,7 @@
 // START Enums and Input Objects
 //==============================================================
 
-export interface FilterCharacter {
+export interface FilterCharacter{
   name?: string | null;
   status?: string | null;
   species?: string | null;

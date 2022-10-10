@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Box, TableBody, TableCell, TableContainer, TableHead, TableRow, Skeleton, Icon, Pagination } from '@mui/material';
 import MuiTable from '@mui/material/Table';
@@ -32,7 +32,7 @@ type TableProps<T extends object> = {
   children?: ReactNode;
 } & TableOptions<T>;
 
-const CustomTableComponent = <T extends object>({ columns, data, count = 0, queryPageIndex = 0, queryPageSize = 20, queryHiddenColumns = [], onFetchData, loading, onRowClick, ...tableOptions }: TableProps<T>, ref: ForwardedRef<Resetable>) => {
+const CustomTableComponent = <T extends object>({ columns, data, count = 0, queryPageIndex = 0, queryPageSize = 20, queryHiddenColumns = [], onFetchData, loading, onRowClick, ...tableOptions }: TableProps<T>) => {
   const defaultColumn: Partial<Column<T>> = useMemo(
     () => ({
       Filter: DefaultColumnFilter,
@@ -71,7 +71,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
     () =>
       Array(pageSize)
         ?.fill(0)
-        ?.map((_, key) => (
+        ?.map(() => (
           <TableRow key={`preload-empty-${uuidv4()}`}>
             <TableCell colSpan={columns.length}>
               <Skeleton />
@@ -98,9 +98,9 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
     // eslint-disable-next-line consistent-return
     return Array(pageSize - data.length)
       .fill(0)
-      .map((_, key) => (
+      .map(() => (
         <TableRow key={`empty-${uuidv4()}`}>
-          {columns.map((column, cellKey) => (
+          {columns.map(() => (
             <TableCell key={`cell-${uuidv4()}`}>{'\u00A0'}</TableCell>
           ))}
         </TableRow>
@@ -207,5 +207,4 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
   );
 };
 
-// eslint-disable-next-line no-unused-vars
-export default forwardRef(CustomTableComponent) as <T extends object>(props: TableProps<T> & { ref?: ForwardedRef<Resetable> }) => ReturnType<typeof CustomTableComponent>;
+export default CustomTableComponent;

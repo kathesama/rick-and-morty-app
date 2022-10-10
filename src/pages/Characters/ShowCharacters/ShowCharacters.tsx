@@ -170,8 +170,9 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
     });
   }, [fetchCharactersData, filterValue]);
 
-  const onRowClick = useCallback((id: any) => {
-    console.log('onRowClick clicked with ID:', id);
+  // const onRowClick = useCallback((id: any) => {
+  const onRowClick = useCallback(() => {
+    // console.log('onRowClick clicked with ID:', id);
   }, []);
 
   const handleFetchDataFromTable = useCallback(

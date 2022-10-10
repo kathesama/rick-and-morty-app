@@ -18,24 +18,25 @@ type TFilterFields = {
   filterType: any;
 };
 
-type TFilterExtraData = {
+interface TFilterExtraData extends Record<string, any> {
   gender?: string[];
   status?: string[];
-};
+}
 
 type TExtraCommand = {
   field: string;
   value: null;
 };
 
+interface IFilterSchemaExtend extends FilterCharacter, Record<string, any> {}
+
 export interface IFilterSchema {
-  actualFilterData: FilterCharacter | undefined;
+  actualFilterData: IFilterSchemaExtend | undefined;
   fields: TFilterFields[];
   // eslint-disable-next-line no-unused-vars
   callbackFunction(data: FilterCharacter | TExtraCommand): any;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsDynamicFilterComponent {
   data: IFilterSchema;
   extraData?: TFilterExtraData;
@@ -71,10 +72,9 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
         {fields?.map((item: TFilterFields) => {
           const accessor: string = item?.accessor || '';
           const filterType: string = item?.filterType || undefined;
-          // eslint-disable-next-line
-          const actualValue: string = eval(`actualFilterData?.${accessor}`) ?? '';
-          // eslint-disable-next-line no-eval
-          const extraDataValue: string[] = eval(`extraData?.${accessor}`) ?? '';
+
+          const actualValue: string = actualFilterData[accessor] ?? '';
+          const extraDataValue: string[] = extraData[accessor] ?? '';
 
           return filterType && filterType === 'inputField' ? (
             <CustomInputComponent label={accessor} variant={variant} actualValue={actualValue} handlerOnChange={dispatchCallbackFunction} />
