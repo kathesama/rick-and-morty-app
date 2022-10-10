@@ -1,11 +1,24 @@
 import React, { MouseEvent, ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Box, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Skeleton } from '@mui/material';
+import {
+  Box,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Skeleton,
+  Icon,
+} from '@mui/material';
 import MuiTable from '@mui/material/Table';
 
-import { Column, TableOptions, TableState, useFilters, usePagination, useTable } from 'react-table';
+import { Column, TableOptions, TableState, useFilters, usePagination, useSortBy, useTable } from 'react-table';
 import DefaultColumnFilter from './DefaultColumnFilter';
 import cssStyle from './CustomTable.module.scss';
+import arrowDown from '../../assets/icons/arrowDown.svg';
+import arrowUp from '../../assets/icons/arrowUp.svg';
+import arrowNeutral from '../../assets/icons/arrowNeutral.svg';
 
 // eslint-disable-next-line no-unused-vars
 export type FetchDataHandler<T extends object> = (state: TableState<T>) => Promise<void>;
@@ -63,6 +76,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
       ...tableOptions,
     },
     useFilters,
+    useSortBy,
     usePagination
   );
 
@@ -122,6 +136,27 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
                 {headerGroup.headers.map((column) => (
                   <TableCell {...column.getHeaderProps()}>
                     {column.render('Header')}
+                    <span {...column.getSortByToggleProps()}>
+                      {/* eslint-disable-next-line no-nested-ternary */}
+                      {column.id !== 'expander' && column.id !== 'selection' ? (
+                        // eslint-disable-next-line no-nested-ternary
+                        column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <Icon>
+                              <img alt="arrowDown" src={arrowDown} />
+                            </Icon>
+                          ) : (
+                            <Icon>
+                              <img alt="arrowUp" src={arrowUp} />
+                            </Icon>
+                          )
+                        ) : (
+                          <Icon>
+                            <img alt="arrowNeutral" src={arrowNeutral} />
+                          </Icon>
+                        )
+                      ) : null}
+                    </span>
 
                   </TableCell>
                 ))}

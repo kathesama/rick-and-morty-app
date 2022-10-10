@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CustomTableComponent } from './CustomTable';
+import CustomTableComponent from './CustomTable';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';

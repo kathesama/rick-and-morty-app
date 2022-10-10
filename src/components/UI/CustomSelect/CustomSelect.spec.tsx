@@ -16,10 +16,17 @@ afterEach(async () => {
   container = null;
 });
 
+const defaultProps = {
+  label: 'Select',
+  options: ['one', 'two', 'three'],
+  handlerOnChange: jest.fn(),
+  actualValue: 'one',
+}
+
 describe('CustomSelectComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(<CustomSelectComponent />);
+      ReactDOM.createRoot(container).render(<CustomSelectComponent {...defaultProps}/>);
     });
   };
 

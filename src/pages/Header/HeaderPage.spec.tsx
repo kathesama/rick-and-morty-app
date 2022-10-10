@@ -1,9 +1,5 @@
 import * as React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-
-// import MockAdapter from 'axios-mock-adapter';
-
-// import { setupServer } from 'msw/node';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HeaderPage } from './HeaderPage';
 

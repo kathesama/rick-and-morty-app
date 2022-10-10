@@ -18,6 +18,9 @@ afterEach(async () => {
 
 const defaultProps = {
   label: 'input field',
+  widthValue: '250px',
+  actualValue: 'none',
+  handlerOnChange: jest.fn(),
 };
 
 describe('CustomInputComponent test', () => {

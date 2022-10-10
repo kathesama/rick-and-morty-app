@@ -4,7 +4,6 @@ On: 02/10/2022 : 23:12
 Project: rick-and-morty-app
 */
 import { createSlice } from '@reduxjs/toolkit';
-import fetchAsyncCharactersListing from './characters.actions';
 import ICharactersEmptyState from '../types/types';
 import { RootState } from '../store';
 
@@ -68,4 +67,7 @@ export const getCharactersState = (state: RootState) => state?.characters;
 
 export const { setPageIndex, setPageFilter, reset } = CharactersSlice.actions;
 
+export {
+  initialState as characterInitialState
+};
 export default CharactersSlice.reducer;

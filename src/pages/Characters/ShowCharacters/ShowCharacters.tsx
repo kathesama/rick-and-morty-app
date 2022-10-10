@@ -129,8 +129,6 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
     });
   }, [fetchCharactersData, filterValue]);
 
-  /* TODO: actualizar el componente tabla con lo que se hizo en newTable
-     TODO: quitar componente pagination */
   const onRowClick = useCallback((id: any) => {
     console.log('onRowClick clicked with ID:', id);
   }, []);
@@ -164,7 +162,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
     );
 
   return (
-    <CardContent>
+    <CardContent data-testid="ShowCharactersPage">
       {filterHeader}
       <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={charactersData} loading={loading} count={totalCount} queryPageSize={1} />
     </CardContent>

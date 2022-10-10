@@ -61,8 +61,8 @@ const CustomSelectComponent: FC<PropsCustomSelectComponent<object>> = ({ options
         </InputLabel>
         <Select
           labelId="custom-selector-id-label"
-          key={`custom-selector-for-${label}`}
-          id={`custom-selector-for-${label}`}
+          key={`custom-selector-key-for-${label}`}
+          id={`custom-selector-id-for-${label}`}
           value={value}
           label={label}
           onChange={handleChange}
@@ -73,11 +73,11 @@ const CustomSelectComponent: FC<PropsCustomSelectComponent<object>> = ({ options
             textTransform: 'capitalize',
           }}
         >
-          <MenuItem value="none" key={`menu-item-select-${label}-none`} id={`menu-item-select-${label}-none`}>
+          <MenuItem value="none" key={`menu-item-key-select-${label}-none`} id={`menu-item-id-select-${label}-none`}>
             <em>None</em>
           </MenuItem>
           {options?.map((item: string) => (
-            <MenuItem value={item} key={`menu-item-select-${label}-${item}`} id={`menu-item-select-${label}-${item}`}>
+            <MenuItem value={item} key={`menu-item-key-select-${label}-${item}`} id={`menu-item-id-select-${label}-${item}`}>
               {item}
             </MenuItem>
           ))}

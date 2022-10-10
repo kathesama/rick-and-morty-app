@@ -24,6 +24,7 @@ type TFilterExtraData = {
 export interface IFilterSchema {
   actualFilterData: FilterCharacter | undefined;
   fields: TFilterFields[];
+  // eslint-disable-next-line no-unused-vars
   callbackFunction(data: FilterCharacter): any;
 }
 
@@ -44,16 +45,15 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
   } = props;
 
   const dispatchCallbackFunction = (value: any) => {
-    console.log(value);
     callbackFunction(value);
   };
 
   return (
-    <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id">
-      <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" >
-        {label}
+    <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id" data-testid="DynamicFilterComponent">
+      <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
+        <p key="dynamic-selector-label-div-key">{label}</p>
       </Typography>
-      <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle} data-testid="DynamicFilterComponent">
+      <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle} >
         {fields?.map((item: TFilterFields) => {
           const accessor: string = item?.accessor || '';
           const filterType: string = item?.filterType || undefined;

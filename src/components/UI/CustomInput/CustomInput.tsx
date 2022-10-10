@@ -47,7 +47,7 @@ const CustomInputComponent: FC<PropsCustomInputComponent> = ({ label = 'Input fi
       key={`key-custom-input-box-for-${label}`}
     >
       <FormControl fullWidth data-testid="form-control-select-id" id={`custom-input-form-control-for-${label}`} key={`custom-input-form-control-for-${label}`}>
-        <TextField key={`custom-input-for-${label}`} id={`custom-input-for-${label}`} name={label} label={label} variant={variant} data-testid="form-control-custom-input-id" size="small" value={value} onChange={handleChange} />
+        <TextField key={`custom-input-key-for-${label}`} id={`custom-input-id-for-${label}`} name={label} label={label} variant={variant} data-testid="form-control-custom-input-id" size="small" value={value} onChange={handleChange} />
       </FormControl>
     </Box>
   );

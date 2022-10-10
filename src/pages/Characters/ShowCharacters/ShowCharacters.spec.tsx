@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
+import { ApolloProvider } from '@apollo/client';
 
 import { ShowCharactersPage } from './ShowCharacters';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import store from '../../../redux/store';
 import { Provider } from 'react-redux';
+import apolloClient from '../../../graphql';
 
 let container: any;
 
@@ -23,11 +25,13 @@ describe('ShowCharactersPage test', () => {
   const renderComponent = () =>
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[`/characters`]}>
-          <Routes>
-            <Route path="/characters" element={<ShowCharactersPage />} />
-          </Routes>
-        </MemoryRouter>
+        <ApolloProvider client={apolloClient}>
+          <MemoryRouter initialEntries={[`/characters`]}>
+            <Routes>
+              <Route path="/characters" element={<ShowCharactersPage />} />
+            </Routes>
+          </MemoryRouter>
+        </ApolloProvider>
       </Provider>
     );
 
