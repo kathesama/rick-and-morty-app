@@ -1,6 +1,6 @@
 .baseStyle {
   display: flex;
-  align-items: center;
+  float: left;
   flex-wrap: wrap;
   vertical-align: middle;
   justify-content: space-between;
@@ -10,6 +10,19 @@
   align-self: center;
   order: 0;
   padding: 10px 10px 10px 10px;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  float: left;
 }
 
 .flexContainer {

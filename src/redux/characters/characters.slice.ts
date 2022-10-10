@@ -11,10 +11,16 @@ import { RootState } from '../store';
 
 
 const initialState: ICharactersEmptyState = {
-  filterValue: {
-    name: ''
+  filterFillersData: {
+    gender: ['female', 'male', 'genderless', 'unknown'],
+    status: ['alive', 'dead', 'unknown'],
   },
-  pageIndex:0,
+  filterValue: {
+    name: '',
+    status: '',
+    gender: '',
+  },
+  pageIndex:0
 };
 
 const CharactersSlice = createSlice({
@@ -26,15 +32,40 @@ const CharactersSlice = createSlice({
         ...state,
         pageIndex: action.payload,
       }),
-    setPageFilter: (state, action) => ({
-      ...state,
-      filterValue: action.payload,
-    }),
+    // eslint-disable-next-line consistent-return
+    setPageFilter: (state, action) => {
+      const newValue = action.payload.value || '';
+      // eslint-disable-next-line default-case
+      switch (action.payload.field) {
+        case 'name':
+          // eslint-disable-next-line no-param-reassign
+          state.filterValue = {
+            ...state.filterValue,
+            name: newValue,
+          };
+          break;
+        case 'status':
+          // eslint-disable-next-line no-param-reassign
+          state.filterValue = {
+            ...state.filterValue,
+            status: newValue,
+          };
+          break;
+        case 'gender':
+          // eslint-disable-next-line no-param-reassign
+          state.filterValue = {
+            ...state.filterValue,
+            gender: newValue,
+          };
+          break;
+      }
+    },
   },
 });
 
 export const getCharactersPageIndex = (state: RootState) => state?.characters?.pageIndex;
 export const getCharactersPageFilter = (state: RootState) => state?.characters?.filterValue;
+export const getCharactersPageFilterFillersData = (state: RootState) => state?.characters?.filterFillersData;
 export const getCharactersState = (state: RootState) => state?.characters;
 
 export const {

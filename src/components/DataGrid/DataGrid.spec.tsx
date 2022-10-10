@@ -31,7 +31,7 @@ describe('DataGridComponent test', () => {
 
   it.each`
     component       | id
-    ${'Box'}        | ${'box-data-gird-id'}    
+    ${'Box'}        | ${'box-data-grid-id'}    
   `('Should has component: $component', async ({ id }) => {
     await setup();
     await waitFor(() => {

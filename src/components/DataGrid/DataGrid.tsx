@@ -11,7 +11,6 @@ import cssStyle from './DataGrid.module.scss';
 import { Character } from '../../models/Character';
 import { CharactersInitialState } from '../../_mocks_/constants';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsDataGridComponent {
   data: Character[];
   columns: GridColDef[];
@@ -31,7 +30,7 @@ const DataGridComponent: FC<any> = ({ data = [], columns = []}: PropsDataGridCom
           checkboxSelection
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
-          data-testid='datagrid-data-gird-id'
+          data-testid='datagrid-data-grid-id'
           components={{
             Toolbar: GridToolbar,
           }}

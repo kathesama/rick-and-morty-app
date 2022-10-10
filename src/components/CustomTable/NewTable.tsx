@@ -58,7 +58,7 @@ const Table = <T extends object>(
     columns,
     data,
     count = 0,
-    queryPageIndex,
+    queryPageIndex = 0,
     queryPageSize = 20,
     queryHiddenColumns = [],
     onFetchData,
@@ -128,9 +128,6 @@ const Table = <T extends object>(
   const handleRowClick = (row: T) => onRowClick && onRowClick(row);
 
   const handlePageChange = async (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    console.log('handlePageChange Table--------------------------------- ');
-    console.log('pageIndex: ', pageIndex);
-    console.log('newPage: ', newPage);
     await onFetchData({
       pageIndex: newPage,
       pageSize,
@@ -171,7 +168,6 @@ const Table = <T extends object>(
       ));
   };
 
-  console.log('loading pageIndex: ', pageIndex);
   return (
     <Box sx={{ width: '100%' }}>
       {/* <Box display="flex" gap={1} px={1} pb={1}> */}
@@ -232,7 +228,7 @@ const Table = <T extends object>(
           </TableBody>
         </MuiTable>
       </TableContainer>
-      {pageIndex !== undefined && <TablePagination
+      <TablePagination
           component="div"
           rowsPerPageOptions={[20]}
           count={count}
@@ -242,7 +238,7 @@ const Table = <T extends object>(
           rowsPerPage={pageSize}
           showFirstButton
           showLastButton
-        />}
+        />
     </Box>
   );
 };

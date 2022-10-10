@@ -3,11 +3,12 @@ Created by: Katherine Aguirre
 On: 02/10/2022 : 02/10/2022
 Project: rick-and-morty-app
 */
-import React, { FC, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, CardContent, Table } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery, useQuery } from '@apollo/react-hooks';
+import { Outlet } from 'react-router-dom';
 
 import cssStyle from './ShowCharacters.module.scss';
 import fetchAsyncCharactersListing from '../../../redux/characters/characters.actions';
@@ -23,9 +24,16 @@ import { PaginationFooterComponent } from '../../../components/PaginationFooter/
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
 import CharactersContext from '../../../context/CharactersContext';
 import useCharacters from '../../../hooks/useChacacters/useCharacters';
-import { getCharactersState, setPageIndex } from '../../../redux/characters/characters.slice';
+import { getCharactersState, setPageFilter, setPageIndex } from '../../../redux/characters/characters.slice';
 import { ICharacters } from '../../../context/types/types';
 import NewTable from '../../../components/CustomTable/NewTable';
+import { FilterCharacter } from '../../../../__generated__/globalTypes';
+import {
+  DynamicFilterComponent,
+  IFilterSchema,
+  PropsDynamicFilterComponent,
+} from '../../../components/DynamicFilter/DynamicFilter';
+import { characterGenderReducer } from '../../../graphql/reducers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowCharactersPage {
@@ -48,17 +56,30 @@ const PaginationInfoDefault: IPaginationInfo = {
 
 const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
   const dispatch = useDispatch();
-  const { pageIndex = 0, filterValue } = useSelector(getCharactersState);
+  const {
+    pageIndex = 0,
+    filterValue,
+    filterFillersData: {
+      gender: genderSelector,
+      status: statusSelector
+    }
+  } = useSelector(getCharactersState);
 
   // eslint-disable-next-line camelcase
   const [charactersData, setCharactersData] = useState<GetCharactersPage_characters_results[]>([]);
+
+  // const [charactersGender, setCharactersGender] = useState<string[]>([]);
+
+  // const [charactersStatus, setCharactersStatus] = useState<string[]>([]);
   const [totalCount, setTotalCount] = useState(1);
   // const [queryVariables, setQueryVariables] = useState({ page: 1, filter: {} });
 
   // const { data, loading, error, fetchMore } = useQuery(GET_ALL_CHARACTERS, { variables: { page: pageToGo, filter: {} } });
 
   const [fetchCharactersData, { data, loading, error, refetch }] = useLazyQuery(GET_ALL_CHARACTERS, {
-       notifyOnNetworkStatusChange: true
+        notifyOnNetworkStatusChange: true,
+        fetchPolicy: 'network-only',
+        nextFetchPolicy: 'cache-first',
      });
 
   const columns: Column<any>[] = useMemo(
@@ -68,6 +89,7 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
         id: 'id',
         accessor: 'id',
         sortType: 'string',
+        disableGlobalFilter: true,
       },
       {
         Header: 'Avatar',
@@ -86,50 +108,81 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
         id: 'name',
         accessor: 'name',
         sortType: 'string',
+        customAttribute: 'inputField',
       },
       {
         Header: 'Status',
         id: 'status',
         accessor: 'status',
         sortType: 'string',
+        customAttribute: 'dropdown',
       },
       {
         Header: 'Gender',
         id: 'gender',
         accessor: 'gender',
         sortType: 'string',
+        customAttribute: 'dropdown',
       },
     ],[]);
 
+  const fetchUpdateFilter = useCallback(async (filter: FilterCharacter) => {
+    console.log('let\'s filter this babe:', filter);
+    await dispatch(setPageFilter(filter));
+  }, [dispatch]);
+
+  const filterHeader = useMemo( () => {
+    const createFilterSchema: IFilterSchema = {
+      callbackFunction: fetchUpdateFilter,
+      actualFilterData: filterValue,
+      fields: columns?.filter((item) => !item.disableGlobalFilter).map((column: any) => ({
+        accessor: column?.id,
+        filterType: column?.customAttribute,
+      }))
+    };
+
+    return (
+    <DynamicFilterComponent
+      variant='outlined'
+      label= 'Filter(s) by'
+      data={createFilterSchema}
+      extraData={{
+        gender: genderSelector,
+        status: statusSelector,
+      }}
+    />
+  );}, [columns, fetchUpdateFilter, filterValue, genderSelector, statusSelector]);
 
   useEffect( () => {
-    console.log('useEffect show--------------------------------- ');
+    console.log('inside useEffect showCharacters 158');
     fetchCharactersData({
       variables: {
         page: 1,
-        // filter: {...filterValue}
+        filter: {...filterValue}
       }
     });
-  },[fetchCharactersData]);
+  },[fetchCharactersData, filterValue]);
 
+  /* TODO: actualizar el componente tabla con lo que se hizo en newTable
+     TODO: quitar componente pagination */
   const onRowClick = useCallback((id: any) => {
     console.log('onRowClick clicked with ID:', id);
   }, []);
 
   const handleFetchDataFromTable = useCallback(async ({pageIndex: pageValue, filterValue: filter} : ICharacters) => {
-    console.log('handleFetchDataFromTable show --------------------------------- ');
-    console.log('pageValue: ', pageValue);
     await dispatch(setPageIndex(pageValue));
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('Inside useEffect showCharacters 178');
     refetch({
-      page: pageIndex + 1 || 1
+      page: pageIndex + 1
     });
    }, [pageIndex, refetch]);
 
   useEffect(() => {
     if (!loading && data) {
+      console.log('inside useEffect showCharacters 185');
       setCharactersData(data?.characters?.results || []);
       setTotalCount(data?.characters?.info?.pages || 0);
     }
@@ -144,9 +197,10 @@ const ShowCharactersPage: FC<any> = (props: PropsShowCharactersPage): any => {
 
   return (
     <CardContent>
+       {filterHeader}
       <NewTable
         disableFilters
-        // onRowClick={onRowClick}
+        onRowClick={onRowClick}
         onFetchData={handleFetchDataFromTable}
         columns={columns}
         data={charactersData}

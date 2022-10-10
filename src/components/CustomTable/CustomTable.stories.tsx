@@ -128,5 +128,6 @@ const Template: ComponentStory<typeof CustomTableComponent> = (args) => <CustomT
 export const Default = Template.bind({});
 Default.args = {
   data: dataTable?.data?.characters?.results,
-  columns: customCols
+  columns: customCols,
+  fetchData: () => {},
 };

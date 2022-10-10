@@ -18,7 +18,7 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container as HTMLElement);
 
 root.render(
-  <React.StrictMode>
+  <>
     {/* <CharactersProviderComponent > */}
        <Provider store={store}>
         {/* <PersistGate persistor={persistor}> */}
@@ -30,7 +30,7 @@ root.render(
         {/* </PersistGate> */}
        </Provider>
     {/* </CharactersProviderComponent> */}
-  </React.StrictMode>
+  </>
 );
 
 /* If you want to start measuring performance in your app, pass a function
