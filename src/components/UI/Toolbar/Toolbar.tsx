@@ -4,7 +4,7 @@ On: 01/10/2022 : 01/10/2022
 Project: rick-and-morty-app
 */
 import React, { FC } from 'react';
-import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import { Box, IconButton, Menu, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from 'uuid';
@@ -60,11 +60,6 @@ const ToolbarBoxComponent: FC<any> = ({ pages, handleOpenNavMenu, anchorElNav, h
               <Typography textAlign="center">{page?.menuTitle}</Typography>
             </MenuItemCustomComponent>
           </div>
-
-          /* <MenuItem key={page?.menuTitle} onClick={handleCloseNavMenu}>
-               {page?.icon}
-               <Typography textAlign="center">{page?.menuTitle}</Typography>
-             </MenuItem> */
         ))}
       </Menu>
     </Box>

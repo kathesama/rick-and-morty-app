@@ -1,3 +1,5 @@
+import { FilterCharacter } from '../../__generated__/globalTypes';
+
 export interface CharacterSchemaInterface {
   id: number;
   name?: string;
@@ -11,4 +13,9 @@ export interface CharacterSchemaInterface {
   episode?: Array<string>;
   url?: string;
   created?: string;
+}
+
+export interface ICharacters {
+  filterValue?: FilterCharacter | undefined;
+  pageIndex: number;
 }

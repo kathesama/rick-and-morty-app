@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
+// eslint-disable-next-line no-unused-vars
 export type dropdownClickHandler<T extends object> = (row: T) => void | string | Promise<void> | Record<string, unknown> | any;
 
 export type SelectCallbackObj = {
@@ -17,6 +18,7 @@ export type SelectCallbackObj = {
   field: string;
 };
 
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 interface PropsCustomSelectComponent<T extends object> {
   options: string[];
   actualValue: string;

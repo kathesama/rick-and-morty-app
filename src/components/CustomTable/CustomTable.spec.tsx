@@ -28,16 +28,7 @@ const onFetchData = jest.fn();
 describe('CustomTableComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(
-        <CustomTableComponent
-          data={[]}
-          columns={[]}
-          onRowClick={onRowClick}
-          onFetchData={onFetchData}
-          loading={false}
-          count={0}
-          queryPageSize={1}
-        />);
+      ReactDOM.createRoot(container).render(<CustomTableComponent data={[]} columns={[]} onRowClick={onRowClick} onFetchData={onFetchData} loading={false} count={0} queryPageSize={1} />);
     });
   };
 
@@ -46,17 +37,7 @@ describe('CustomTableComponent test', () => {
       <Provider store={store}>
         <MemoryRouter initialEntries={[`/characters`]}>
           <Routes>
-            <Route path="/characters" element={
-              <CustomTableComponent
-                data={[]}
-                columns={[]}
-                onRowClick={onRowClick}
-                onFetchData={onFetchData}
-                loading={false}
-                count={0}
-                queryPageSize={1}
-              />
-            } />
+            <Route path="/characters" element={<CustomTableComponent data={[]} columns={[]} onRowClick={onRowClick} onFetchData={onFetchData} loading={false} count={0} queryPageSize={1} />} />
           </Routes>
         </MemoryRouter>
       </Provider>
@@ -64,7 +45,7 @@ describe('CustomTableComponent test', () => {
 
   it.each`
     component       | id
-    ${'Wrapper'}    | ${'CustomTableComponent'}    
+    ${'Wrapper'}    | ${'CustomTableComponent'}
     ${'Table'}      | ${'table-custom-table-id'}
     ${'Table Head'} | ${'table-head-custom-table-id'}
     ${'Table Body'} | ${'table-body-custom-table-id'}

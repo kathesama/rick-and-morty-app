@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IHomePageProps {}
 
-const HomePage: FunctionComponent<IHomePageProps> = (props) => {
+const HomePage: FunctionComponent<IHomePageProps> = () => {
   const navigate = useNavigate();
 
   return (

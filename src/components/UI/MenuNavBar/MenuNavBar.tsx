@@ -36,7 +36,7 @@ interface MenuSettings {
   component: 'link' | 'a';
 }
 
-const MenuNavBarComponent: FC<any> = (props: Props): any => {
+const MenuNavBarComponent: FC<Props> = (): any => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const pagesSettings: MenuSettings[] = [

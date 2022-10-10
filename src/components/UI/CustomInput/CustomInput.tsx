@@ -6,8 +6,6 @@ Project: rick-and-morty-app
 import React, { useState, FC, useEffect } from 'react';
 import { Box, FormControl, TextField } from '@mui/material';
 
-import cssStyle from './CustomInput.module.scss';
-
 interface PropsCustomInputComponent {
   label: string;
   actualValue: string;

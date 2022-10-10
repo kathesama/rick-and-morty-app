@@ -71,6 +71,7 @@ module.exports = {
     'react/require-default-props': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'react/no-array-index-key': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {

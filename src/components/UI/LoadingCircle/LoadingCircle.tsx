@@ -11,7 +11,7 @@ import cssStyle from './LoadingCircle.module.scss';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsLoadingCircleComponent {}
 
-const LoadingCircleComponent: FC<any> = (props: PropsLoadingCircleComponent): any => (
+const LoadingCircleComponent: FC<PropsLoadingCircleComponent> = (): any => (
   <div className={cssStyle.container} data-testid="LoadingCircleComponent">
     <CircularProgress data-testid="circular-progress-loading-id" />
   </div>

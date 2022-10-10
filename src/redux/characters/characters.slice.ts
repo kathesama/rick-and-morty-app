@@ -71,7 +71,5 @@ export const getCharactersState = (state: RootState) => state?.characters;
 
 export const { setPageIndex, setPageFilter, reset } = CharactersSlice.actions;
 
-export {
-  initialState as characterInitialState
-};
+export { initialState as characterInitialState };
 export default CharactersSlice.reducer;

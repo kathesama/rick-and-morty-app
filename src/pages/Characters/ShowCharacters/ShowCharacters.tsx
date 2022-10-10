@@ -16,12 +16,12 @@ import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
 import { getCharactersState, setPageFilter, setPageIndex } from '../../../redux/characters/characters.slice';
-import { ICharacters } from '../../../context/types/types';
 import CustomTableComponent from '../../../components/CustomTable/CustomTable';
 import { FilterCharacter } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 
 import cssStyle from './ShowCharacters.module.scss';
+import { ICharacters } from '../../../graphql/InterfaceTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowCharactersPage {}
@@ -83,7 +83,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         Cell: ({ cell }: any) => {
           let output = <ContactSupportRoundedIcon />;
           // eslint-disable-next-line default-case
-          switch(cell.row.original.status.toLowerCase()){
+          switch (cell.row.original.status.toLowerCase()) {
             case 'alive':
               output = <FontAwesomeIcon icon="heart-pulse" color="LawnGreen" size="lg" title={cell.row.original.status} />;
               break;
@@ -95,11 +95,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
               break;
           }
 
-          return (
-            <div>
-              {output}
-            </div>
-          );
+          return <div>{output}</div>;
         },
       },
       {
@@ -112,7 +108,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         Cell: ({ cell }: any) => {
           let output = <ContactSupportRoundedIcon />;
           // eslint-disable-next-line default-case
-          switch(cell.row.original.gender.toLowerCase()){
+          switch (cell.row.original.gender.toLowerCase()) {
             case 'female':
               output = <FontAwesomeIcon icon="venus" color="fuchsia" size="lg" title={cell.row.original.gender} />;
               break;
@@ -127,11 +123,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
               break;
           }
 
-          return (
-            <div>
-              {output}
-            </div>
-          );
+          return <div>{output}</div>;
         },
       },
     ],

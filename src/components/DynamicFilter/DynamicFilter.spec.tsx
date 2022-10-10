@@ -19,7 +19,7 @@ afterEach(async () => {
 
 const extraData = {
   gender: ['female', 'male', 'genderless', 'unknown'],
-    status: ['alive', 'dead', 'unknown'],
+  status: ['alive', 'dead', 'unknown'],
 };
 
 const data = {
@@ -44,18 +44,13 @@ const data = {
 describe('DynamicFilterComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(
-        <DynamicFilterComponent
-          data={data}
-          extraData={extraData}
-        />
-      );
+      ReactDOM.createRoot(container).render(<DynamicFilterComponent data={data} extraData={extraData} />);
     });
   };
 
   it.each`
-    component       | id
-    ${'Box Header'} | ${'DynamicFilterComponent'}
+    component           | id
+    ${'Box Header'}     | ${'DynamicFilterComponent'}
     ${'Label identity'} | ${'label-dynamic-filter-id'}
   `('Should has: $component', async ({ id }) => {
     await setup();

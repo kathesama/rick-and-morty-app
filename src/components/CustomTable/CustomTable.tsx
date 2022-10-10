@@ -1,17 +1,6 @@
 import React, { MouseEvent, ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import {
-  Box,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Skeleton,
-  Icon,
-  Pagination
-} from '@mui/material';
+import { Box, TableBody, TableCell, TableContainer, TableHead, TableRow, Skeleton, Icon, Pagination } from '@mui/material';
 import MuiTable from '@mui/material/Table';
 
 import { Column, TableOptions, TableState, useFilters, usePagination, useSortBy, useTable } from 'react-table';
@@ -58,9 +47,6 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
     prepareRow,
     page,
     state: { pageSize, pageIndex, filters },
-    setPageSize,
-    gotoPage,
-    allColumns,
   } = useTable<T>(
     {
       columns,
@@ -97,17 +83,6 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
 
   const handleRowClick = (row: T) => onRowClick && onRowClick(row);
 
-  const handlePageChange = async (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    await onFetchData({
-      pageIndex: newPage,
-      pageSize,
-      sortBy: [],
-      filters,
-      globalFilter: undefined,
-    });
-    gotoPage(newPage);
-  };
-
   const onPageChange = async (event: React.ChangeEvent<unknown>, actualPage: number) => {
     await onFetchData({
       pageIndex: actualPage,
@@ -134,7 +109,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
 
   return (
     <Box sx={{ width: '100%' }} data-testid="CustomTableComponent">
-      <TableContainer {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id">
+      <TableContainer {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id" key="table-custom-table-key">
         <MuiTable {...getTableProps()} size="small">
           <TableHead data-testid="table-head-custom-table-id">
             {headerGroups.map((headerGroup) => (
@@ -168,7 +143,6 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
                         )
                       ) : null}
                     </span>
-
                   </TableCell>
                 ))}
               </TableRow>
@@ -221,9 +195,9 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
         showLastButton
         sx={{
           '& > *': {
-            justifyContent:'right',
-            display:'flex'
-          }
+            justifyContent: 'right',
+            display: 'flex',
+          },
         }}
       />
     </Box>

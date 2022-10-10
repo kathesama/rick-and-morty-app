@@ -9,6 +9,7 @@ interface LogoProps {
   logoText?: string;
 }
 
+// eslint-disable-next-line no-unused-vars
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     color: '#44b700',

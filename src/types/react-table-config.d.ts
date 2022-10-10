@@ -13,12 +13,12 @@ import {
   UsePaginationState,
   UseSortByColumnOptions,
   UseSortByColumnProps,
-  UseSortByHooks,
   UseSortByInstanceProps,
   UseSortByOptions,
   UseSortByState,
 } from 'react-table';
 
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 export interface UseCustomFilterColumnProps<D extends object> {
   filterOptions: { label: string; value: string }[];
   filterLabel: string;
@@ -26,8 +26,6 @@ export interface UseCustomFilterColumnProps<D extends object> {
 
 declare module 'react-table' {
   export interface TableOptions<D extends object> extends UseFiltersOptions<D>, UseGlobalFiltersOptions<D>, UsePaginationOptions<D>, UseSortByOptions<D> {}
-
-  export interface Hooks<D extends object = Record<string, unknown>> extends UseSortByHooks<D> {}
 
   export interface TableInstance<D extends object = Record<string, unknown>> extends UsePaginationInstanceProps<D>, UseGlobalFiltersInstanceProps<D>, UseSortByInstanceProps<D>, UseFiltersInstanceProps<D> {}
 

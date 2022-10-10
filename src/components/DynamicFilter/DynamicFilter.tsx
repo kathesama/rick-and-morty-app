@@ -4,8 +4,7 @@ On: 08/10/2022 : 9:34
 Project: rick-and-morty-app
 */
 import React, { FC } from 'react';
-import { Box, Chip, Paper, Typography } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, Paper, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { FilterCharacter } from '../../../__generated__/globalTypes';
@@ -25,15 +24,15 @@ type TFilterExtraData = {
 };
 
 type TExtraCommand = {
-  field: string,
-  value: null,
+  field: string;
+  value: null;
 };
 
 export interface IFilterSchema {
   actualFilterData: FilterCharacter | undefined;
   fields: TFilterFields[];
   // eslint-disable-next-line no-unused-vars
-  callbackFunction(data: FilterCharacter | TExtraCommand ): any;
+  callbackFunction(data: FilterCharacter | TExtraCommand): any;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -57,7 +56,6 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
   };
 
   const cleanFilters = () => {
-    console.log('cleaning');
     callbackFunction({
       field: 'all',
       value: null,
@@ -69,7 +67,7 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
       <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
         <FontAwesomeIcon icon="magnifying-glass-location" color="SlateGrey" size="lg" title={label} />
       </Typography>
-      <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle} >
+      <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle}>
         {fields?.map((item: TFilterFields) => {
           const accessor: string = item?.accessor || '';
           const filterType: string = item?.filterType || undefined;
@@ -85,7 +83,7 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
           );
         })}
         <Typography className={cssStyle.baseStyleVariant} key="dynamic-selector-label-trash-key" id="dynamic-selector-label-tras-id" data-testid="label-dynamic-filter-trash-id" onClick={cleanFilters}>
-          <FontAwesomeIcon icon="trash-restore" color="SlateGrey" size="lg" title='blank filters' />
+          <FontAwesomeIcon icon="trash-restore" color="SlateGrey" size="lg" title="blank filters" />
         </Typography>
       </Box>
     </Paper>

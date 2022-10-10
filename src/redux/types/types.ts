@@ -1,4 +1,3 @@
-import { GetCharactersPage } from '../../graphql/__generated__/GetCharactersPage';
 import { FilterCharacter } from '../../../__generated__/globalTypes';
 
 interface ICharactersEmptyState {
@@ -7,7 +6,7 @@ interface ICharactersEmptyState {
     gender: string[];
     status: string[];
   };
-  filterValue?: FilterCharacter | undefined;
+  filterValue: FilterCharacter | undefined;
 }
 
 export default ICharactersEmptyState;

@@ -1,12 +1,10 @@
-import Checkbox from '@mui/material/Checkbox';
-// A great library for fuzzy filtering/sorting items
-import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
 
 import cssClasses from './table.module.scss';
 
 interface IDefaultColumnFilter {
   filterValue: any;
+  // eslint-disable-next-line no-unused-vars
   setFilter(value: any): any;
   width: number;
 }
@@ -35,10 +33,6 @@ const DefaultColumnFilter = ({ column: { filterValue, setFilter, width } }: IDef
     />
   </div>
 );
-
-/* const fuzzyTextFilterFn = (rows: any, id: any, filterValue: any) => {
-     return matchSorter(rows, filterValue, { keys: [(row: any[]) => row?.values[id]] });
-   }; */
 
 export {
   // eslint-disable-next-line import/prefer-default-export

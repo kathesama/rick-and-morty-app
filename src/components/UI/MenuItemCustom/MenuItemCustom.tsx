@@ -5,9 +5,7 @@ Project: rick-and-morty-app
 */
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
-import cssStyle from './MenuItemCustom.module.scss';
 
 interface MainMenuItem {
   keyId?: string;

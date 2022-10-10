@@ -5,8 +5,6 @@
 ci.yml,c\d\cda3c46fbe79e65d7e5c1b7d1b537be0f479d892
 P
  .github/workflows/sonarcloud.yml,0\7\077a84aad902191fd63fd374880221279f02a65d
-E
-src/_tests_/setup.tsx,d\a\dab5f7f2ff45f5e44709e026267e4237c34c297b
 L
 .storybook/preview-head.html,f\6\f663b3a94db9d24a1546d1624f8616afa15615fd
 E
@@ -15,20 +13,12 @@ B
 .storybook/main.js,c\c\ccc24fa53ed888a7471d8f2d4afae2e0ae89171d
 O
 src/components/UI/Logo/Logo.css,7\6\7644a84afeaaeef1571daa0402df5434015e45a4
-V
-&src/components/UI/Logo/Logo.module.tsx,c\5\c503dde4dd8bcecdcfd3f452eb4a4fe35ab8afbb
-k
-;src/components/UI/MenuItemCustom/MenuItemCustom.module.scss,c\5\c526560f72919fc194596cfe5e10c126dcce8f80
 W
 'src/pages/NotFound/NotFound.stories.tsx,e\5\e55f6f8158cecffecc3e93b627922cdc72bea609
 O
 src/pages/Header/HeaderPage.tsx,d\0\d05ea5820e83666ed6015a7b720b11d1881c4e89
-G
-src/pages/Home/Home.tsx,5\2\520aaaf3bcf49e84fdfead5bdc2b3e40848b9d1d
 c
 3src/components/UI/MenuNavBar/MenuNavBar.module.scss,5\f\5f1ef6edf702feacf9c24e7a7eccfdc8b3f198cf
-c
-3src/components/UI/MenuItemCustom/MenuItemCustom.tsx,0\5\05262d940a28e121e29a372331edce6f237ee778
 a
 1src/pages/UnderConstruction/UnderConstruction.tsx,2\6\26dae4c49f7c9efab855ab1ce0c3085527b04a14
 O
@@ -37,12 +27,6 @@ O
 .prettierrc,2\0\20137a9e94744624390b6748bc96df5ca1579b71
 ?
 .prettierignore,b\6\b69d8408b6c89ae66e712f0e6af68848291cfdfb
-O
-src/components/UI/Logo/Logo.tsx,f\1\f1444ce16dbe066e8bb5c62bc89b9cbb1e1363ac
-[
-+src/components/UI/MenuNavBar/MenuNavBar.tsx,f\8\f80ae5bd563f75e9336ec51b883f77a5389c91e5
-U
-%src/components/UI/Toolbar/Toolbar.tsx,b\0\b0cb57a8fcf0e449b1c1e5f348927fe3599d99f1
 c
 3src/components/UI/MenuNavBar/MenuNavBar.stories.tsx,5\c\5c6c869a23ad5bb0849bf11424c964c1f4c66980
 k
@@ -75,8 +59,6 @@ O
 src/utilities/table.module.scss,5\b\5b0e92f756b8ef0922badff894a97a9301d8ea5e
 H
 src/_mocks_/constants.ts,0\7\07669d1f6e4fb3bccd789ae885ebee1b9e7f0748
-D
-src/graphql/index.ts,b\6\b616a153594e922a2fba586d3cb76936afd9818b
 i
 9src/components/UI/LoadingCircle/LoadingCircle.module.scss,9\4\94cb2ab7c4e73d4850226ba31d2f8268a09cb81c
 i
@@ -87,14 +69,10 @@ W
 .env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 i
 9src/components/PaginationFooter/PaginationFooter.spec.tsx,b\9\b98dcad508c1047a142605233ba1156d9bc79500
-a
-1src/components/UI/LoadingCircle/LoadingCircle.tsx,0\4\04e08becefe730e86969ae24850bb1b34c6e8a76
 l
 <src/components/PaginationFooter/PaginationFooter.stories.tsx,e\5\e547fedb30092a5974e9c7f8407a631566390322
 O
 src/graphql/graphql-schema.json,f\9\f99d641a8b6ce24f7c67d4983207f8ead643bf0e
-M
-src/graphql/InterfaceTypes.ts,2\7\27088e7e5c0604944f79f9633c11dee58746bd6c
 Q
 !src/redux/constants/constants.tsx,1\e\1e6d1220fb5447217b8df28436d1cb6cd1afbf02
 Q
@@ -103,24 +81,12 @@ L
 src/services/api/sessions.ts,a\a\aa5afcb4b737569be59f5bf7a1573871b8f65b6d
 M
 src/services/api/axiosApi.tsx,f\6\f680362ae6b59ae3154cebd96bb8304970bf545e
-R
-"src/services/serieService/index.ts,2\d\2d2763493c3d60d93578f217dd69aaa203fbdaba
 H
 src/Application.test.tsx,5\6\5631bada16568dabd98b4d765f0e9b797eb58d0a
-C
-src/Application.tsx,d\5\d505f696e065abf085f7cebac11a51d0c628cab1
 P
  src/context/CharactersContext.ts,8\8\889736a6ed6a01d67ecd812a9fedbfdc77e08ff8
-R
-"src/context/CharactersProvider.tsx,c\b\cbafab1094b77e09232a758f25e774dd359672c0
 P
  src/context/CharactersReducer.ts,9\c\9c379c9b0319194ad2e2e94ca63a4cd8299b99de
-X
-(src/hooks/useChacacters/useCharacters.ts,0\2\02a9b8aeb6683c83a3647e2846e93294f7921d69
-S
-#src/hooks/useRequests/useRequest.ts,b\5\b525bebaa20fd473b5b56bbf31ba2321d399ea99
-Q
-!src/types/react-table-config.d.ts,3\8\38b75c8c27d1d1c78a2a850c6cb3fcaa7d95e6b7
 Q
 !src/components/UI/About/About.tsx,3\7\37cf4c322151e7b02d5e0ad808498434ef5dcf39
 e
@@ -133,12 +99,8 @@ l
 <src/components/PaginationFooter/PaginationFooter.module.scss,a\b\ab4c52248b8095fb71cce189c61793c521cfaef3
 d
 4src/components/PaginationFooter/PaginationFooter.tsx,e\f\ef685c51b4c53706640ebd28723683458c9018dd
-^
-.src/graphql/__generated__/GetCharactersPage.ts,a\f\afc8b0d0b33129c3a2f9bb0bb5d0bea654e80ef7
 G
 src/graphql/reducers.ts,4\1\41811ad4774a641872ca092d609aaabdbfd43eb3
-H
-src/redux/types/types.ts,1\0\10f52069d7f157590cd61ed1d41a271ef448017a
 Z
 *src/redux/characters/characters.actions.ts,8\5\851ff7eb4786641432c1ac7d703fe207a3951ec3
 _

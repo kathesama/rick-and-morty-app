@@ -1,6 +1,4 @@
-const defaultBackgroundColor = '#ffffff';
 const defaultFontColor = '#00AFC8';
-const defaultIconColor = '#009844';
 
 const styles = {
   typography: {
