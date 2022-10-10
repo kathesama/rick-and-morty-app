@@ -12,6 +12,11 @@
   padding: 10px 10px 10px 10px;
 }
 
+.baseStyleVariant {
+  @extend .baseStyle;
+  cursor: pointer;
+}
+
 .flex-container {
   padding: 0;
   margin: 0;

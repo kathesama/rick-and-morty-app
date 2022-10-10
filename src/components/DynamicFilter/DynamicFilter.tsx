@@ -84,7 +84,7 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
             <CustomSelectComponent label={accessor} variant={variant} options={extraDataValue} handlerOnChange={dispatchCallbackFunction} actualValue={actualValue} />
           );
         })}
-        <Typography className={cssStyle.baseStyle} key="dynamic-selector-label-trash-key" id="dynamic-selector-label-tras-id" data-testid="label-dynamic-filter-trash-id" onClick={cleanFilters}>
+        <Typography className={cssStyle.baseStyleVariant} key="dynamic-selector-label-trash-key" id="dynamic-selector-label-tras-id" data-testid="label-dynamic-filter-trash-id" onClick={cleanFilters}>
           <FontAwesomeIcon icon="trash-restore" color="SlateGrey" size="lg" title='blank filters' />
         </Typography>
       </Box>

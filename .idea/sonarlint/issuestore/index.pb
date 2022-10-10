@@ -123,8 +123,6 @@ Q
 !src/types/react-table-config.d.ts,3\8\38b75c8c27d1d1c78a2a850c6cb3fcaa7d95e6b7
 Q
 !src/components/UI/About/About.tsx,3\7\37cf4c322151e7b02d5e0ad808498434ef5dcf39
-F
-src/graphql/queries.ts,3\5\35ccade0580a4aaf92d63b031b5d8f29e5f8a7d3
 e
 5src/components/UI/CustomInput/CustomInput.module.scss,b\8\b853de592e78bdfbb8e730f4e6edce3cfec8f8b9
 J
