@@ -9,6 +9,12 @@ import { Avatar, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
 
+import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded';
+import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
+import StarHalfRoundedIcon from '@mui/icons-material/StarHalfRounded';
+import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
+
 import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
@@ -76,6 +82,28 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         accessor: 'status',
         sortType: 'string',
         customAttribute: 'dropdown',
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => {
+          let output = <ContactSupportRoundedIcon />;
+          // eslint-disable-next-line default-case
+          switch(cell.row.original.status.toLowerCase()){
+            case 'alive':
+              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              break;
+            case 'dead':
+              output = <MaleRoundedIcon titleAccess={cell.row.original.status}/>;
+              break;
+            case 'unknown':
+              output = <MaleRoundedIcon titleAccess={cell.row.original.status}/>;
+              break;
+          }
+
+          return (
+            <div>
+              {output}
+            </div>
+          );
+        },
       },
       {
         Header: 'Gender',
@@ -83,6 +111,31 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         accessor: 'gender',
         sortType: 'string',
         customAttribute: 'dropdown',
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => {
+          let output = <ContactSupportRoundedIcon />;
+          // eslint-disable-next-line default-case
+          switch(cell.row.original.gender.toLowerCase()){
+            case 'female':
+              output = <FemaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              break;
+            case 'male':
+              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              break;
+            case 'genderless':
+              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              break;
+            case 'unknown':
+              output = <ContactSupportRoundedIcon titleAccess={cell.row.original.gender}/>;
+              break;
+          }
+
+          return (
+            <div>
+              {output}
+            </div>
+          );
+        },
       },
     ],
     []
@@ -142,7 +195,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
 
   useEffect(() => {
     refetch({
-      page: pageIndex + 1,
+      page: pageIndex,
     });
   }, [pageIndex, refetch]);
 

@@ -10,6 +10,7 @@ import {
   TableRow,
   Skeleton,
   Icon,
+  Pagination
 } from '@mui/material';
 import MuiTable from '@mui/material/Table';
 
@@ -107,6 +108,16 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
     gotoPage(newPage);
   };
 
+  const onPageChange = async (event: React.ChangeEvent<unknown>, actualPage: number) => {
+    await onFetchData({
+      pageIndex: actualPage,
+      pageSize,
+      sortBy: [],
+      filters,
+      globalFilter: undefined,
+    });
+  };
+
   const generateFillerRows = () => {
     if (data.length >= pageSize || loading) return;
     // eslint-disable-next-line consistent-return
@@ -201,16 +212,26 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
           </TableBody>
         </MuiTable>
       </TableContainer>
+      <Pagination
+        count={count}
+        color="primary"
+        onChange={onPageChange}
+        variant="outlined"
+        showFirstButton
+        showLastButton
+      />
+      {/*
       <TablePagination
         component="div"
-        rowsPerPageOptions={[20]}
         count={count}
         page={pageIndex}
         onPageChange={handlePageChange}
         rowsPerPage={pageSize}
+        rowsPerPageOptions={[20]}
         showFirstButton
         showLastButton
       />
+      */}
     </Box>
   );
 };

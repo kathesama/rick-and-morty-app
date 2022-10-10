@@ -4,7 +4,8 @@ On: 08/10/2022 : 9:34
 Project: rick-and-morty-app
 */
 import React, { FC } from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Chip, Paper, Typography } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 import cssStyle from './DynamicFilter.module.scss';
 import { FilterCharacter } from '../../../__generated__/globalTypes';
@@ -51,7 +52,7 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
   return (
     <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id" data-testid="DynamicFilterComponent">
       <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
-        <p key="dynamic-selector-label-div-key">{label}</p>
+        <Chip icon={<SearchIcon />} label={label} />
       </Typography>
       <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle} >
         {fields?.map((item: TFilterFields) => {
