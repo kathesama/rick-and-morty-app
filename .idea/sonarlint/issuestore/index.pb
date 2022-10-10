@@ -91,8 +91,6 @@ a
 1src/components/UI/LoadingCircle/LoadingCircle.tsx,0\4\04e08becefe730e86969ae24850bb1b34c6e8a76
 l
 <src/components/PaginationFooter/PaginationFooter.stories.tsx,e\5\e547fedb30092a5974e9c7f8407a631566390322
-M
-src/utilities/gridFilters.tsx,1\1\112f74d05b9aa969d13419d7d94d70f554282b80
 O
 src/graphql/graphql-schema.json,f\9\f99d641a8b6ce24f7c67d4983207f8ead643bf0e
 M
@@ -137,8 +135,6 @@ l
 <src/components/PaginationFooter/PaginationFooter.module.scss,a\b\ab4c52248b8095fb71cce189c61793c521cfaef3
 d
 4src/components/PaginationFooter/PaginationFooter.tsx,e\f\ef685c51b4c53706640ebd28723683458c9018dd
-L
-__generated__/globalTypes.ts,a\9\a9695fed5f84b58eb50deddcc0a38bf3aa8d2543
 ^
 .src/graphql/__generated__/GetCharactersPage.ts,a\f\afc8b0d0b33129c3a2f9bb0bb5d0bea654e80ef7
 G

@@ -55,6 +55,10 @@ const CharactersSlice = createSlice({
             gender: newValue,
           };
           break;
+        case 'all':
+          // eslint-disable-next-line no-param-reassign
+          state.filterValue = { ...initialState.filterValue };
+          break;
       }
     },
   },

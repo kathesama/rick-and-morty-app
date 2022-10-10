@@ -219,19 +219,13 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
         variant="outlined"
         showFirstButton
         showLastButton
+        sx={{
+          '& > *': {
+            justifyContent:'right',
+            display:'flex'
+          }
+        }}
       />
-      {/*
-      <TablePagination
-        component="div"
-        count={count}
-        page={pageIndex}
-        onPageChange={handlePageChange}
-        rowsPerPage={pageSize}
-        rowsPerPageOptions={[20]}
-        showFirstButton
-        showLastButton
-      />
-      */}
     </Box>
   );
 };

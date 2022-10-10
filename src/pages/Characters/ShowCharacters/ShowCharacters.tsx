@@ -8,12 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded';
-import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
-import StarHalfRoundedIcon from '@mui/icons-material/StarHalfRounded';
 import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
 import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 // eslint-disable-next-line camelcase
@@ -88,13 +85,13 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
           // eslint-disable-next-line default-case
           switch(cell.row.original.status.toLowerCase()){
             case 'alive':
-              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              output = <FontAwesomeIcon icon="heart-pulse" color="LawnGreen" size="lg" title={cell.row.original.status} />;
               break;
             case 'dead':
-              output = <MaleRoundedIcon titleAccess={cell.row.original.status}/>;
+              output = <FontAwesomeIcon icon="skull-crossbones" color="OrangeRed" size="lg" title={cell.row.original.status} />;
               break;
             case 'unknown':
-              output = <MaleRoundedIcon titleAccess={cell.row.original.status}/>;
+              output = <FontAwesomeIcon icon="circle-xmark" color="SlateGrey" size="lg" title={cell.row.original.status} />;
               break;
           }
 
@@ -117,16 +114,16 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
           // eslint-disable-next-line default-case
           switch(cell.row.original.gender.toLowerCase()){
             case 'female':
-              output = <FemaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              output = <FontAwesomeIcon icon="venus" color="fuchsia" size="lg" title={cell.row.original.gender} />;
               break;
             case 'male':
-              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              output = <FontAwesomeIcon icon="mars" color="LightSeaGreen" size="lg" title={cell.row.original.gender} />;
               break;
             case 'genderless':
-              output = <MaleRoundedIcon titleAccess={cell.row.original.gender}/>;
+              output = <FontAwesomeIcon icon="genderless" color="Teal" size="lg" title={cell.row.original.gender} />;
               break;
             case 'unknown':
-              output = <ContactSupportRoundedIcon titleAccess={cell.row.original.gender}/>;
+              output = <FontAwesomeIcon icon="question-circle" color="Chartreuse" size="lg" title={cell.row.original.gender} />;
               break;
           }
 

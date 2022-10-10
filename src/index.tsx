@@ -12,6 +12,7 @@ import './locale/i18n';
 import store from './redux/store';
 import apolloClient from './graphql';
 import CharactersProviderComponent from './context/CharactersProvider';
+import './utilities/fontawesome';
 
 const persistor = persistStore(store);
 const container = document.getElementById('root');
