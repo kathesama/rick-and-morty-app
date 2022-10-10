@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { FilterCharacter } from "./../../../__generated__/globalTypes";
+import { FilterCharacter } from './../../../__generated__/globalTypes';
 
 // ====================================================
 // GraphQL query operation: GetCharactersPage
 // ====================================================
 
 export interface GetCharactersPage_characters_info {
-  __typename: "Info";
+  __typename: 'Info';
   /**
    * The amount of pages.
    */
@@ -30,7 +30,7 @@ export interface GetCharactersPage_characters_info {
 }
 
 export interface GetCharactersPage_characters_results {
-  __typename: "Character";
+  __typename: 'Character';
   /**
    * The id of the character.
    */
@@ -55,7 +55,7 @@ export interface GetCharactersPage_characters_results {
 }
 
 export interface GetCharactersPage_characters {
-  __typename: "Characters";
+  __typename: 'Characters';
   info: GetCharactersPage_characters_info | null;
   results: (GetCharactersPage_characters_results | null)[] | null;
 }

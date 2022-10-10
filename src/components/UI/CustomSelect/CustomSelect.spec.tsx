@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {CustomSelectComponent} from './CustomSelect';
+import { CustomSelectComponent } from './CustomSelect';
 
 let container: any;
 
@@ -29,11 +29,11 @@ describe('CustomSelectComponent test', () => {
   });
 
   it.each`
-    component       | id
-    ${'Box Header'} | ${'CustomSelectComponent'}
+    component                     | id
+    ${'Box Header'}               | ${'CustomSelectComponent'}
     ${'Form controlledPageCount'} | ${'form-control-select-id'}
-    ${'Input Label'} | ${'input-label-select-id'}
-    ${'Select'} | ${'select-select-id'}
+    ${'Input Label'}              | ${'input-label-select-id'}
+    ${'Select'}                   | ${'select-select-id'}
   `('Should has: $component', async ({ id }) => {
     await setup();
     await waitFor(() => {

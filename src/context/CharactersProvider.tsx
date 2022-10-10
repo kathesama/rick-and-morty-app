@@ -3,7 +3,7 @@ import CharactersContext, { CharactersContextProps, INITIAL_STATE } from './Char
 import CharactersReducer from './CharactersReducer';
 
 interface Props {
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
 }
 const CharactersProviderComponent = (props: Props) => {
   const [charactersState, dispatchCharacterAction] = useReducer(CharactersReducer, INITIAL_STATE);
@@ -14,18 +14,21 @@ const CharactersProviderComponent = (props: Props) => {
       payload: page,
     });
 
-  const charactersContext: CharactersContextProps = useMemo(() => ({
-    charactersState: {
-      pageIndex: charactersState?.pageIndex,
-      filterValue: charactersState?.filterValue,
-    },
-    updatePage,
-  }),[charactersState?.filterValue, charactersState?.pageIndex]);
+  const charactersContext: CharactersContextProps = useMemo(
+    () => ({
+      charactersState: {
+        pageIndex: charactersState?.pageIndex,
+        filterValue: charactersState?.filterValue,
+      },
+      updatePage,
+    }),
+    [charactersState?.filterValue, charactersState?.pageIndex]
+  );
 
   return (
-    <CharactersContext.Provider value = { charactersContext } >
+    <CharactersContext.Provider value={charactersContext}>
       {/* eslint-disable-next-line react/destructuring-assignment */}
-      { props?.children }
+      {props?.children}
     </CharactersContext.Provider>
   );
 };

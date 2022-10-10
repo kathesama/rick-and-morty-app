@@ -17,21 +17,21 @@ afterEach(async () => {
 });
 
 const defaultProps = {
-  label: 'input field'
-}
+  label: 'input field',
+};
 
 describe('CustomInputComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(<CustomInputComponent {...defaultProps}/>);
+      ReactDOM.createRoot(container).render(<CustomInputComponent {...defaultProps} />);
     });
   };
 
   it.each`
-    component       | id
-    ${'Box Header'} | ${'CustomInputComponent'}    
-    ${'Form control'} | ${'form-control-select-id'}    
-    ${'Input field'} | ${'form-control-custom-input-id'}
+    component         | id
+    ${'Box Header'}   | ${'CustomInputComponent'}
+    ${'Form control'} | ${'form-control-select-id'}
+    ${'Input field'}  | ${'form-control-custom-input-id'}
   `('Should has: $component', async ({ id }) => {
     await setup();
     await waitFor(() => {

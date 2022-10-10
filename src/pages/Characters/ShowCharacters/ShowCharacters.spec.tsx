@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {ShowCharactersPage} from './ShowCharacters';
+import { ShowCharactersPage } from './ShowCharacters';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import store from '../../../redux/store';
 import { Provider } from 'react-redux';

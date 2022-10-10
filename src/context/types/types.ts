@@ -1,21 +1,15 @@
 import { FilterCharacter } from '../../../__generated__/globalTypes';
 
 interface ICharacters {
-    filterValue?: FilterCharacter | undefined;
-    pageIndex: number;
+  filterValue?: FilterCharacter | undefined;
+  pageIndex: number;
 }
 
 const CharactersInitialState: ICharacters = {
-    pageIndex: 0,
-    filterValue: {},
+  pageIndex: 0,
+  filterValue: {},
 };
 
-type CharactersActions =
-    | { type: 'UPDATE_PAGE_INDEX', payload: number };
+type CharactersActions = { type: 'UPDATE_PAGE_INDEX'; payload: number };
 
-export {
-    ICharacters,
-    CharactersInitialState,
-    CharactersActions
-};
-
+export { ICharacters, CharactersInitialState, CharactersActions };

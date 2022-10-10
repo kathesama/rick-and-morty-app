@@ -79,8 +79,6 @@ T
 $src/pages/Header/HeaderPage.spec.tsx,5\d\5def411631a5fa88f16333c2b37d16d7870a85bc
 =
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
-\
-,src/components/DataGrid/DataGrid.stories.tsx,e\6\e620dbf93b73a76f87d429a25e1656ebbafb963a
 S
 #src/pages/Header/Header.stories.tsx,3\c\3c2655e55c0dbd0c84de38b89833ad0136705b12
 K
@@ -171,14 +169,10 @@ J
 src/context/types/types.ts,a\1\a1b0c3533589f09689453620dbb19bfc162e6a75
 Y
 )src/components/DataGrid/DataGrid.spec.tsx,3\0\30f1741edfd3ce766b2c5efbc830fedec9857be5
-T
-$src/components/DataGrid/DataGrid.tsx,4\8\48862edd20531340c13e51e265d966f7e50750fe
 b
 2src/components/UI/CustomInput/CustomInput.spec.tsx,7\5\7576479a0bdc30052b449e492d371cc7baa02b73
 e
 5src/components/UI/CustomInput/CustomInput.stories.tsx,c\8\c8cca2fb8e79087eccc8210574c13cc24cb8a01b
-f
-6src/components/DynamicFilter/DynamicFilter.module.scss,e\1\e12cd9c4ccc8565117c36324f3de87f8a38dec0a
 l
 <src/components/PaginationFooter/PaginationFooter.module.scss,a\b\ab4c52248b8095fb71cce189c61793c521cfaef3
 d

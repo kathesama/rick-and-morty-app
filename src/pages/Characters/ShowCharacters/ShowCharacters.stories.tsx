@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ApolloProvider } from '@apollo/client';
 
-import {ShowCharactersPage} from './ShowCharacters';
+import { ShowCharactersPage } from './ShowCharacters';
 import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import apolloClient from '../../../graphql';

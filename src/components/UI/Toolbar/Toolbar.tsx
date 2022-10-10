@@ -47,7 +47,6 @@ const ToolbarBoxComponent: FC<any> = ({ pages, handleOpenNavMenu, anchorElNav, h
         }}
         data-testid="pages-menu-id"
       >
-
         {pages?.map((page) => (
           <div key={uuidv4()}>
             <MenuItemCustomComponent
@@ -72,14 +71,8 @@ const ToolbarBoxComponent: FC<any> = ({ pages, handleOpenNavMenu, anchorElNav, h
     <Logo />
     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
       {pages?.map((page) => (
-        <div key={uuidv4()} >
-          <Button
-            key={uuidv4()}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-            component={Link}
-            to={page?.pageURL}
-          >
+        <div key={uuidv4()}>
+          <Button key={uuidv4()} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }} component={Link} to={page?.pageURL}>
             {page?.menuTitle}
           </Button>
         </div>

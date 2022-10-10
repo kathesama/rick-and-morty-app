@@ -2,7 +2,7 @@ import React from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {CustomTableComponent} from './CustomTable';
+import { CustomTableComponent } from './CustomTable';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -45,11 +45,11 @@ describe('CustomTableComponent test', () => {
 
   it.each`
     component       | id
-    ${'Wrapper'}        | ${'CustomTableComponent'}
-    ${'Navigation'}        | ${'PaginationFooterComponent'}
-    ${'Table'}        | ${'table-custom-table-id'}
-    ${'Table Head'}        | ${'table-head-custom-table-id'}
-    ${'Table Body'}        | ${'table-body-custom-table-id'}
+    ${'Wrapper'}    | ${'CustomTableComponent'}
+    ${'Navigation'} | ${'PaginationFooterComponent'}
+    ${'Table'}      | ${'table-custom-table-id'}
+    ${'Table Head'} | ${'table-head-custom-table-id'}
+    ${'Table Body'} | ${'table-body-custom-table-id'}
   `('Should has $component', async ({ id }) => {
     await renderComponent();
     await waitFor(() => {

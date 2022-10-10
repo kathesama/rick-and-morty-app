@@ -39,7 +39,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Logo = ({ logoText = 'Rick and Morty' }: LogoProps) => (
   <header>
-    <div className="wrapper" data-testid="logo-test-id" >
+    <div className="wrapper" data-testid="logo-test-id">
       <Stack direction="row" spacing={2}>
         <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" data-testid="styled-badge-test-id">
           <Typography variant="h6" noWrap component="div" sx={styles.typography.large} data-testid="rick-and-morty-test-id">

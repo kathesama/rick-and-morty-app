@@ -35,25 +35,14 @@ const PaginationFooterDefaultValues: PropsPaginationFooterComponent = {
   pageOptions: [1],
   canNextPage: false,
   pageIndex: 0,
-  pageCount:1
+  pageCount: 1,
 };
 
 const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValues): any => {
-  const {
-    pageSize,
-    setPageSize,
-    pageIndex,
-    pageOptions,
-    gotoPage,
-    previousPage,
-    canPreviousPage,
-    nextPage,
-    canNextPage,
-    pageCount,
-  } = props;
+  const { pageSize, setPageSize, pageIndex, pageOptions, gotoPage, previousPage, canPreviousPage, nextPage, canNextPage, pageCount } = props;
 
   return (
-    <div className={cssStyle.flexContainer} data-testid='PaginationFooterComponent' id="pagination">
+    <div className={cssStyle.flexContainer} data-testid="PaginationFooterComponent" id="pagination">
       {/* <div id="pagination-page-size" data-testid="pagination-page-size" className={cssStyle.flexItems} hidden> */}
       {/*  Rows per page:{' '} */}
       {/*  <Select */}
@@ -84,10 +73,13 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
       {/*  </Select> */}
       {/* </div> */}
       <div id="pagination-page-counter" data-testid="pagination-page-counter" className={cssStyle.flexItems}>
-        | &nbsp;Page&nbsp;<b>{pageIndex} of {pageOptions?.length}</b>
+        | &nbsp;Page&nbsp;
+        <b>
+          {pageIndex} of {pageOptions?.length}
+        </b>
       </div>
-      <div id="pagination-page-navigation" data-testid="pagination-page-navigation"className={cssStyle.flexItems}>
-        <span>| Go to page:{' '}</span>
+      <div id="pagination-page-navigation" data-testid="pagination-page-navigation" className={cssStyle.flexItems}>
+        <span>| Go to page: </span>
         <TextField
           type="number"
           defaultValue={pageIndex + 1}
@@ -104,27 +96,27 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
               fontWeight: 'bold',
             },
           }}
-          sx={{input: {textAlign: 'center'}}}
+          sx={{ input: { textAlign: 'center' } }}
           onChange={(e) => {
             const p = e.target.value ? Number(e.target.value) - 1 : 0;
             gotoPage(p);
           }}
           variant="standard"
           size="small"
-          data-testid='goto-page-pagination-footer'
+          data-testid="goto-page-pagination-footer"
         />
       </div>
       <div id="buttons-page-navigation" data-testid="buttons-page-navigation" className={cssStyle.flexItems}>
-        <IconButton onClick={() => gotoPage(0)} disabled={!canPreviousPage} data-testid='icon-button-first-page-pagination-footer' size='small'>
+        <IconButton onClick={() => gotoPage(0)} disabled={!canPreviousPage} data-testid="icon-button-first-page-pagination-footer" size="small">
           <FirstPageIcon className={cssStyle.icon} />
         </IconButton>{' '}
-        <IconButton onClick={() => previousPage()} disabled={!canPreviousPage} data-testid='icon-button-before-page-pagination-footer' size='small'>
+        <IconButton onClick={() => previousPage()} disabled={!canPreviousPage} data-testid="icon-button-before-page-pagination-footer" size="small">
           <NavigateBeforeIcon className={cssStyle.icon} />
         </IconButton>{' '}
-        <IconButton onClick={() => nextPage()} disabled={!canNextPage} data-testid='icon-button-next-page-pagination-footer' size='small'>
+        <IconButton onClick={() => nextPage()} disabled={!canNextPage} data-testid="icon-button-next-page-pagination-footer" size="small">
           <NavigateNextIcon className={cssStyle.icon} />
         </IconButton>{' '}
-        <IconButton onClick={() => gotoPage(pageCount -1 )} disabled={!canNextPage} data-testid='icon-button-last-page-pagination-footer'  size='small' >
+        <IconButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} data-testid="icon-button-last-page-pagination-footer" size="small">
           <LastPageIcon className={cssStyle.icon} />
         </IconButton>{' '}
       </div>
@@ -132,9 +124,4 @@ const PaginationFooterComponent: FC<any> = (props = PaginationFooterDefaultValue
   );
 };
 
-export {
-  PaginationFooterComponent,
-  PropsPaginationFooterComponent,
-  PaginationFooterDefaultValues,
-};
-
+export { PaginationFooterComponent, PropsPaginationFooterComponent, PaginationFooterDefaultValues };

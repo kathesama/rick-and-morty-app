@@ -9,17 +9,12 @@ import { CircularProgress } from '@mui/material';
 import cssStyle from './LoadingCircle.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsLoadingCircleComponent {
-}
+interface PropsLoadingCircleComponent {}
 
 const LoadingCircleComponent: FC<any> = (props: PropsLoadingCircleComponent): any => (
-  <div className={cssStyle.container} data-testid='LoadingCircleComponent'>
-    <CircularProgress data-testid='circular-progress-loading-id'/>
+  <div className={cssStyle.container} data-testid="LoadingCircleComponent">
+    <CircularProgress data-testid="circular-progress-loading-id" />
   </div>
 );
 
-export {
-  LoadingCircleComponent,
-  PropsLoadingCircleComponent,
-};
-
+export { LoadingCircleComponent, PropsLoadingCircleComponent };

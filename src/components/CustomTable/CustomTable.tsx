@@ -5,16 +5,7 @@ Project: rick-and-morty-app
 */
 import React, { useState, FC, useMemo, ReactElement, useEffect } from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell, Icon } from '@mui/material';
-import {
-  Column,
-  useFilters,
-  useGlobalFilter,
-  usePagination,
-  useRowSelect,
-  useRowState,
-  useSortBy,
-  useTable,
-} from 'react-table';
+import { Column, useFilters, useGlobalFilter, usePagination, useRowSelect, useRowState, useSortBy, useTable } from 'react-table';
 import { useSelector } from 'react-redux';
 import { PaginationFooterComponent } from '../PaginationFooter/PaginationFooter';
 // import { getCharacterPageData } from '../../redux/characters/characters.slice';
@@ -27,11 +18,11 @@ import cssStyle from './CustomTable.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsCustomTableComponent<T extends object> {
-  data: T[],
-  columns: Column<T>[],
-  hideHeader?: boolean,
-  loading?: boolean,
-  pageCount?: number,
+  data: T[];
+  columns: Column<T>[];
+  hideHeader?: boolean;
+  loading?: boolean;
+  pageCount?: number;
   // eslint-disable-next-line @typescript-eslint/ban-types
   fetchMoreData?(data: any): any;
 }
@@ -45,15 +36,7 @@ const CustomTableDefaultValues: PropsCustomTableComponent<any> = {
   // fetchMoreData(): object[]
 };
 
-const CustomTableComponent = <T extends { id: string }>({
-                          columns,
-                          data,
-                          hideHeader,
-                          fetchData,
-                          loading,
-                          pageCount: controlledPageCount,
-                         } : any): ReactElement => {
-
+const CustomTableComponent = <T extends { id: string }>({ columns, data, hideHeader, fetchData, loading, pageCount: controlledPageCount }: any): ReactElement => {
   const [filterValue, setFilterValue] = useState('');
   const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
@@ -71,54 +54,54 @@ const CustomTableComponent = <T extends { id: string }>({
   );
 
   const {
-      getTableProps,
-      getTableBodyProps,
-      headerGroups,
-      prepareRow,
-      page,
-      canPreviousPage,
-      canNextPage,
-      pageOptions,
-      pageCount,
-      gotoPage,
-      nextPage,
-      previousPage,
-      setPageSize,
-      state: { pageSize, pageIndex  },
-      setGlobalFilter,
-     } = useTable<T> ({
-          columns,
-          data,
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageSize, pageIndex },
+    setGlobalFilter,
+  } = useTable<T>(
+    {
+      columns,
+      data,
 
-          /* defaultColumn, */
-          initialState: { pageIndex: 0},
-          manualPagination: true,
-          pageCount: controlledPageCount,
-       },
-       useGlobalFilter,
-       useSortBy,
-       usePagination,
-       useRowState,
-       useRowSelect
-     );
+      /* defaultColumn, */
+      initialState: { pageIndex: 0 },
+      manualPagination: true,
+      pageCount: controlledPageCount,
+    },
+    useGlobalFilter,
+    useSortBy,
+    usePagination,
+    useRowState,
+    useRowSelect
+  );
 
   // Listen for changes in pagination and use the state to fetch our new data
   React.useEffect(() => {
     /* if (fetchMoreData) {
-          */
-      console.log('pageIndex Table: ', pageIndex);
+     */
+    console.log('pageIndex Table: ', pageIndex);
     // eslint-disable-next-line no-param-reassign,no-plusplus
     //   ++pageIndex;
-      fetchData({ pageIndex, filterValue });
+    fetchData({ pageIndex, filterValue });
     // }
   }, [fetchData, filterValue, pageIndex]);
 
-
   return (
-    <div className={cssStyle.example} data-testid='CustomTableComponent'>
+    <div className={cssStyle.example} data-testid="CustomTableComponent">
       <input placeholder="Filter" onChange={handleFilterInputChange} />
-      <Table {...getTableProps()} className={cssStyle.table} data-testid='table-custom-table-id'>
-        <TableHead className={hideHeader ? cssStyle.noDisplay : ''} data-testid='table-head-custom-table-id'>
+      <Table {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id">
+        <TableHead className={hideHeader ? cssStyle.noDisplay : ''} data-testid="table-head-custom-table-id">
           {headerGroups?.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
@@ -127,32 +110,32 @@ const CustomTableComponent = <T extends { id: string }>({
                     {column.render('Header')}
                     <span {...column.getSortByToggleProps()}>
                       {/* eslint-disable-next-line no-nested-ternary */}
-                          {column.id !== 'expander' && column.id !== 'selection' ? (
-                            // eslint-disable-next-line no-nested-ternary
-                            column.isSorted ? (
-                              column.isSortedDesc ? (
-                                <Icon>
-                                  <img alt="arrowDown" src={arrowDown} />
-                                </Icon>
-                              ) : (
-                                <Icon>
-                                  <img alt="arrowUp" src={arrowUp} />
-                                </Icon>
-                              )
-                            ) : (
-                              <Icon>
-                                <img alt="arrowNeutral" src={arrowNeutral} />
-                              </Icon>
-                            )
-                          ) : null}
-                        </span>
+                      {column.id !== 'expander' && column.id !== 'selection' ? (
+                        // eslint-disable-next-line no-nested-ternary
+                        column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <Icon>
+                              <img alt="arrowDown" src={arrowDown} />
+                            </Icon>
+                          ) : (
+                            <Icon>
+                              <img alt="arrowUp" src={arrowUp} />
+                            </Icon>
+                          )
+                        ) : (
+                          <Icon>
+                            <img alt="arrowNeutral" src={arrowNeutral} />
+                          </Icon>
+                        )
+                      ) : null}
+                    </span>
                   </div>
                 </TableCell>
               ))}
             </TableRow>
           ))}
         </TableHead>
-        <TableBody {...getTableBodyProps()} className={cssStyle.body} data-testid='table-body-custom-table-id'>
+        <TableBody {...getTableBodyProps()} className={cssStyle.body} data-testid="table-body-custom-table-id">
           {page.map((row) => {
             prepareRow(row);
 
@@ -172,8 +155,7 @@ const CustomTableComponent = <T extends { id: string }>({
               <td>Loading...</td>
             ) : (
               <td>
-                Showing {page.length} of ~{controlledPageCount * pageSize}{' '}
-                results
+                Showing {page.length} of ~{controlledPageCount * pageSize} results
               </td>
             )}
           </tr>
@@ -184,7 +166,6 @@ const CustomTableComponent = <T extends { id: string }>({
         setPageSize={setPageSize}
         pageSize={pageSize}
         canPreviousPage={canPreviousPage}
-
         previousPage={previousPage}
         nextPage={nextPage}
         canNextPage={canNextPage}
@@ -196,7 +177,4 @@ const CustomTableComponent = <T extends { id: string }>({
   );
 };
 
-export {
-  CustomTableComponent,
-  PropsCustomTableComponent,
-};
+export { CustomTableComponent, PropsCustomTableComponent };

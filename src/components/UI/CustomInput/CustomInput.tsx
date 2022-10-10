@@ -3,13 +3,10 @@ Created by: Katherine Aguirre
 On: 08/10/2022 : 12:27
 Project: rick-and-morty-app
 */
-import React, { useState, FC, useEffect, Fragment } from 'react';
-import { Box, FormControl, InputLabel, TextField, Theme } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, FC, useEffect } from 'react';
+import { Box, FormControl, TextField } from '@mui/material';
 
 import cssStyle from './CustomInput.module.scss';
-
-// export type inputClickHandler = (row: string) => void | any | string | Promise<void>;
 
 interface PropsCustomInputComponent {
   label: string;
@@ -20,28 +17,21 @@ interface PropsCustomInputComponent {
   variant?: 'filled' | 'outlined' | 'standard';
 }
 
-const CustomInputComponent: FC<PropsCustomInputComponent> = ({
-     label = 'Input field',
-     actualValue,
-     handlerOnChange,
-     widthValue = '',
-     variant = 'outlined',
-} : PropsCustomInputComponent): any => {
+const CustomInputComponent: FC<PropsCustomInputComponent> = ({ label = 'Input field', actualValue, handlerOnChange, widthValue = '', variant = 'outlined' }: PropsCustomInputComponent): any => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    if (setValue.length > 0 && value !== actualValue)
-      setValue(actualValue);
-  }, [actualValue, value]);
+    setValue(actualValue);
+  }, [actualValue]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const handledValue: string = event.target.value as string || '';
-    // setValue(handledValue);
-
-    if (handlerOnChange) handlerOnChange({
-      field: event.target.name,
-      value: handledValue,
-    } );
+    const handledValue: string = (event.target.value as string) || '';
+    setValue(handledValue);
+    if (handlerOnChange)
+      handlerOnChange({
+        field: event.target.name,
+        value: handledValue,
+      });
   };
 
   return (
@@ -49,29 +39,18 @@ const CustomInputComponent: FC<PropsCustomInputComponent> = ({
       sx={{
         '& > :not(style)': {
           m: 1,
-          width: `${widthValue}` || '180px'
+          width: `${widthValue}` || '180px',
         },
       }}
-      // className={cssStyle.example}
-      data-testid='CustomInputComponent'
+      data-testid="CustomInputComponent"
+      id={`id-custom-input-box-for-${label}`}
+      key={`key-custom-input-box-for-${label}`}
     >
-      <FormControl fullWidth data-testid='form-control-select-id'>
-        <TextField
-          id="custom-input-text-field-id"
-          name={label}
-          label={label}
-          variant= {variant}
-          data-testid='form-control-custom-input-id'
-          size="small"
-          value={value}
-          onChange={handleChange}
-        />
+      <FormControl fullWidth data-testid="form-control-select-id" id={`custom-input-form-control-for-${label}`} key={`custom-input-form-control-for-${label}`}>
+        <TextField key={`custom-input-for-${label}`} id={`custom-input-for-${label}`} name={label} label={label} variant={variant} data-testid="form-control-custom-input-id" size="small" value={value} onChange={handleChange} />
       </FormControl>
     </Box>
   );
 };
 
-export {
-  CustomInputComponent,
-  PropsCustomInputComponent,
-};
+export { CustomInputComponent, PropsCustomInputComponent };

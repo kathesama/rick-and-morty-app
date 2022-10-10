@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {LoadingCircleComponent} from './LoadingCircle';
+import { LoadingCircleComponent } from './LoadingCircle';
 
 let container: any;
 
@@ -24,9 +24,9 @@ describe('LoadingCircleComponent test', () => {
   };
 
   it.each`
-    component       | id
-    ${'header'}        | ${'LoadingCircleComponent'}
-    ${'Circular Progress'}        | ${'circular-progress-loading-id'}    
+    component              | id
+    ${'header'}            | ${'LoadingCircleComponent'}
+    ${'Circular Progress'} | ${'circular-progress-loading-id'}
   `('Should has $component', async ({ id }) => {
     await setup();
     await waitFor(() => {

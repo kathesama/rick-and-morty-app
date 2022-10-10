@@ -8,8 +8,6 @@ import fetchAsyncCharactersListing from './characters.actions';
 import ICharactersEmptyState from '../types/types';
 import { RootState } from '../store';
 
-
-
 const initialState: ICharactersEmptyState = {
   filterFillersData: {
     gender: ['female', 'male', 'genderless', 'unknown'],
@@ -20,7 +18,7 @@ const initialState: ICharactersEmptyState = {
     status: '',
     gender: '',
   },
-  pageIndex:0
+  pageIndex: 0,
 };
 
 const CharactersSlice = createSlice({
@@ -29,9 +27,9 @@ const CharactersSlice = createSlice({
   reducers: {
     reset: () => ({ ...initialState }),
     setPageIndex: (state, action) => ({
-        ...state,
-        pageIndex: action.payload,
-      }),
+      ...state,
+      pageIndex: action.payload,
+    }),
     // eslint-disable-next-line consistent-return
     setPageFilter: (state, action) => {
       const newValue = action.payload.value || '';
@@ -68,10 +66,6 @@ export const getCharactersPageFilter = (state: RootState) => state?.characters?.
 export const getCharactersPageFilterFillersData = (state: RootState) => state?.characters?.filterFillersData;
 export const getCharactersState = (state: RootState) => state?.characters;
 
-export const {
-  setPageIndex,
-  setPageFilter,
-  reset
-} = CharactersSlice.actions;
+export const { setPageIndex, setPageFilter, reset } = CharactersSlice.actions;
 
 export default CharactersSlice.reducer;

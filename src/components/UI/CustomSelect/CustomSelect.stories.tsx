@@ -4,9 +4,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CustomSelectComponent } from './CustomSelect';
 
 const VariantTypeEnum: any = {
-  filled: "filled",
-  outlined: "outlined",
-  standard: "standard"
+  filled: 'filled',
+  outlined: 'outlined',
+  standard: 'standard',
 };
 
 export default {

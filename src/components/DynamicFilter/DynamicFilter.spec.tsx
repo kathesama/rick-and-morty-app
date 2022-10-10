@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import {DynamicFilterComponent} from './DynamicFilter';
+import { DynamicFilterComponent } from './DynamicFilter';
 
 let container: any;
 

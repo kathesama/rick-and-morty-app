@@ -1,19 +1,17 @@
 import { ColumnInstance } from 'react-table';
 import { FormControl, FormLabel, OutlinedInput } from '@mui/material';
 
-const DefaultColumnFilter = <T extends object>({column}: { column: ColumnInstance<T> }) => (
+const DefaultColumnFilter = <T extends object>({ column }: { column: ColumnInstance<T> }) => (
   <FormControl>
-    <FormLabel id={`defaultFilter-${column.filterLabel}-label`}>
-      {column.filterLabel}
-    </FormLabel>
+    <FormLabel id={`defaultFilter-${column.filterLabel}-label`}>{column.filterLabel}</FormLabel>
     <OutlinedInput
       size="small"
       value={column.filterValue || ''}
-      onChange={e => {
+      onChange={(e) => {
         column.setFilter(e.target.value || undefined);
       }}
     />
-    </FormControl>
-  );
+  </FormControl>
+);
 
 export default DefaultColumnFilter;

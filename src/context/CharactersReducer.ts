@@ -5,7 +5,7 @@ const CharactersReducer = (state: ICharacters, action: CharactersActions): IChar
     case 'UPDATE_PAGE_INDEX':
       return {
         ...state,
-        pageIndex: action.payload
+        pageIndex: action.payload,
       };
     default:
       // eslint-disable-next-line consistent-return

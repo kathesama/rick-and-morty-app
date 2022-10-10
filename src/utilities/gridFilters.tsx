@@ -16,7 +16,7 @@ interface IDefaultColumnFilterColumn {
 }
 
 // Define a default UI for filtering
-const DefaultColumnFilter = ({ column : { filterValue, setFilter, width } } : IDefaultColumnFilterColumn) => (
+const DefaultColumnFilter = ({ column: { filterValue, setFilter, width } }: IDefaultColumnFilterColumn) => (
   <div className={cssClasses?.border}>
     <TextField
       value={filterValue || ''}

@@ -7,7 +7,7 @@ const actualState = {
   name: '',
   gender: 'John',
   status: '',
-}
+};
 
 export default {
   title: 'Component/Functional/DynamicFilter',
@@ -42,5 +42,5 @@ Default.args = {
       },
     ],
     callbackFunction: () => {},
-  }
+  },
 };

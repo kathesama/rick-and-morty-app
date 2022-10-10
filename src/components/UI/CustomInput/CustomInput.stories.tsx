@@ -18,4 +18,3 @@ Default.args = {
 };
 
 export const WithDefaultComponentValues = Template.bind({});
-

@@ -18,14 +18,14 @@ const columnsConfig: GridColDef[] = [
     headerName: 'ID',
     width: 90,
     type: 'string',
-    hideable: false
+    hideable: false,
   },
   {
     field: 'image',
     headerName: 'Avatar',
     width: 150,
     type: 'string',
-    hideable: false
+    hideable: false,
   },
   {
     field: 'name',
@@ -69,8 +69,4 @@ const CharactersInitialState = {
   },
 };
 
-export {
-  dataRow,
-  columnsConfig as CharacterColumnsConfig,
-  CharactersInitialState,
-};
+export { dataRow, columnsConfig as CharacterColumnsConfig, CharactersInitialState };

@@ -20,15 +20,15 @@ const root = ReactDOM.createRoot(container as HTMLElement);
 root.render(
   <>
     {/* <CharactersProviderComponent > */}
-       <Provider store={store}>
-        {/* <PersistGate persistor={persistor}> */}
-            <ApolloProvider client={apolloClient}>
-              <div className="container">
-                <Application />
-              </div>
-            </ApolloProvider>
-        {/* </PersistGate> */}
-       </Provider>
+    <Provider store={store}>
+      {/* <PersistGate persistor={persistor}> */}
+      <ApolloProvider client={apolloClient}>
+        <div className="container">
+          <Application />
+        </div>
+      </ApolloProvider>
+      {/* </PersistGate> */}
+    </Provider>
     {/* </CharactersProviderComponent> */}
   </>
 );
