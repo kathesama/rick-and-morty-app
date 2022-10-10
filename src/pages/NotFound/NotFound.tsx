@@ -6,10 +6,8 @@ Project: rick-and-morty-app
 import React, { FC } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-import cssStyle from './NotFound.module.scss';
-
 const NotFoundPage: FC = () => (
-  <div className={cssStyle.example} data-testid="not-found-page">
+  <div data-testid="not-found-page">
     <Box
       sx={{
         display: 'flex',

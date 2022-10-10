@@ -20,7 +20,6 @@ import CustomTableComponent from '../../../components/CustomTable/CustomTable';
 import { FilterCharacter } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 
-import cssStyle from './ShowCharacters.module.scss';
 import { ICharacters } from '../../../graphql/InterfaceTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -196,12 +195,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
   }, [data, loading]);
 
   // TODO: add custom css for error message or create an error message component
-  if (error)
-    return (
-      <div className={cssStyle.example} data-testid="ShowCharactersPage">
-        Error
-      </div>
-    );
+  if (error) return <div data-testid="ShowCharactersPage">Error</div>;
 
   return (
     <CardContent data-testid="ShowCharactersPage">

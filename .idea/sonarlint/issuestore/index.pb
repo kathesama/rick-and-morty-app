@@ -19,10 +19,6 @@ O
 src/pages/Header/HeaderPage.tsx,d\0\d05ea5820e83666ed6015a7b720b11d1881c4e89
 c
 3src/components/UI/MenuNavBar/MenuNavBar.module.scss,5\f\5f1ef6edf702feacf9c24e7a7eccfdc8b3f198cf
-a
-1src/pages/UnderConstruction/UnderConstruction.tsx,2\6\26dae4c49f7c9efab855ab1ce0c3085527b04a14
-O
-src/pages/NotFound/NotFound.tsx,d\f\df6cad2fa1ff2b06380b5527f8f08c089270828c
 ;
 .prettierrc,2\0\20137a9e94744624390b6748bc96df5ca1579b71
 ?
@@ -43,8 +39,6 @@ Y
 )src/components/UI/About/About.stories.tsx,6\b\6b0fa5040196b6ff92ede1bd687f3ed0875c22da
 \
 ,src/components/DataGrid/DataGrid.module.scss,9\4\94266508e30bca0c91a054e3cd76ccf619c8193a
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 S
 #src/pages/Header/Header.stories.tsx,3\c\3c2655e55c0dbd0c84de38b89833ad0136705b12
 K
@@ -81,8 +75,6 @@ L
 src/services/api/sessions.ts,a\a\aa5afcb4b737569be59f5bf7a1573871b8f65b6d
 M
 src/services/api/axiosApi.tsx,f\6\f680362ae6b59ae3154cebd96bb8304970bf545e
-H
-src/Application.test.tsx,5\6\5631bada16568dabd98b4d765f0e9b797eb58d0a
 P
  src/context/CharactersContext.ts,8\8\889736a6ed6a01d67ecd812a9fedbfdc77e08ff8
 P

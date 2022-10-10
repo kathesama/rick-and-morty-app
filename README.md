@@ -6,6 +6,8 @@
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![YARN](https://img.shields.io/badge/YARN-%23000000.svg?style=for-the-badge&logo=yarn&logoColor=white)
 <br>
+[![CodeQL](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml)
+<br>
 [![GitHub issues](https://img.shields.io/github/issues/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/issues)
 [![GitHub forks](https://img.shields.io/github/forks/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/network)
 [![GitHub stars](https://img.shields.io/github/stars/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/stargazers)
@@ -15,6 +17,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/kathesama/rick-and-morty-app?style=plastic)
 <br>
 ![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=plastic)
+
 
 [comment]: <> (![OWASP]&#40;https://img.shields.io/badge/OWASP%3F-yes-green.svg?style=plastic&#41;)
 

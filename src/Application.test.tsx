@@ -1,15 +1,8 @@
 import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
-import userEvent from '@testing-library/user-event';
 import Application from './Application';
 import i18n from './locale/i18n';
-
-// it('renders learn react link', () => {
-//   render(<Application />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
 
 let container: any;
 

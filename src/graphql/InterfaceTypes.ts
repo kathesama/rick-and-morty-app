@@ -16,6 +16,6 @@ export interface CharacterSchemaInterface {
 }
 
 export interface ICharacters {
-  filterValue?: FilterCharacter | undefined;
+  filterValue?: FilterCharacter;
   pageIndex: number;
 }

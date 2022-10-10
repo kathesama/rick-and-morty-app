@@ -1,9 +1,9 @@
-import React, { MouseEvent, ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
+import React, { ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Box, TableBody, TableCell, TableContainer, TableHead, TableRow, Skeleton, Icon, Pagination } from '@mui/material';
 import MuiTable from '@mui/material/Table';
 
-import { Column, TableOptions, TableState, useFilters, usePagination, useSortBy, useTable } from 'react-table';
+import { Column, HeaderGroup, TableOptions, TableState, useFilters, usePagination, useSortBy, useTable } from 'react-table';
 import DefaultColumnFilter from './DefaultColumnFilter';
 import cssStyle from './CustomTable.module.scss';
 import arrowDown from '../../assets/icons/arrowDown.svg';
@@ -46,7 +46,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
     headerGroups,
     prepareRow,
     page,
-    state: { pageSize, pageIndex, filters },
+    state: { pageSize, filters },
   } = useTable<T>(
     {
       columns,
@@ -107,6 +107,26 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
       ));
   };
 
+  // eslint-disable-next-line no-shadow
+  function getElement<T extends object>(column: HeaderGroup<T>) {
+    if (column.isSorted) {
+      return column.isSortedDesc ? (
+        <Icon>
+          <img alt="arrowDown" src={arrowDown} />
+        </Icon>
+      ) : (
+        <Icon>
+          <img alt="arrowUp" src={arrowUp} />
+        </Icon>
+      );
+    }
+    return (
+      <Icon>
+        <img alt="arrowNeutral" src={arrowNeutral} />
+      </Icon>
+    );
+  }
+
   return (
     <Box sx={{ width: '100%' }} data-testid="CustomTableComponent">
       <TableContainer {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id" key="table-custom-table-key">
@@ -124,24 +144,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
                     {column.render('Header')}
                     <span {...column.getSortByToggleProps()}>
                       {/* eslint-disable-next-line no-nested-ternary */}
-                      {column.id !== 'expander' && column.id !== 'selection' ? (
-                        // eslint-disable-next-line no-nested-ternary
-                        column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <Icon>
-                              <img alt="arrowDown" src={arrowDown} />
-                            </Icon>
-                          ) : (
-                            <Icon>
-                              <img alt="arrowUp" src={arrowUp} />
-                            </Icon>
-                          )
-                        ) : (
-                          <Icon>
-                            <img alt="arrowNeutral" src={arrowNeutral} />
-                          </Icon>
-                        )
-                      ) : null}
+                      {column.id !== 'expander' && column.id !== 'selection' ? getElement(column) : null}
                     </span>
                   </TableCell>
                 ))}
@@ -171,7 +174,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
                         whiteSpace: 'nowrap',
                       }}
                       onClick={() => {
-                        handleRowClick(row!.original);
+                        handleRowClick(row?.original);
                       }}
                     >
                       {row.cells.map((cell) => (

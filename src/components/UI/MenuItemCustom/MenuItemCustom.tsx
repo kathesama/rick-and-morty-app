@@ -25,9 +25,7 @@ const MenuItemCustomComponent: FC<any> = ({ keyId, children, component, to, href
     const returnProperties = () => {
       const baseObj: any = {};
 
-      if (keyId) {
-        baseObj.key = keyId;
-      }
+      baseObj.key = keyId || undefined;
       if (onClick) {
         baseObj.onClick = onClick;
       }
