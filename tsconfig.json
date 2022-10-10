@@ -7,9 +7,12 @@
       "dom.iterable",
       "esnext"
     ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -25,5 +28,10 @@
   "include": [
     "./src/**/*",
     "src/types/images.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.tsx",
+    "**/*.stories.tsx",
   ]
 }

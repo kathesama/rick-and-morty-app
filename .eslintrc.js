@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     jest: true
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:jest/recommended', 'plugin:@typescript-eslint/recommended', 'airbnb/hooks', 'prettier', 'plugin:storybook/recommended'],
+  extends: ['react-app', 'plugin:react/recommended', 'airbnb', 'plugin:jest/recommended', 'plugin:@typescript-eslint/recommended', 'airbnb/hooks', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -14,7 +14,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', '@typescript-eslint', 'security', 'react-hooks', 'prettier', 'jest'],
-  'ignorePatterns': ['*.test.js', '*.test.tsx', '*.css', '*.svg', '*.scss'],
+  'ignorePatterns': ['*.test.tsx', '*.spec.tsx', '*.stories.tsx', '*.css', '*.svg', '*.scss'],
   rules: {
     'semi': ['error', 'always'],
     'linebreak-style': 'off',
@@ -69,6 +69,9 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    'react/no-array-index-key': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {

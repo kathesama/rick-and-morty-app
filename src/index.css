@@ -18,3 +18,10 @@ code {
   font-style: normal;
   src: url('assets/fonts/get_schwifty.ttf');
 }
+
+@font-face {
+  font-family: 'get_schwifty';
+  font-display: fallback;
+  font-style: normal;
+  src: url('assets/fonts/get_schwifty.ttf');
+}

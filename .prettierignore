@@ -4,3 +4,10 @@ build/
 .cache
 package.json
 package-lock.json
+coverage/
+.storybook/
+.idea/
+.github/
+.eslintrc.js
+.prettierrc
+tsconfig.json
