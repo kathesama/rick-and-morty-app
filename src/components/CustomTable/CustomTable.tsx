@@ -1,54 +1,38 @@
-/*
-Created by: Katherine Aguirre
-On: 04/10/2022 : 18:04
-Project: rick-and-morty-app
-*/
-import React, { useState, FC, useMemo, ReactElement, useEffect } from 'react';
-import { Table, TableHead, TableBody, TableRow, TableCell, Icon } from '@mui/material';
-import { Column, useFilters, useGlobalFilter, usePagination, useRowSelect, useRowState, useSortBy, useTable } from 'react-table';
-import { useSelector } from 'react-redux';
-import { PaginationFooterComponent } from '../PaginationFooter/PaginationFooter';
-// import { getCharacterPageData } from '../../redux/characters/characters.slice';
+import React, { MouseEvent, ReactNode, useMemo, forwardRef, ForwardedRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { Box, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Skeleton } from '@mui/material';
+import MuiTable from '@mui/material/Table';
 
-import arrowNeutral from '../../assets/icons/arrowNeutral.svg';
-import arrowUp from '../../assets/icons/arrowUp.svg';
-import arrowDown from '../../assets/icons/arrowDown.svg';
-
+import { Column, TableOptions, TableState, useFilters, usePagination, useTable } from 'react-table';
+import DefaultColumnFilter from './DefaultColumnFilter';
 import cssStyle from './CustomTable.module.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsCustomTableComponent<T extends object> {
-  data: T[];
-  columns: Column<T>[];
-  hideHeader?: boolean;
-  loading?: boolean;
-  pageCount?: number;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  fetchMoreData?(data: any): any;
+// eslint-disable-next-line no-unused-vars
+export type FetchDataHandler<T extends object> = (state: TableState<T>) => Promise<void>;
+// eslint-disable-next-line no-unused-vars
+export type RowClickHandler<T extends object> = (row: T) => void | Promise<void>;
+
+export interface Resetable {
+  reset: () => void;
 }
 
-const CustomTableDefaultValues: PropsCustomTableComponent<any> = {
-  data: [],
-  columns: [],
-  hideHeader: false,
-  loading: false,
-  pageCount: 1,
-  // fetchMoreData(): object[]
-};
+type TableProps<T extends object> = {
+  data: T[];
+  columns: ReadonlyArray<Column<T>>;
+  count: number;
+  onRowClick?: RowClickHandler<T>;
+  queryPageIndex?: number;
+  queryPageSize?: number;
+  queryHiddenColumns?: string[];
+  onFetchData: FetchDataHandler<T>;
+  loading: boolean;
+  children?: ReactNode;
+} & TableOptions<T>;
 
-const CustomTableComponent = <T extends { id: string }>({ columns, data, hideHeader, fetchData, loading, pageCount: controlledPageCount }: any): ReactElement => {
-  const [filterValue, setFilterValue] = useState('');
-  const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.currentTarget;
-    setFilterValue(value);
-    setGlobalFilter(value);
-  };
-
-  const defaultColumn = React.useMemo(
+const CustomTableComponent = <T extends object>({ columns, data, count = 0, queryPageIndex = 0, queryPageSize = 20, queryHiddenColumns = [], onFetchData, loading, onRowClick, ...tableOptions }: TableProps<T>, ref: ForwardedRef<Resetable>) => {
+  const defaultColumn: Partial<Column<T>> = useMemo(
     () => ({
-      minWidth: 30,
-      width: 50,
-      maxWidth: 200,
+      Filter: DefaultColumnFilter,
     }),
     []
   );
@@ -59,122 +43,142 @@ const CustomTableComponent = <T extends { id: string }>({ columns, data, hideHea
     headerGroups,
     prepareRow,
     page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
+    state: { pageSize, pageIndex, filters },
     setPageSize,
-    state: { pageSize, pageIndex },
-    setGlobalFilter,
+    gotoPage,
+    allColumns,
   } = useTable<T>(
     {
       columns,
       data,
-
-      /* defaultColumn, */
-      initialState: { pageIndex: 0 },
+      defaultColumn,
+      initialState: {
+        pageIndex: queryPageIndex,
+        pageSize: queryPageSize,
+        hiddenColumns: queryHiddenColumns,
+      },
       manualPagination: true,
-      pageCount: controlledPageCount,
+      manualFilters: true,
+      pageCount: Math.ceil(count / queryPageSize),
+      ...tableOptions,
     },
-    useGlobalFilter,
-    useSortBy,
-    usePagination,
-    useRowState,
-    useRowSelect
+    useFilters,
+    usePagination
   );
 
-  // Listen for changes in pagination and use the state to fetch our new data
-  React.useEffect(() => {
-    /* if (fetchMoreData) {
-     */
-    console.log('pageIndex Table: ', pageIndex);
-    // eslint-disable-next-line no-param-reassign,no-plusplus
-    //   ++pageIndex;
-    fetchData({ pageIndex, filterValue });
-    // }
-  }, [fetchData, filterValue, pageIndex]);
+  const preloadRows = useMemo(
+    () =>
+      Array(pageSize)
+        ?.fill(0)
+        ?.map((_, key) => (
+          <TableRow key={`preload-empty-${uuidv4()}`}>
+            <TableCell colSpan={columns.length}>
+              <Skeleton />
+            </TableCell>
+          </TableRow>
+        )),
+    [columns.length, pageSize]
+  );
+
+  const handleRowClick = (row: T) => onRowClick && onRowClick(row);
+
+  const handlePageChange = async (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    await onFetchData({
+      pageIndex: newPage,
+      pageSize,
+      sortBy: [],
+      filters,
+      globalFilter: undefined,
+    });
+    gotoPage(newPage);
+  };
+
+  const generateFillerRows = () => {
+    if (data.length >= pageSize || loading) return;
+    // eslint-disable-next-line consistent-return
+    return Array(pageSize - data.length)
+      .fill(0)
+      .map((_, key) => (
+        <TableRow key={`empty-${uuidv4()}`}>
+          {columns.map((column, cellKey) => (
+            <TableCell key={`cell-${uuidv4()}`}>{'\u00A0'}</TableCell>
+          ))}
+        </TableRow>
+      ));
+  };
 
   return (
-    <div className={cssStyle.example} data-testid="CustomTableComponent">
-      <input placeholder="Filter" onChange={handleFilterInputChange} />
-      <Table {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id">
-        <TableHead className={hideHeader ? cssStyle.noDisplay : ''} data-testid="table-head-custom-table-id">
-          {headerGroups?.map((headerGroup) => (
-            <TableRow {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <TableCell {...column.getHeaderProps()} width={column.width}>
-                  <div>
+    <Box sx={{ width: '100%' }} data-testid="CustomTableComponent">
+      <TableContainer {...getTableProps()} className={cssStyle.table} data-testid="table-custom-table-id">
+        <MuiTable {...getTableProps()} size="small">
+          <TableHead data-testid="table-head-custom-table-id">
+            {headerGroups.map((headerGroup) => (
+              <TableRow
+                sx={{
+                  whiteSpace: 'nowrap',
+                }}
+                {...headerGroup.getHeaderGroupProps()}
+              >
+                {headerGroup.headers.map((column) => (
+                  <TableCell {...column.getHeaderProps()}>
                     {column.render('Header')}
-                    <span {...column.getSortByToggleProps()}>
-                      {/* eslint-disable-next-line no-nested-ternary */}
-                      {column.id !== 'expander' && column.id !== 'selection' ? (
-                        // eslint-disable-next-line no-nested-ternary
-                        column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <Icon>
-                              <img alt="arrowDown" src={arrowDown} />
-                            </Icon>
-                          ) : (
-                            <Icon>
-                              <img alt="arrowUp" src={arrowUp} />
-                            </Icon>
-                          )
-                        ) : (
-                          <Icon>
-                            <img alt="arrowNeutral" src={arrowNeutral} />
-                          </Icon>
-                        )
-                      ) : null}
-                    </span>
-                  </div>
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableHead>
-        <TableBody {...getTableBodyProps()} className={cssStyle.body} data-testid="table-body-custom-table-id">
-          {page.map((row) => {
-            prepareRow(row);
 
-            return (
-              <TableRow {...row.getRowProps()} className={cssStyle.tableRow}>
-                {row.cells.map((cell) => (
-                  <TableCell {...cell.getCellProps()} className={cssStyle.tableCell}>
-                    {cell.render('Cell')}
                   </TableCell>
                 ))}
               </TableRow>
-            );
-          })}
-          <tr>
+            ))}
+          </TableHead>
+          <TableBody
+            {...getTableBodyProps()}
+            sx={{
+              '& tr': {
+                height: '3.5rem',
+              },
+            }}
+            data-testid="table-body-custom-table-id"
+          >
             {loading ? (
-              // Use our custom loading state to show a loading indicator
-              <td>Loading...</td>
+              preloadRows
             ) : (
-              <td>
-                Showing {page.length} of ~{controlledPageCount * pageSize} results
-              </td>
+              <>
+                {page.map((row) => {
+                  prepareRow(row);
+                  return (
+                    <TableRow
+                      {...row.getRowProps()}
+                      sx={{
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap',
+                      }}
+                      onClick={() => {
+                        handleRowClick(row!.original);
+                      }}
+                    >
+                      {row.cells.map((cell) => (
+                        <TableCell {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
+                      ))}
+                    </TableRow>
+                  );
+                })}
+                {generateFillerRows()}
+              </>
             )}
-          </tr>
-        </TableBody>
-      </Table>
-      <PaginationFooterComponent
-        gotoPage={gotoPage}
-        setPageSize={setPageSize}
-        pageSize={pageSize}
-        canPreviousPage={canPreviousPage}
-        previousPage={previousPage}
-        nextPage={nextPage}
-        canNextPage={canNextPage}
-        pageCount={pageCount}
-        pageIndex={pageIndex}
-        pageOptions={pageOptions}
+          </TableBody>
+        </MuiTable>
+      </TableContainer>
+      <TablePagination
+        component="div"
+        rowsPerPageOptions={[20]}
+        count={count}
+        page={pageIndex}
+        onPageChange={handlePageChange}
+        rowsPerPage={pageSize}
+        showFirstButton
+        showLastButton
       />
-    </div>
+    </Box>
   );
 };
 
-export { CustomTableComponent, PropsCustomTableComponent };
+// eslint-disable-next-line no-unused-vars
+export default forwardRef(CustomTableComponent) as <T extends object>(props: TableProps<T> & { ref?: ForwardedRef<Resetable> }) => ReturnType<typeof CustomTableComponent>;

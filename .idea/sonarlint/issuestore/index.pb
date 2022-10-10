@@ -77,8 +77,6 @@ V
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 T
 $src/pages/Header/HeaderPage.spec.tsx,5\d\5def411631a5fa88f16333c2b37d16d7870a85bc
-=
-tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 S
 #src/pages/Header/Header.stories.tsx,3\c\3c2655e55c0dbd0c84de38b89833ad0136705b12
 K
@@ -95,8 +93,6 @@ H
 src/_mocks_/constants.ts,0\7\07669d1f6e4fb3bccd789ae885ebee1b9e7f0748
 k
 ;src/pages/Characters/ShowCharacters/ShowCharacters.spec.tsx,3\6\360240801663feb0ecbf5c70a5063210c608552d
-F
-src/react-app-env.d.ts,4\a\4a7b99bdbee5792679d347b6474463bf5e14b66d
 D
 src/graphql/index.ts,b\6\b616a153594e922a2fba586d3cb76936afd9818b
 i
@@ -137,8 +133,6 @@ H
 src/Application.test.tsx,5\6\5631bada16568dabd98b4d765f0e9b797eb58d0a
 C
 src/Application.tsx,d\5\d505f696e065abf085f7cebac11a51d0c628cab1
-_
-/src/components/CustomTable/CustomTable.spec.tsx,3\c\3c629175a773d938170d30630ff05cfe06e3abf4
 P
  src/context/CharactersContext.ts,8\8\889736a6ed6a01d67ecd812a9fedbfdc77e08ff8
 R
@@ -152,13 +146,9 @@ S
 Q
 !src/types/react-table-config.d.ts,3\8\38b75c8c27d1d1c78a2a850c6cb3fcaa7d95e6b7
 <
-.eslintrc.js,d\b\dbc0c31823b8f2e4ed04a397722fed33a67f123f
-<
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 Q
 !src/components/UI/About/About.tsx,3\7\37cf4c322151e7b02d5e0ad808498434ef5dcf39
-b
-2src/components/CustomTable/DefaultColumnFilter.tsx,9\8\9811fcd5a5224b876429a789a1a7afa8d7cb3f1b
 F
 src/graphql/queries.ts,3\5\35ccade0580a4aaf92d63b031b5d8f29e5f8a7d3
 d
@@ -177,14 +167,10 @@ l
 <src/components/PaginationFooter/PaginationFooter.module.scss,a\b\ab4c52248b8095fb71cce189c61793c521cfaef3
 d
 4src/components/PaginationFooter/PaginationFooter.tsx,e\f\ef685c51b4c53706640ebd28723683458c9018dd
-C
-src/redux/store.tsx,9\a\9ae46c19558def5045eac99f797995d45a4fe4fd
 c
 3src/components/DynamicFilter/DynamicFilter.spec.tsx,7\d\7dcfbba63460286e811d2b4bb76d7f27c217e0f8
 b
 2src/components/CustomTable/CustomTable.stories.tsx,b\4\b460d3bfa5f562e44ed6facee9f6ecda41772d19
-Z
-*src/components/CustomTable/CustomTable.tsx,a\5\a51dd444a48efc5c528c097734edecad33e8ce1e
 L
 __generated__/globalTypes.ts,a\9\a9695fed5f84b58eb50deddcc0a38bf3aa8d2543
 ^
@@ -193,8 +179,6 @@ G
 src/graphql/reducers.ts,4\1\41811ad4774a641872ca092d609aaabdbfd43eb3
 H
 src/redux/types/types.ts,1\0\10f52069d7f157590cd61ed1d41a271ef448017a
-I
-src/redux/rootReducer.tsx,1\4\140160016c51c40d12dc0659152bb9390684fdb6
 Z
 *src/redux/characters/characters.actions.ts,8\5\851ff7eb4786641432c1ac7d703fe207a3951ec3
 _
