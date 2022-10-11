@@ -7,7 +7,9 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
-import { CardContent } from '@mui/material';
+import { Badge, CardContent } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Chip from '@mui/joy/Chip';
 
 // eslint-disable-next-line camelcase
 import { GetAllEpisodesPage_episodes_results } from '../../../graphql/__generated__/GetAllEpisodesPage';
@@ -45,6 +47,12 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         accessor: 'id',
         sortType: 'string',
         disableGlobalFilter: true,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <div>
+            <Badge badgeContent={cell.row.original.id} />
+          </div>
+        ),
       },
       {
         Header: 'Name',
@@ -59,11 +67,23 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         accessor: 'episode',
         sortType: 'string',
         customAttribute: 'inputField',
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <Chip
+            variant="soft"
+            size="md"
+            startDecorator={
+              <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
+            }>
+            {cell.row.original.episode}
+          </Chip>
+        ),
       },
     ],
     []
   );
 
+  // alt={cell.row.original.episode}
   const fetchUpdateFilter = useCallback(
     async (filter: FilterEpisode) => {
       await dispatch(setPageFilter(filter));
@@ -131,4 +151,7 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
   );
 };
 
-export { ShowEpisodesPage, PropsShowEpisodesPage };
+export {
+  ShowEpisodesPage,
+  PropsShowEpisodesPage
+};

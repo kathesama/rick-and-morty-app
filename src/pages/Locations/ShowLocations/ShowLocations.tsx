@@ -7,7 +7,9 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
-import { CardContent } from '@mui/material';
+import { Badge, CardContent } from '@mui/material';
+import Chip from '@mui/joy/Chip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getLocationState, setPageFilter, setPageIndex } from '../../../redux/locations/locations.slice';
 
@@ -46,6 +48,12 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         accessor: 'id',
         sortType: 'string',
         disableGlobalFilter: true,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <div>
+            <Badge badgeContent={cell.row.original.id} />
+          </div>
+        ),
       },
       {
         Header: 'Name',
@@ -55,18 +63,29 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         customAttribute: 'inputField',
       },
       {
-        Header: 'Type',
-        id: 'type',
-        accessor: 'type',
-        sortType: 'string',
-        customAttribute: 'inputField',
-      },
-      {
         Header: 'Dimension',
         id: 'dimension',
         accessor: 'dimension',
         sortType: 'string',
         customAttribute: 'inputField',
+      },
+      {
+        Header: 'Type',
+        id: 'type',
+        accessor: 'type',
+        sortType: 'string',
+        customAttribute: 'inputField',
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <Chip
+            variant="soft"
+            size="md"
+            startDecorator={
+              <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
+            }>
+            {cell.row.original.type}
+          </Chip>
+        ),
       },
     ],
     []
@@ -139,4 +158,7 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
   );
 };
 
-export { ShowLocationsPage, PropsShowLocationsPage };
+export {
+  ShowLocationsPage,
+  PropsShowLocationsPage,
+};

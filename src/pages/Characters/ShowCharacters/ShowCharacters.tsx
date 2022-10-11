@@ -5,7 +5,7 @@ Project: rick-and-morty-app
 */
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, CardContent } from '@mui/material';
+import { Avatar, Badge, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,6 +52,12 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         accessor: 'id',
         sortType: 'string',
         disableGlobalFilter: true,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <div>
+            <Badge badgeContent={cell.row.original.id} />
+          </div>
+        ),
       },
       {
         Header: 'Avatar',
