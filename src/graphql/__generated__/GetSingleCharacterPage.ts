@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface GetSingleCharacterPage_character_origin {
-  __typename: "Location";
+  __typename: 'Location';
   /**
    * The name of the location.
    */
@@ -16,7 +16,7 @@ export interface GetSingleCharacterPage_character_origin {
 }
 
 export interface GetSingleCharacterPage_character_location {
-  __typename: "Location";
+  __typename: 'Location';
   /**
    * The id of the location.
    */
@@ -32,7 +32,7 @@ export interface GetSingleCharacterPage_character_location {
 }
 
 export interface GetSingleCharacterPage_character_episode {
-  __typename: "Episode";
+  __typename: 'Episode';
   /**
    * The id of the episode.
    */
@@ -48,7 +48,7 @@ export interface GetSingleCharacterPage_character_episode {
 }
 
 export interface GetSingleCharacterPage_character {
-  __typename: "Character";
+  __typename: 'Character';
   /**
    * The id of the character.
    */

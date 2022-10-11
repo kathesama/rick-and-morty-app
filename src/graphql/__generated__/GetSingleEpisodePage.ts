@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface GetSingleEpisodePage_episode_characters {
-  __typename: "Character";
+  __typename: 'Character';
   /**
    * The id of the character.
    */
@@ -25,7 +25,7 @@ export interface GetSingleEpisodePage_episode_characters {
 }
 
 export interface GetSingleEpisodePage_episode {
-  __typename: "Episode";
+  __typename: 'Episode';
   /**
    * The id of the episode.
    */

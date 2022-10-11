@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {ShowLocationsPage} from './ShowLocations';
+import { ShowLocationsPage } from './ShowLocations';
 
 export default {
   title: 'Component/Pages/ShowLocationsPage',

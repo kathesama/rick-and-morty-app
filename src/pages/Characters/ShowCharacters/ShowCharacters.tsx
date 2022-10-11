@@ -12,15 +12,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
 
-import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
+import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 import { getCharactersState, setPageFilter, setPageIndex } from '../../../redux/characters/characters.slice';
 import CustomTableComponent from '../../../components/CustomTable/CustomTable';
 import { FilterCharacter } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 
-import { ICharacters } from '../../../graphql/InterfaceTypes';
+import { ICharacters } from '../../../redux/types/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowCharactersPage {}

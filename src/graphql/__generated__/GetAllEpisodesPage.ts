@@ -3,12 +3,34 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { FilterEpisode } from './../../../__generated__/globalTypes';
+
 // ====================================================
 // GraphQL query operation: GetAllEpisodesPage
 // ====================================================
 
+export interface GetAllEpisodesPage_episodes_info {
+  __typename: 'Info';
+  /**
+   * The amount of pages.
+   */
+  pages: number | null;
+  /**
+   * The length of the response.
+   */
+  count: number | null;
+  /**
+   * Number of the next page (if it exists)
+   */
+  next: number | null;
+  /**
+   * Number of the previous page (if it exists)
+   */
+  prev: number | null;
+}
+
 export interface GetAllEpisodesPage_episodes_results_characters {
-  __typename: "Character";
+  __typename: 'Character';
   /**
    * The id of the character.
    */
@@ -20,7 +42,7 @@ export interface GetAllEpisodesPage_episodes_results_characters {
 }
 
 export interface GetAllEpisodesPage_episodes_results {
-  __typename: "Episode";
+  __typename: 'Episode';
   /**
    * The id of the episode.
    */
@@ -44,7 +66,8 @@ export interface GetAllEpisodesPage_episodes_results {
 }
 
 export interface GetAllEpisodesPage_episodes {
-  __typename: "Episodes";
+  __typename: 'Episodes';
+  info: GetAllEpisodesPage_episodes_info | null;
   results: (GetAllEpisodesPage_episodes_results | null)[] | null;
 }
 
@@ -57,4 +80,5 @@ export interface GetAllEpisodesPage {
 
 export interface GetAllEpisodesPageVariables {
   page: number;
+  filter?: FilterEpisode | null;
 }

@@ -15,6 +15,17 @@ export interface FilterCharacter {
   gender?: string | null;
 }
 
+export interface FilterEpisode {
+  name?: string | null;
+  episode?: string | null;
+}
+
+export interface FilterLocation {
+  name?: string | null;
+  type?: string | null;
+  dimension?: string | null;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

@@ -3,20 +3,132 @@ Created by: Katherine Aguirre
 On: 10/10/2022 : 10/10/2022
 Project: rick-and-morty-app
 */
-import React, { FC } from 'react';
-import cssStyle from './ShowEpisodes.module.scss';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLazyQuery } from '@apollo/react-hooks';
+import { Column } from 'react-table';
+import { CardContent } from '@mui/material';
+
+// eslint-disable-next-line camelcase
+import { GetAllEpisodesPage_episodes_results } from '../../../graphql/__generated__/GetAllEpisodesPage';
+import { GET_ALL_EPISODES } from '../../../graphql/queries';
+import { getEpisodesState, setPageFilter, setPageIndex } from '../../../redux/episodes/episodes.slice';
+
+import { FilterEpisode } from '../../../../__generated__/globalTypes';
+import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
+import { IEpisodes } from '../../../redux/types/types';
+import CustomTableComponent from '../../../components/CustomTable/CustomTable';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsShowEpisodesPage {
-}
+interface PropsShowEpisodesPage {}
 
-const ShowEpisodesPage: FC<any> = (props: PropsShowEpisodesPage): any => (
-  <div className={cssStyle.example} data-testid='ShowEpisodesPage'>
-    ShowEpisodesPage
-  </div>
-);
+const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
+  const dispatch = useDispatch();
+  const { pageIndex = 0, filterValue } = useSelector(getEpisodesState);
 
-export {
-  ShowEpisodesPage,
-  PropsShowEpisodesPage,
+  // eslint-disable-next-line camelcase
+  const [episodesData, setEpisodesData] = useState<GetAllEpisodesPage_episodes_results[]>([]);
+
+  const [totalCount, setTotalCount] = useState(1);
+
+  const [fetchEpisodesData, { data, loading, error, refetch }] = useLazyQuery(GET_ALL_EPISODES, {
+    notifyOnNetworkStatusChange: true,
+    fetchPolicy: 'network-only',
+    nextFetchPolicy: 'cache-first',
+  });
+
+  const columns: Column<any>[] = useMemo(
+    () => [
+      {
+        Header: 'ID',
+        id: 'id',
+        accessor: 'id',
+        sortType: 'string',
+        disableGlobalFilter: true,
+      },
+      {
+        Header: 'Name',
+        id: 'name',
+        accessor: 'name',
+        sortType: 'string',
+        customAttribute: 'inputField',
+      },
+      {
+        Header: 'Episode',
+        id: 'episode',
+        accessor: 'episode',
+        sortType: 'string',
+        customAttribute: 'inputField',
+      },
+    ],
+    []
+  );
+
+  const fetchUpdateFilter = useCallback(
+    async (filter: FilterEpisode) => {
+      await dispatch(setPageFilter(filter));
+    },
+    [dispatch]
+  );
+
+  const filterHeader = useMemo(() => {
+    const createFilterSchema: IFilterSchema = {
+      callbackFunction: fetchUpdateFilter,
+      actualFilterData: filterValue,
+      fields: columns
+        ?.filter((item) => !item.disableGlobalFilter)
+        .map((column: any) => ({
+          accessor: column?.id,
+          filterType: column?.customAttribute,
+        })),
+    };
+
+    return <DynamicFilterComponent variant="outlined" label="Filter(s) by" data={createFilterSchema} extraData={{}} />;
+  }, [columns, fetchUpdateFilter, filterValue]);
+
+  useEffect(() => {
+    fetchEpisodesData({
+      variables: {
+        page: 1,
+        filter: { ...filterValue },
+      },
+    });
+  }, [fetchEpisodesData, filterValue]);
+
+  // const onRowClick = useCallback((id: any) => {
+  const onRowClick = useCallback(() => {
+    // console.log('onRowClick clicked with ID:', id);
+  }, []);
+
+  const handleFetchDataFromTable = useCallback(
+    async ({ pageIndex: pageValue }: IEpisodes) => {
+      await dispatch(setPageIndex(pageValue));
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    if (!loading && data) {
+      setEpisodesData(data?.episodes?.results || []);
+      setTotalCount(data?.episodes?.info?.pages || 0);
+    }
+  }, [data, loading]);
+
+  useEffect(() => {
+    refetch({
+      page: pageIndex,
+    });
+  }, [pageIndex, refetch]);
+
+  // TODO: add custom css for error message or create an error message component
+  if (error) return <div data-testid="ShowCharactersPage">Error</div>;
+
+  return (
+    <CardContent data-testid="ShowEpisodesPage">
+      {filterHeader}
+      <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={episodesData} loading={loading} count={totalCount} queryPageSize={1} />
+    </CardContent>
+  );
 };
+
+export { ShowEpisodesPage, PropsShowEpisodesPage };

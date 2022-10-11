@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {ShowEpisodesPage} from './ShowEpisodes';
+import { ShowEpisodesPage } from './ShowEpisodes';
 import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import { ApolloProvider } from '@apollo/client';
