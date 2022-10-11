@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { ShowCharactersPage } from './ShowCharacters';
+import { ShowEpisodesPage } from './ShowEpisodes';
 import store from '../../../redux/store';
 import apolloClient from '../../../graphql';
 
@@ -21,14 +21,14 @@ afterEach(async () => {
   container = null;
 });
 
-describe('ShowCharactersPage test', () => {
+describe('ShowEpisodesPage test', () => {
   const renderComponent = () =>
     render(
       <Provider store={store}>
         <ApolloProvider client={apolloClient}>
-          <MemoryRouter initialEntries={[`/characters`]}>
+          <MemoryRouter initialEntries={[`/episodes`]}>
             <Routes>
-              <Route path="/characters" element={<ShowCharactersPage />} />
+              <Route path="/episodes" element={<ShowEpisodesPage />} />
             </Routes>
           </MemoryRouter>
         </ApolloProvider>
@@ -37,7 +37,7 @@ describe('ShowCharactersPage test', () => {
 
   it('has header', () => {
     renderComponent();
-    expect(screen.getByTestId('ShowCharactersPage')).toBeInTheDocument();
+    expect(screen.getByTestId('ShowEpisodesPage')).toBeInTheDocument();
   });
 
   // keep with others tests

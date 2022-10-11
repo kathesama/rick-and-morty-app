@@ -66,7 +66,7 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
   return (
     <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id" data-testid="DynamicFilterComponent">
       <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
-        <FontAwesomeIcon icon="magnifying-glass-location" color="SlateGrey" size="lg" title={label} />
+        <FontAwesomeIcon icon="magnifying-glass" color="SlateGrey" size="lg" title={label} />
       </Typography>
       <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle}>
         {fields?.map((item: TFilterFields) => {

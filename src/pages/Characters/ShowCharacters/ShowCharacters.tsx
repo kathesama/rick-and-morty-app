@@ -5,22 +5,22 @@ Project: rick-and-morty-app
 */
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, CardContent } from '@mui/material';
+import { Avatar, Badge, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
 
-import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
+import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 import { getCharactersState, setPageFilter, setPageIndex } from '../../../redux/characters/characters.slice';
 import CustomTableComponent from '../../../components/CustomTable/CustomTable';
 import { FilterCharacter } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 
-import { ICharacters } from '../../../graphql/InterfaceTypes';
+import { ICharacters } from '../../../redux/types/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowCharactersPage {}
@@ -52,6 +52,12 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         accessor: 'id',
         sortType: 'string',
         disableGlobalFilter: true,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Cell: ({ cell }: any) => (
+          <div>
+            <Badge badgeContent={cell.row.original.id} />
+          </div>
+        ),
       },
       {
         Header: 'Avatar',
