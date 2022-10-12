@@ -67,17 +67,22 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         accessor: 'episode',
         sortType: 'string',
         customAttribute: 'inputField',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => (
-          <Chip
-            variant="soft"
-            size="md"
-            startDecorator={
-              <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
-            }>
-            {cell.row.original.episode}
-          </Chip>
-        ),
+
+        /* // eslint-disable-next-line react/no-unstable-nested-components
+           Cell: ({ cell }: any) => (
+             <Chip
+               variant="soft"
+               size="md"
+               sx={{
+                 fontSize: 12,
+                 fontWeight: 'fontWeightLight'
+               }}
+               startDecorator={
+                 <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
+               }>
+               {cell.row.original.episode}
+             </Chip>
+           ), */
       },
     ],
     []

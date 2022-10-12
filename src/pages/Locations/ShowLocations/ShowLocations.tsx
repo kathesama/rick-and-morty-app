@@ -75,17 +75,21 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         accessor: 'type',
         sortType: 'string',
         customAttribute: 'inputField',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => (
-          <Chip
-            variant="soft"
-            size="md"
-            startDecorator={
-              <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
-            }>
-            {cell.row.original.type}
-          </Chip>
-        ),
+
+        /* // eslint-disable-next-line react/no-unstable-nested-components
+           Cell: ({ cell }: any) => (
+             <Chip
+               variant="soft"
+               size="md"
+               sx={{
+                 fontSize: '12px',
+               }}
+               startDecorator={
+                 <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
+               }>
+               {cell.row.original.type}
+             </Chip>
+           ), */
       },
     ],
     []
