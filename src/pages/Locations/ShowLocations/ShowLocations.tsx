@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
-import Chip from '@mui/joy/Chip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getLocationState, setPageFilter, setPageIndex } from '../../../redux/locations/locations.slice';
 
@@ -21,6 +19,7 @@ import { DynamicFilterComponent, IFilterSchema } from '../../../components/Dynam
 import { FilterLocation } from '../../../../__generated__/globalTypes';
 import { ILocations } from '../../../redux/types/types';
 import CustomTableComponent from '../../../components/CustomTable/CustomTable';
+import { ContentWrapperComponent } from '../../../components/UI/ContentWrapper/ContentWrapper';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowLocationsPage {}
@@ -51,7 +50,7 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         // eslint-disable-next-line react/no-unstable-nested-components
         Cell: ({ cell }: any) => (
           <div>
-            <Badge badgeContent={cell.row.original.id} />
+            <Badge badgeContent={cell.row.original.id} max={9999} />
           </div>
         ),
       },
@@ -75,17 +74,21 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         accessor: 'type',
         sortType: 'string',
         customAttribute: 'inputField',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => (
-          <Chip
-            variant="soft"
-            size="md"
-            startDecorator={
-              <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
-            }>
-            {cell.row.original.type}
-          </Chip>
-        ),
+
+        /* // eslint-disable-next-line react/no-unstable-nested-components
+           Cell: ({ cell }: any) => (
+             <Chip
+               variant="soft"
+               size="md"
+               sx={{
+                 fontSize: '12px',
+               }}
+               startDecorator={
+                 <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
+               }>
+               {cell.row.original.type}
+             </Chip>
+           ), */
       },
     ],
     []
@@ -153,12 +156,11 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
   return (
     <CardContent data-testid="ShowLocationsPage">
       {filterHeader}
-      <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={locationsData} loading={loading} count={totalCount} queryPageSize={1} />
+      <ContentWrapperComponent>
+        <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={locationsData} loading={loading} count={totalCount} queryPageSize={1} />
+      </ContentWrapperComponent>
     </CardContent>
   );
 };
 
-export {
-  ShowLocationsPage,
-  PropsShowLocationsPage,
-};
+export { ShowLocationsPage, PropsShowLocationsPage };

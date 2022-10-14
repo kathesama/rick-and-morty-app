@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Chip from '@mui/joy/Chip';
 
 // eslint-disable-next-line camelcase
 import { GetAllEpisodesPage_episodes_results } from '../../../graphql/__generated__/GetAllEpisodesPage';
@@ -20,6 +18,7 @@ import { FilterEpisode } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 import { IEpisodes } from '../../../redux/types/types';
 import CustomTableComponent from '../../../components/CustomTable/CustomTable';
+import { ContentWrapperComponent } from '../../../components/UI/ContentWrapper/ContentWrapper';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowEpisodesPage {}
@@ -50,7 +49,7 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         // eslint-disable-next-line react/no-unstable-nested-components
         Cell: ({ cell }: any) => (
           <div>
-            <Badge badgeContent={cell.row.original.id} />
+            <Badge badgeContent={cell.row.original.id} max={9999} />
           </div>
         ),
       },
@@ -67,17 +66,22 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         accessor: 'episode',
         sortType: 'string',
         customAttribute: 'inputField',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => (
-          <Chip
-            variant="soft"
-            size="md"
-            startDecorator={
-              <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
-            }>
-            {cell.row.original.episode}
-          </Chip>
-        ),
+
+        /* // eslint-disable-next-line react/no-unstable-nested-components
+           Cell: ({ cell }: any) => (
+             <Chip
+               variant="soft"
+               size="md"
+               sx={{
+                 fontSize: 12,
+                 fontWeight: 'fontWeightLight'
+               }}
+               startDecorator={
+                 <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
+               }>
+               {cell.row.original.episode}
+             </Chip>
+           ), */
       },
     ],
     []
@@ -146,12 +150,11 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
   return (
     <CardContent data-testid="ShowEpisodesPage">
       {filterHeader}
-      <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={episodesData} loading={loading} count={totalCount} queryPageSize={1} />
+      <ContentWrapperComponent>
+        <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={episodesData} loading={loading} count={totalCount} queryPageSize={1} />
+      </ContentWrapperComponent>
     </CardContent>
   );
 };
 
-export {
-  ShowEpisodesPage,
-  PropsShowEpisodesPage
-};
+export { ShowEpisodesPage, PropsShowEpisodesPage };

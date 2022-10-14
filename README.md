@@ -6,8 +6,8 @@
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![YARN](https://img.shields.io/badge/YARN-%23000000.svg?style=for-the-badge&logo=yarn&logoColor=white)
 <br>
+[<img src="https://sonarcloud.io/images/project_badges/sonarcloud-white.svg" width="85">](https://sonarcloud.io/summary/new_code?id=kathesama_rick-and-morty-app)
 [![CodeQL](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml)
-[![SonarCloud analysis](https://github.com/kathesama/rick-and-morty-app/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/kathesama/rick-and-morty-app/actions/workflows/sonarcloud.yml)
 <br>
 [![GitHub issues](https://img.shields.io/github/issues/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/issues)
 [![GitHub forks](https://img.shields.io/github/forks/kathesama/rick-and-morty-app?style=plastic)](https://github.com/kathesama/rick-and-morty-app/network)

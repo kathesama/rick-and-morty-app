@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Badge, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
@@ -21,12 +19,16 @@ import { FilterCharacter } from '../../../../__generated__/globalTypes';
 import { DynamicFilterComponent, IFilterSchema } from '../../../components/DynamicFilter/DynamicFilter';
 
 import { ICharacters } from '../../../redux/types/types';
+import { getCharStatusIcon, getGenderIcon } from '../../../utilities/uiFunctions';
+import { ContentWrapperComponent } from '../../../components/UI/ContentWrapper/ContentWrapper';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsShowCharactersPage {}
 
 const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const {
     pageIndex = 0,
     filterValue,
@@ -55,7 +57,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         // eslint-disable-next-line react/no-unstable-nested-components
         Cell: ({ cell }: any) => (
           <div>
-            <Badge badgeContent={cell.row.original.id} />
+            <Badge badgeContent={cell.row.original.id} max={9999} />
           </div>
         ),
       },
@@ -85,23 +87,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         sortType: 'string',
         customAttribute: 'dropdown',
         // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => {
-          let output = <ContactSupportRoundedIcon />;
-          // eslint-disable-next-line default-case
-          switch (cell.row.original.status.toLowerCase()) {
-            case 'alive':
-              output = <FontAwesomeIcon icon="heart-pulse" color="LawnGreen" size="lg" title={cell.row.original.status} />;
-              break;
-            case 'dead':
-              output = <FontAwesomeIcon icon="skull-crossbones" color="OrangeRed" size="lg" title={cell.row.original.status} />;
-              break;
-            case 'unknown':
-              output = <FontAwesomeIcon icon="circle-xmark" color="SlateGrey" size="lg" title={cell.row.original.status} />;
-              break;
-          }
-
-          return <div>{output}</div>;
-        },
+        Cell: ({ cell }: any) => getCharStatusIcon(cell.row.original.status),
       },
       {
         Header: 'Gender',
@@ -110,26 +96,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         sortType: 'string',
         customAttribute: 'dropdown',
         // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => {
-          let output = <ContactSupportRoundedIcon />;
-          // eslint-disable-next-line default-case
-          switch (cell.row.original.gender.toLowerCase()) {
-            case 'female':
-              output = <FontAwesomeIcon icon="venus" color="fuchsia" size="lg" title={cell.row.original.gender} />;
-              break;
-            case 'male':
-              output = <FontAwesomeIcon icon="mars" color="LightSeaGreen" size="lg" title={cell.row.original.gender} />;
-              break;
-            case 'genderless':
-              output = <FontAwesomeIcon icon="genderless" color="Teal" size="lg" title={cell.row.original.gender} />;
-              break;
-            case 'unknown':
-              output = <FontAwesomeIcon icon="question-circle" color="Chartreuse" size="lg" title={cell.row.original.gender} />;
-              break;
-          }
-
-          return <div>{output}</div>;
-        },
+        Cell: ({ cell }: any) => getGenderIcon(cell.row.original.gender),
       },
     ],
     []
@@ -176,10 +143,12 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
     });
   }, [fetchCharactersData, filterValue]);
 
-  // const onRowClick = useCallback((id: any) => {
-  const onRowClick = useCallback(() => {
-    // console.log('onRowClick clicked with ID:', id);
-  }, []);
+  const onRowClick = useCallback(
+    ({ id }: any) => {
+      navigate(`/characters/${id}`);
+    },
+    [navigate]
+  );
 
   const handleFetchDataFromTable = useCallback(
     async ({ pageIndex: pageValue }: ICharacters) => {
@@ -207,7 +176,9 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
   return (
     <CardContent data-testid="ShowCharactersPage">
       {filterHeader}
-      <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={charactersData} loading={loading} count={totalCount} queryPageSize={1} />
+      <ContentWrapperComponent>
+        <CustomTableComponent disableFilters onRowClick={onRowClick} onFetchData={handleFetchDataFromTable} columns={columns} data={charactersData} loading={loading} count={totalCount} queryPageSize={1} />
+      </ContentWrapperComponent>
     </CardContent>
   );
 };

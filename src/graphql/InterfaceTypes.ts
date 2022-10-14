@@ -1,4 +1,6 @@
 // -------------- CHARACTERS
+import { DocumentNode } from '@apollo/react-hooks';
+
 export interface FilterCharacter {
   name?: string | null;
   status?: string | null;
@@ -32,11 +34,11 @@ export interface IFilterEpisodes {
 export interface EpisodeSchemaInterface {
   id: number;
   name: string;
-  air_date: string;
   episode: string;
-  characters: string[];
-  url: string;
-  created: string;
+  air_date?: string;
+  characters?: string[];
+  url?: string;
+  created?: string;
 }
 
 // -------------- LOCATIONS
@@ -56,3 +58,15 @@ export interface LocationSchemaInterface {
   url: string;
   created: string;
 }
+
+
+// -------------- MOCKING DATA TYPE
+export type MockType<TData, TVariables> = {
+  request: {
+    query: DocumentNode
+    variables: TVariables
+  },
+  result: {
+    data: TData
+  }
+};
