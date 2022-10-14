@@ -33,7 +33,9 @@ import pxToRem from './functions/pxToRem';
 import rgba from './functions/rgba';
 
 // Material Kit 2 React components base styles for @mui material components
+
 import list from './components/list';
+import chip from './components/chip';
 import listItem from './components/list/listItem';
 import listItemText from './components/list/listItemText';
 import card from './components/card';
@@ -107,6 +109,7 @@ export default createTheme({
       },
     },
     MuiList: { ...list },
+    MuiChip: { ...chip },
     MuiListItem: { ...listItem },
     MuiListItemText: { ...listItemText },
     MuiCard: { ...card },

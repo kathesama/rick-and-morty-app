@@ -3,102 +3,104 @@ Created by: Katherine Aguirre
 On: 11/10/2022 : 14:06
 Project: rick-and-morty-app
 */
-import React, { useState, FC } from 'react';
-import { Avatar, Box, Container, Grid, Icon, Typography } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FC, useCallback } from 'react';
+import { Avatar, Box, Container, Divider, Grid, styled, Typography } from '@mui/material';
 
 import { getCharStatusIcon, getGenderIcon } from '../../utilities/uiFunctions';
 import cssStyle from './CharacterCard.module.scss';
+import { EpisodeSchemaInterface } from '../../graphql/InterfaceTypes';
+import { SubContentWrapperComponent } from '../UI/SubContentWrapper/SubContentWrapper';
+import { SubContentTitleComponent } from '../UI/SubContentTitle/SubContentTitle';
+import { CustomChipComponent } from '../UI/CustomChip/CustomChip';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsCharacterCardComponent {
-  id: string;
   image: string;
   name: string;
   gender: string;
   status: string;
-  location: string;
+  location: any;
+  origin: any;
   species: string;
   type: string;
+  episode: EpisodeSchemaInterface[];
 }
 
-const CharacterCardComponent: FC<PropsCharacterCardComponent> = ({id, image, name, gender, status, location, species, type}: PropsCharacterCardComponent): any => {
-  const [state, setState] = useState('');
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme?.spacing(0.5),
+}));
 
-  console.log(id);
+const CharacterCardComponent: FC<PropsCharacterCardComponent> = ({
+                                                                   image,
+                                                                   name,
+                                                                   gender,
+                                                                   status,
+                                                                   location,
+                                                                   species,
+                                                                   type,
+                                                                   origin,
+                                                                   episode
+}: PropsCharacterCardComponent): any => {
+  const callBackFn = useCallback(
+    // TODO: add link to redirect navigation
+    (value: string) => console.log(value),
+    []
+  );
+
   return (
-    <Box component="section" py={{ xs: 12, sm: 12 }} data-testid="ShowCharactersPage" id="ShowCharactersPage">
-      <Container sx={{ p: 0,  }} data-testid="container-char-card-id" id="container-char-card-id" >
-        <Grid container item xs={12} justifyContent="center"  data-testid="grid-avatar-char-card-id" id="grid-avatar-char-card-id">
+    <Box component="section" py={{ xs: 12, sm: 12 }} data-testid="CharacterCardComponent" id="CharacterCardComponent">
+      <Container sx={{ p: 0 }} data-testid="container-char-card-id" id="container-char-card-id">
+        <Grid container item xs={12} justifyContent="center" data-testid="grid-avatar-char-card-id" id="grid-avatar-char-card-id">
           <Box mt={{ xs: 16, md: -25 }} textAlign="center" data-testid="box-avatar-char-card-id" id="box-avatar-char-card-id">
-            <Avatar src={image} sx={{ width: 250, height: 250 }} className={cssStyle.avatarChar} data-testid="avatar-avatar-char-card-id" id="avatar-avatar-char-card-id"/>
+            <Avatar src={image} sx={{ width: 250, height: 250 }} className={cssStyle.avatarChar} data-testid="avatar-avatar-char-card-id" id="avatar-avatar-char-card-id" />
           </Box>
           <Grid container justifyContent="center" py={6} data-testid="grid-content-char-card-id" id="grid-content-char-card-id">
-            <Grid item xs={12} md={7} mx={{ xs: 'auto', sm: 6, md: 1 }}>
-              <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                <Typography variant="h3">{name}</Typography>
+            <Grid item xs={12} md={7} mx={{ xs: 'auto', sm: 6, md: 1 }} data-testid="internal-grid-content-char-card-id" id="internal-grid-content-char-card-id">
+              <Box display="flex" justifyContent="space-between" alignItems="center" mb={1} data-testid="internal-grid-box-card-id" id="internal-grid-box-card-id">
+                <Typography variant="h3" data-testid="ig-typography-card-id" id="ig-typography-card-id">{name}</Typography>
               </Box>
-              <Grid container spacing={2} mb={3}>
-                <Grid item className={cssStyle.boxItems} >
+              <Grid container spacing={2} mb={3} data-testid="ig-grid-icons-card-id" id="ig-grid-icons-card-id">
+                <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-gender-card-id" id="ig-grid-icons-gender-card-id">
                   {getGenderIcon(gender)}&nbsp;{gender}
                 </Grid>
-                <Grid item className={cssStyle.boxItems} >
+                <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-status-card-id" id="ig-grid-status-gender-card-id">
                   {getCharStatusIcon(status)}&nbsp;{status}
                 </Grid>
-                <Grid item className={cssStyle.boxItems}>
-                  <Typography component="span" variant="body2" color="text">
-                    <FontAwesomeIcon icon="map-location-dot" color="SeaGreen" size="lg" title="Location" />
-                  </Typography>
-                  <Typography component="span" variant="body2" fontWeight="bold">
-                    &nbsp;location
-                  </Typography>
+                <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-species-card-id">
+                  <SubContentTitleComponent icon="dna" iconColor="Crimson" title="Specie" >
+                    &nbsp;{species || '?'}
+                  </SubContentTitleComponent>
                 </Grid>
-                <Grid item className={cssStyle.boxItems}>
-                  <Typography component="span" variant="body2" color="text">
-                    <FontAwesomeIcon icon="dna" color="Crimson" size="lg" title="Specie" />
-                  </Typography>
-                  <Typography component="span" variant="body2" fontWeight="bold">
-                    &nbsp;{species}
-                  </Typography>
-                </Grid>
-                <Grid item className={cssStyle.boxItems}>
-                  <Typography component="span" variant="body2" color="text">
-                    <FontAwesomeIcon icon="microscope" color="Indigo" size="lg" title='Type' />
-                  </Typography>
-                  <Typography component="span" variant="body2" fontWeight="bold">
+                <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-type-card-id">
+                  <SubContentTitleComponent icon="microscope" iconColor="Indigo" title="Type">
                     &nbsp;{type || '?'}
-                  </Typography>
+                  </SubContentTitleComponent>
                 </Grid>
               </Grid>
-              <Typography variant="body1" fontWeight="light" color="text">
-                Decisions: If you can&apos;t decide, the answer is no. If two equally difficult
-                paths, choose the one more painful in the short term (pain avoidance is creating an
-                illusion of equality). Choose the path that leaves you more equanimous. <br />
-                <Typography
-                  component="a"
-                  href="#"
-                  variant="body1"
-                  fontWeight="light"
-                  color="info"
-                  mt={3}
-                  sx={{
-                    width: 'max-content',
-                    display: 'flex',
-                    alignItems: 'center',
+              <Divider variant="middle" data-testid="ig-grid-origin-divider-card-id"/>
 
-                    '& .material-icons-round': {
-                      transform: `translateX(3px)`,
-                      transition: 'transform 0.2s cubic-bezier(0.34, 1.61, 0.7, 1.3)',
-                    },
+              <SubContentWrapperComponent icon="map-location-dot" iconColor="SeaGreen" title="Origin">
+                <CustomChipComponent label={origin?.name} url={origin?.id ? `/location/${origin?.id}` : undefined} callBackFunction={origin?.id ? callBackFn : undefined} isButton={false} />
+              </SubContentWrapperComponent>
 
-                    '&:hover .material-icons-round, &:focus .material-icons-round': {
-                      transform: `translateX(6px)`,
-                    },
-                  }}
-                >
-                  More about me <Icon sx={{ fontWeight: 'bold' }}>arrow_forward</Icon>
-                </Typography>
-              </Typography>
+              <Divider variant="middle" data-testid="ig-grid-location-divider-card-id"/>
+              <SubContentWrapperComponent icon="location-dot" iconColor="Indigo" title="Location">
+                <CustomChipComponent
+                  // icon="arrows-to-circle"
+                  label={`${location?.type} / ${location?.name}` || '?'}
+                  url={location?.id ? `/location/${location?.id}` : undefined}
+                  callBackFunction={location?.id ? callBackFn : undefined}
+                  isButton={false}
+                />
+              </SubContentWrapperComponent>
+              <Divider variant="middle" />
+              <SubContentWrapperComponent icon="film" iconColor="RoyalBlue" title="Episode(s)">
+                {episode?.map((data) => (
+                  <ListItem key={data.id}>
+                    <CustomChipComponent label={data?.episode} url={`/episodes/${data?.id}`} callBackFunction={callBackFn} />
+                  </ListItem>
+                ))}
+              </SubContentWrapperComponent>
             </Grid>
           </Grid>
         </Grid>
@@ -107,7 +109,4 @@ const CharacterCardComponent: FC<PropsCharacterCardComponent> = ({id, image, nam
   );
 };
 
-export {
-  CharacterCardComponent,
-  PropsCharacterCardComponent,
-};
+export { CharacterCardComponent, PropsCharacterCardComponent };

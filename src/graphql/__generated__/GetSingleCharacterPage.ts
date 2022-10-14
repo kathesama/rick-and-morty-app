@@ -10,6 +10,10 @@
 export interface GetSingleCharacterPage_character_origin {
   __typename: 'Location';
   /**
+   * The id of the location.
+   */
+  id: string | null;
+  /**
    * The name of the location.
    */
   name: string | null;

@@ -38,7 +38,9 @@ const NotFoundPage: FC = () => {
             color: 'white',
             borderColor: 'white',
           }}
-          onClick={() => {navigate(`/`);}}
+          onClick={() => {
+            navigate(`/`);
+          }}
         >
           Back Home
         </Button>

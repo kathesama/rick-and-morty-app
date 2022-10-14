@@ -64,29 +64,32 @@ const DynamicFilterComponent: FC<any> = (props: PropsDynamicFilterComponent): an
   };
 
   return (
-    <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id" data-testid="DynamicFilterComponent">
-      <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
-        <FontAwesomeIcon icon="magnifying-glass" color="SlateGrey" size="lg" title={label} />
-      </Typography>
-      <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle}>
-        {fields?.map((item: TFilterFields) => {
-          const accessor: string = item?.accessor || '';
-          const filterType: string = item?.filterType || undefined;
-
-          const actualValue: string = actualFilterData[accessor] ?? '';
-          const extraDataValue: string[] = extraData[accessor] ?? '';
-
-          return filterType && filterType === 'inputField' ? (
-            <CustomInputComponent label={accessor} variant={variant} actualValue={actualValue} handlerOnChange={dispatchCallbackFunction} />
-          ) : (
-            <CustomSelectComponent label={accessor} variant={variant} options={extraDataValue} handlerOnChange={dispatchCallbackFunction} actualValue={actualValue} />
-          );
-        })}
-        <Typography className={cssStyle.baseStyleVariant} key="dynamic-selector-label-trash-key" id="dynamic-selector-label-tras-id" data-testid="label-dynamic-filter-trash-id" onClick={cleanFilters}>
-          <FontAwesomeIcon icon="trash-restore" color="SlateGrey" size="lg" title="blank filters" />
+    <>
+      <Paper className={cssStyle.flexContainer} key="dynamic-selector-paper-key" id="dynamic-selector-paper-id" data-testid="DynamicFilterComponent">
+        <Typography variant="subtitle1" key="dynamic-selector-label-key" id="dynamic-selector-label-id" data-testid="label-dynamic-filter-id">
+          <FontAwesomeIcon icon="magnifying-glass" color="SlateGrey" size="lg" title={label} />
         </Typography>
-      </Box>
-    </Paper>
+        <Box key="dynamic-selector-box-key" id="dynamic-selector-box-id" className={cssStyle.baseStyle}>
+          {fields?.map((item: TFilterFields) => {
+            const accessor: string = item?.accessor || '';
+            const filterType: string = item?.filterType || undefined;
+
+            const actualValue: string = actualFilterData[accessor] ?? '';
+            const extraDataValue: string[] = extraData[accessor] ?? '';
+
+            return filterType && filterType === 'inputField' ? (
+              <CustomInputComponent label={accessor} variant={variant} actualValue={actualValue} handlerOnChange={dispatchCallbackFunction} />
+            ) : (
+              <CustomSelectComponent label={accessor} variant={variant} options={extraDataValue} handlerOnChange={dispatchCallbackFunction} actualValue={actualValue} />
+            );
+          })}
+          <Typography className={cssStyle.baseStyleVariant} key="dynamic-selector-label-trash-key" id="dynamic-selector-label-tras-id" data-testid="label-dynamic-filter-trash-id" onClick={cleanFilters}>
+            <FontAwesomeIcon icon="trash-restore" color="SlateGrey" size="lg" title="blank filters" />
+          </Typography>
+        </Box>
+      </Paper>
+      <Box sx={{ height: 20 }} />
+    </>
   );
 };
 

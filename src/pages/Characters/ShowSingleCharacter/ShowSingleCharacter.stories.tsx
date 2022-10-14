@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {ShowSingleCharacterPage} from './ShowSingleCharacter';
+import { ShowSingleCharacterPage } from './ShowSingleCharacter';
 
 export default {
   title: 'Component/Pages/ShowSingleCharacter',

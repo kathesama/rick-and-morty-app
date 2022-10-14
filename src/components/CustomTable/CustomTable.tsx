@@ -189,6 +189,7 @@ const CustomTableComponent = <T extends object>({ columns, data, count = 0, quer
           </TableBody>
         </MuiTable>
       </TableContainer>
+      <Box sx={{ height: 20 }} />
       <Pagination
         count={count}
         color="primary"

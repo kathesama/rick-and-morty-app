@@ -13,7 +13,6 @@ import { ShowLocationsPage } from './pages/Locations/ShowLocations/ShowLocations
 import { ShowEpisodesPage } from './pages/Episodes/ShowEpisodes/ShowEpisodes';
 import { ShowSingleCharacterPage } from './pages/Characters/ShowSingleCharacter/ShowSingleCharacter';
 
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IApplicationProps {}
 

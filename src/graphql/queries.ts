@@ -32,6 +32,7 @@ const GET_SINGLE_CHARACTER = gql`
       gender
       created
       origin {
+        id
         name
       }
       location {
