@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CustomChipComponent } from './CustomChip';
 
 export default {
-  title: 'Component/CustomChipComponent',
+  title: 'Component/UI/CustomChip',
   component: CustomChipComponent,
 } as ComponentMeta<typeof CustomChipComponent>;
 

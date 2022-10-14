@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ContentWrapperComponent } from './ContentWrapper';
 
 export default {
-  title: 'Component/ContentWrapperComponent',
+  title: 'Component/UI/ContentWrapper',
   component: ContentWrapperComponent,
 } as ComponentMeta<typeof ContentWrapperComponent>;
 

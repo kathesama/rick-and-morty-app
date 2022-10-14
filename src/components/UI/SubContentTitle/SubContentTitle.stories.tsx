@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SubContentTitleComponent } from './SubContentTitle';
 
 export default {
-  title: 'Component/SubContentTitleComponent',
+  title: 'Component/UI/SubContentTitle',
   component: SubContentTitleComponent,
 } as ComponentMeta<typeof SubContentTitleComponent>;
 

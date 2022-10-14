@@ -3,6 +3,23 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { CharacterCardComponent } from './CharacterCard';
 
+const defaultProps = {
+  id: 1,
+  image: "https://rickandmortyapi.com/api/character/avatar/266.jpeg",
+  name: "Piece of Toast",
+  gender: "Genderless",
+  status: "Alive",
+  location: "unknown",
+  species: "unknown",
+  type: "Bread",
+  origin: "unknown",
+  episode: [{
+    id: 8,
+    name: "Rixty Minutes",
+    episode: "S01E08",
+  }]
+}
+
 export default {
   title: 'Component/Functional/CharacterCard',
   component: CharacterCardComponent,
@@ -14,6 +31,6 @@ export const Default = Template.bind({});
 Default.args = {
   primary: true,
   label: 'CharacterCardComponent',
-  id: 1,
-  image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+
+  ...defaultProps,
 };

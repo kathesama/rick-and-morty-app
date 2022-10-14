@@ -7,8 +7,6 @@ H
 src/Application.test.tsx,5\6\5631bada16568dabd98b4d765f0e9b797eb58d0a
 O
 src/pages/NotFound/NotFound.tsx,d\f\df6cad2fa1ff2b06380b5527f8f08c089270828c
-f
-6src/components/CharacterCard/CharacterCard.stories.tsx,7\3\7380e1311c69e58a538fd2f55a5eb33275a9aff7
 ^
 .src/assets/theme/components/button/outlined.js,e\b\ebfe500ff9a7f2a2a3d96fb2fa412cb75a77098e
 _
