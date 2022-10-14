@@ -7,7 +7,7 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
-import { Badge, CardContent, Chip } from '@mui/material';
+import { Badge, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line camelcase
