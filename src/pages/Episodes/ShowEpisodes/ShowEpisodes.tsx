@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line camelcase
 import { GetAllEpisodesPage_episodes_results } from '../../../graphql/__generated__/GetAllEpisodesPage';
@@ -25,6 +26,8 @@ interface PropsShowEpisodesPage {}
 
 const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { pageIndex = 0, filterValue } = useSelector(getEpisodesState);
 
   // eslint-disable-next-line camelcase
@@ -66,22 +69,6 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         accessor: 'episode',
         sortType: 'string',
         customAttribute: 'inputField',
-
-        /* // eslint-disable-next-line react/no-unstable-nested-components
-           Cell: ({ cell }: any) => (
-             <Chip
-               variant="soft"
-               size="md"
-               sx={{
-                 fontSize: 12,
-                 fontWeight: 'fontWeightLight'
-               }}
-               startDecorator={
-                 <FontAwesomeIcon icon="film" color="MediumVioletRed" size="lg" title={cell.row.original.status} />
-               }>
-               {cell.row.original.episode}
-             </Chip>
-           ), */
       },
     ],
     []
@@ -119,10 +106,12 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
     });
   }, [fetchEpisodesData, filterValue]);
 
-  // const onRowClick = useCallback((id: any) => {
-  const onRowClick = useCallback(() => {
-    // console.log('onRowClick clicked with ID:', id);
-  }, []);
+  const onRowClick = useCallback(
+    ({ id }: any) => {
+      navigate(`/episodes/${id}`);
+    },
+    [navigate]
+  );
 
   const handleFetchDataFromTable = useCallback(
     async ({ pageIndex: pageValue }: IEpisodes) => {

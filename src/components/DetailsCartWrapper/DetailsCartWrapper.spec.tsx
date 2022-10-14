@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 
-import { LocationCardComponent } from './LocationCard';
+import { DetailsCartWrapperComponent } from './DetailsCartWrapper';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../../graphql';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { ShowLocationsPage } from '../../pages/Locations/ShowLocations/ShowLocations';
+import { LocationCardComponent } from '../LocationCard/LocationCard';
 
 let container: any;
 
@@ -22,23 +22,29 @@ afterEach(async () => {
   container = null;
 });
 
-describe('LocationCardComponent test', () => {
+describe('DetailsCartWrapperComponent test', () => {
   const renderComponent = () =>
     render(
       <Provider store={store}>
         <ApolloProvider client={apolloClient}>
           <MemoryRouter initialEntries={[`/locations`]}>
             <Routes>
-              <Route path="/locations" element={<LocationCardComponent />} />
+              <Route path="/locations" element={<DetailsCartWrapperComponent />} />
             </Routes>
           </MemoryRouter>
         </ApolloProvider>
       </Provider>
     );
 
+  const setup = async () => {
+    act(() => {
+      ReactDOM.createRoot(container).render(<DetailsCartWrapperComponent />);
+    });
+  };
+
   it('has header', () => {
     renderComponent();
-    expect(screen.getByTestId('LocationCardComponent')).toBeInTheDocument();
+    expect(screen.getByTestId('details-cart-wrapper')).toBeInTheDocument();
   });
 
   // keep with others tests

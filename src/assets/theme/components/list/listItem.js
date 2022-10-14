@@ -22,6 +22,7 @@ export default {
     root: {
       paddingTop: 0,
       paddingBottom: 0,
+      width: 'none',
     },
   },
 };

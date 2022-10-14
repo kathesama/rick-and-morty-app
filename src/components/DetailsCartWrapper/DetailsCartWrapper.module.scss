@@ -1,0 +1,18 @@
+.boxItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widthBox {
+  min-width: 480px;
+}
+
+.itemList {
+  width: auto !important;
+  min-width: 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
