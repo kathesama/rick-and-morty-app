@@ -3,6 +3,11 @@ import { act, render, renderHook, screen, waitFor } from '@testing-library/react
 import ReactDOM from 'react-dom/client';
 
 import { CharacterCardComponent } from './CharacterCard';
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '../../graphql';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 let container: any;
 
@@ -35,14 +40,21 @@ const defaultProps = {
 };
 
 describe('CharacterCardComponent test', () => {
-  const setup = async () => {
-    act(() => {
-      ReactDOM.createRoot(container).render(<CharacterCardComponent {...defaultProps} />);
-    });
-  };
+  const renderComponent = () =>
+    render(
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <MemoryRouter initialEntries={[`/locations`]}>
+            <Routes>
+              <Route path="/locations" element={<CharacterCardComponent {...defaultProps} />} />
+            </Routes>
+          </MemoryRouter>
+        </ApolloProvider>
+      </Provider>
+    );
 
   it('has header', () => {
-    setup();
+    renderComponent();
     expect(screen.getByTestId('CharacterCardComponent')).toBeInTheDocument();
   });
 

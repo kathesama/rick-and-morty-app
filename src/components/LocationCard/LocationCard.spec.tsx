@@ -3,6 +3,12 @@ import { act, render, renderHook, screen, waitFor } from '@testing-library/react
 import ReactDOM from 'react-dom/client';
 
 import { LocationCardComponent } from './LocationCard';
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '../../graphql';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { ShowLocationsPage } from '../../pages/Locations/ShowLocations/ShowLocations';
 
 let container: any;
 
@@ -17,14 +23,21 @@ afterEach(async () => {
 });
 
 describe('LocationCardComponent test', () => {
-  const setup = async () => {
-    act(() => {
-      ReactDOM.createRoot(container).render(<LocationCardComponent />);
-    });
-  };
+  const renderComponent = () =>
+    render(
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <MemoryRouter initialEntries={[`/locations`]}>
+            <Routes>
+              <Route path="/locations" element={<LocationCardComponent />} />
+            </Routes>
+          </MemoryRouter>
+        </ApolloProvider>
+      </Provider>
+    );
 
   it('has header', () => {
-    setup();
+    renderComponent();
     expect(screen.getByTestId('LocationCardComponent')).toBeInTheDocument();
   });
 

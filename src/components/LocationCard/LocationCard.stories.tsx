@@ -2,10 +2,28 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { LocationCardComponent } from './LocationCard';
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '../../graphql';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 export default {
   title: 'Component/Functional/LocationCard',
   component: LocationCardComponent,
+  decorators: [
+    (Story) => (
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <MemoryRouter initialEntries={[`/characters`]}>
+            <Routes>
+              <Route path="/characters" element={<Story />} />
+            </Routes>
+          </MemoryRouter>
+        </ApolloProvider>
+      </Provider>
+    ),
+  ],
 } as ComponentMeta<typeof LocationCardComponent>;
 
 const defaultProps = {

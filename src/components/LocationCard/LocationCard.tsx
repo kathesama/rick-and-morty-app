@@ -14,10 +14,10 @@ import { SubContentTitleComponent } from '../UI/SubContentTitle/SubContentTitle'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PropsLocationCardComponent {
-  name: string | null;
-  type: string | null;
-  dimension: string | null;
-  residents: any[];
+  name?: string | null;
+  type?: string | null;
+  dimension?: string | null;
+  residents?: any[];
 }
 
 const ListItem = styled('li')(({ theme }) => ({
@@ -30,12 +30,12 @@ const LocationCardComponent: FC<PropsLocationCardComponent> = ({ name = 'Default
   const callBackFn = useCallback((url: string) => navigate(url), [navigate]);
 
   return (
-    <Box component="section" py={{ xs: 12, sm: 12 }} data-testid="LocationCardComponent">
+    <Box component="section" py={{ xs: 12, sm: 12 }} data-testid="LocationCardComponent" >
       <Container sx={{ p: 0 }} data-testid="container-location-card-id">
-        <Grid container item xs={12} justifyContent="center" data-testid="grid-avatar-char-card-id" id="grid-avatar-char-card-id">
+        <Grid container item xs={12} justifyContent="center" data-testid="grid-avatar-char-card-id" className={cssStyle.widthBox}>
           <Grid container justifyContent="center" py={6} data-testid="grid-avatar-loc-card-id">
-            <Grid item xs={12} md={7} mx={{ xs: 'auto', sm: 6, md: 1 }} data-testid="internal-grid-content-loc-card-id">
-              <Box display="flex" justifyContent="space-between" alignItems="center" mb={1} data-testid="internal-grid-box-card-id" id="internal-grid-box-card-id">
+            <Grid item xs={12} md={7} mx={{ xs: 'auto', sm: 12, md: 1 }} data-testid="internal-grid-content-loc-card-id">
+              <Box display="flex" justifyContent="space-between" alignItems="center" mb={1} data-testid="internal-grid-box-card-id">
                 <Typography variant="h3" data-testid="ig-typography-card-id" id="ig-typography-card-id">
                   {name}
                 </Typography>
@@ -54,7 +54,7 @@ const LocationCardComponent: FC<PropsLocationCardComponent> = ({ name = 'Default
               </Grid>
 
               <Divider variant="middle" />
-              <SubContentWrapperComponent icon="film" iconColor="RoyalBlue" title="Resident(s)">
+              <SubContentWrapperComponent icon="people-roof" iconColor="RoyalBlue" title="Resident(s)">
                 {residents?.map((data) => (
                   <ListItem key={data.id}>
                     <CustomChipComponent label={data?.name} url={`/characters/${data?.id}`} callBackFunction={callBackFn} avatar={data?.image} />
