@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// ------------------ CHARACTERS
 const GET_ALL_CHARACTERS = gql`
   query GetCharactersPage($page: Int, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
@@ -49,6 +50,7 @@ const GET_SINGLE_CHARACTER = gql`
   }
 `;
 
+// ------------------ EPISODES
 const GET_ALL_EPISODES = gql`
   query GetAllEpisodesPage($page: Int!, $filter: FilterEpisode) {
     episodes(page: $page, filter: $filter) {
@@ -88,6 +90,7 @@ const GET_SINGLE_EPISODE = gql`
   }
 `;
 
+// ------------------ LOCATIONS
 const GET_ALL_LOCATIONS = gql`
   query GetAllLocationsPage($page: Int!, $filter: FilterLocation) {
     locations(page: $page, filter: $filter) {
@@ -110,4 +113,20 @@ const GET_ALL_LOCATIONS = gql`
   }
 `;
 
-export { GET_ALL_CHARACTERS, GET_SINGLE_CHARACTER, GET_ALL_EPISODES, GET_SINGLE_EPISODE, GET_ALL_LOCATIONS };
+const GET_SINGLE_LOCATION = gql`
+  query GetSingleLocationPage($id: ID!) {
+    location(id: $id) {
+      id
+      name
+      type
+      dimension
+      residents {
+        id
+        name
+        image
+      }
+    }
+  }
+`;
+
+export { GET_ALL_CHARACTERS, GET_SINGLE_CHARACTER, GET_ALL_EPISODES, GET_SINGLE_EPISODE, GET_ALL_LOCATIONS, GET_SINGLE_LOCATION };

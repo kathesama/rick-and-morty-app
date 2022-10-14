@@ -9,7 +9,7 @@ import cssStyle from './ContentWrapper.module.scss';
 import { getRandomBanner } from '../../../utilities/uiFunctions';
 
 interface PropsContentWrapperComponent {
-  children: ReactElement | ReactElement[];
+  children: string | ReactElement | ReactElement[];
   bgImage?: any;
 }
 

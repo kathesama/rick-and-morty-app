@@ -8,7 +8,7 @@ import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../../../graphql';
 
 export default {
-  title: 'Component/Pages/ShowEpisodesPage',
+  title: 'Component/Pages/ShowEpisodes',
   component: ShowEpisodesPage,
   decorators: [
     (Story) => (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ApolloProvider } from '@apollo/client';
 
@@ -14,7 +15,11 @@ export default {
     (Story) => (
       <Provider store={store}>
         <ApolloProvider client={apolloClient}>
-          <Story />
+          <MemoryRouter initialEntries={[`/characters`]}>
+            <Routes>
+              <Route path="/characters" element={<Story />} />
+            </Routes>
+          </MemoryRouter>
         </ApolloProvider>
       </Provider>
     ),

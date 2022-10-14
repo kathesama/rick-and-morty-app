@@ -17,6 +17,26 @@ import {
   faMicroscope,
   faLocationDot,
   faArrowsToCircle,
+  faPeopleRoof
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faLocationDot, faHouseFlag, faBan, faVenus, faMars, faHeartPulse, faQuestionCircle, faGenderless, faSkullCrossbones, faCircleXmark, faMagnifyingGlass, faTrashRestore, faFilm, faMapLocationDot, faDna, faMicroscope, faArrowsToCircle);
+library.add(
+  faPeopleRoof,
+  faLocationDot,
+  faHouseFlag,
+  faBan,
+  faVenus,
+  faMars,
+  faHeartPulse,
+  faQuestionCircle,
+  faGenderless,
+  faSkullCrossbones,
+  faCircleXmark,
+  faMagnifyingGlass,
+  faTrashRestore,
+  faFilm,
+  faMapLocationDot,
+  faDna,
+  faMicroscope,
+  faArrowsToCircle,
+);

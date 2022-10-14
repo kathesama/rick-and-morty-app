@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SubContentWrapperComponent } from './SubContentWrapper';
 
 export default {
-  title: 'Component/SubContentWrapperComponent',
+  title: 'Component/UI/SubContentWrapper',
   component: SubContentWrapperComponent,
 } as ComponentMeta<typeof SubContentWrapperComponent>;
 

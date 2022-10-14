@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { getLocationState, setPageFilter, setPageIndex } from '../../../redux/locations/locations.slice';
 
@@ -26,6 +27,8 @@ interface PropsShowLocationsPage {}
 
 const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { pageIndex = 0, filterValue } = useSelector(getLocationState);
 
   // eslint-disable-next-line camelcase
@@ -125,10 +128,12 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
     });
   }, [fetchLocationsData, filterValue]);
 
-  // const onRowClick = useCallback((id: any) => {
-  const onRowClick = useCallback(() => {
-    // console.log('onRowClick clicked with ID:', id);
-  }, []);
+  const onRowClick = useCallback(
+    ({ id }: any) => {
+      navigate(`/locations/${id}`);
+    },
+    [navigate]
+  );
 
   const handleFetchDataFromTable = useCallback(
     async ({ pageIndex: pageValue }: ILocations) => {

@@ -1,35 +1,35 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { NotFoundPage } from './NotFound';
+import { ShowSingleLocationPage } from './ShowSingleLocation';
 import { Provider } from 'react-redux';
-import store from '../../redux/store';
+import store from '../../../redux/store';
 import { ApolloProvider } from '@apollo/client';
-import apolloClient from '../../graphql';
+import apolloClient from '../../../graphql';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 export default {
-  title: 'Component/Pages/NotFound',
-  component: NotFoundPage,
+  title: 'Component/Pages/ShowSingleLocation',
+  component: ShowSingleLocationPage,
   decorators: [
     (Story) => (
       <Provider store={store}>
         <ApolloProvider client={apolloClient}>
-          <MemoryRouter initialEntries={[`/characters`]}>
+          <MemoryRouter initialEntries={[`/locations/1`]}>
             <Routes>
-              <Route path="/characters" element={<Story />} />
+              <Route path="/locations/:id" element={<Story />} />
             </Routes>
           </MemoryRouter>
         </ApolloProvider>
       </Provider>
     ),
   ],
-} as ComponentMeta<typeof NotFoundPage>;
+} as ComponentMeta<typeof ShowSingleLocationPage>;
 
-const Template: ComponentStory<typeof NotFoundPage> = (args) => <NotFoundPage {...args} />;
+const Template: ComponentStory<typeof ShowSingleLocationPage> = (args) => <ShowSingleLocationPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   primary: true,
-  label: 'NotFoundPage',
+  label: 'ShowSingleLocationPage',
 };

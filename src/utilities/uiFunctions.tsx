@@ -20,7 +20,11 @@ const getGenderIcon = (gender: string) => {
       break;
   }
 
-  return <div data-testid="ig-grid-icon-for-gender-card-id" id="ig-grid-icon-for-gender-card-id">{output}</div>;
+  return (
+    <div data-testid="ig-grid-icon-for-gender-card-id" id="ig-grid-icon-for-gender-card-id">
+      {output}
+    </div>
+  );
 };
 
 const getCharStatusIcon = (status: string) => {
@@ -38,7 +42,11 @@ const getCharStatusIcon = (status: string) => {
       break;
   }
 
-  return <div data-testid="ig-grid-icon-for-status-card-id" id="ig-grid-icon-for-status-card-id">{output}</div>;
+  return (
+    <div data-testid="ig-grid-icon-for-status-card-id" id="ig-grid-icon-for-status-card-id">
+      {output}
+    </div>
+  );
 };
 
 const getRandomBanner = () => {
