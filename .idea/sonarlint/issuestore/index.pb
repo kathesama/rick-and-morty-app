@@ -1,8 +1,6 @@
 
 U
 %.github/workflows/codeql-analysis.yml,c\3\c3aa8b7f1c613e43d3bb9d5ac52ac6603d945e89
-G
-src/utilities/routes.ts,0\6\06a336e860762f2e4e3e7fcbd6e833679e048142
 H
 src/Application.test.tsx,5\6\5631bada16568dabd98b4d765f0e9b797eb58d0a
 O
@@ -118,8 +116,6 @@ O
 src/assets/theme/base/colors.js,8\1\81bf2a897f8853c24f203eaaf1e0a8089e9909de
 P
  src/assets/theme/base/globals.js,b\a\baa902fb5691139c684b6387599d567a4e794a27
-H
-src/redux/types/types.ts,1\0\10f52069d7f157590cd61ed1d41a271ef448017a
 Z
 *src/components/CustomTable/CustomTable.tsx,a\5\a51dd444a48efc5c528c097734edecad33e8ce1e
 ^
@@ -142,8 +138,6 @@ _
 /src/components/CustomTable/CustomTable.spec.tsx,3\c\3c629175a773d938170d30630ff05cfe06e3abf4
 M
 src/graphql/InterfaceTypes.ts,2\7\27088e7e5c0604944f79f9633c11dee58746bd6c
-`
-0src/pages/Episodes/ShowEpisodes/ShowEpisodes.tsx,3\3\33a8d5ccbe24d8052a6c9a709093874ce20ef85d
 k
 ;src/components/UI/ContentWrapper/ContentWrapper.stories.tsx,4\e\4e1526592b0c6b72ce370b97c4c0a5ae1c6a1bc0
 c
@@ -154,33 +148,15 @@ q
 Asrc/components/UI/SubContentWrapper/SubContentWrapper.stories.tsx,6\f\6fa793ecf43ff04b9cfe3d6cbb3f41115f0065d3
 k
 ;src/pages/Characters/ShowCharacters/ShowCharacters.spec.tsx,3\6\360240801663feb0ecbf5c70a5063210c608552d
-x
-Hsrc/pages/Characters/ShowSingleCharacter/ShowSingleCharacter.stories.tsx,2\f\2f56031df3c9e2dc3c01a7e229f6bf4b528d3af0
 W
 'src/pages/NotFound/NotFound.stories.tsx,e\5\e55f6f8158cecffecc3e93b627922cdc72bea609
-h
-8src/pages/Episodes/ShowEpisodes/ShowEpisodes.stories.tsx,e\6\e6c99c74d63a4bc8c3d0c2a01bbf53ba8ca9fd9e
 k
 ;src/pages/Locations/ShowLocations/ShowLocations.stories.tsx,7\5\75d34916df4c50bbe373a30833818bb671efa7bf
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-c
-3src/components/UI/ContentWrapper/ContentWrapper.tsx,2\1\21e0ed94b4c6ebe7b64e973506a97646f5b1e96f
-c
-3src/graphql/__generated__/GetSingleCharacterPage.ts,0\1\010e76347c18ea9a9e15f4da5426a39e96825ab3
 b
 2src/graphql/__generated__/GetSingleLocationPage.ts,a\7\a748b7a154cadd0b11c1eb99e0e4c8357048e08c
-C
-src/Application.tsx,d\5\d505f696e065abf085f7cebac11a51d0c628cab1
 c
 3src/pages/Locations/ShowLocations/ShowLocations.tsx,4\c\4cb366cf55d20644d6fd82ab482c7a6c9cc01f09
-F
-src/graphql/queries.ts,3\5\35ccade0580a4aaf92d63b031b5d8f29e5f8a7d3
-r
-Bsrc/pages/Locations/ShowSingleLocation/ShowSingleLocation.spec.tsx,4\7\47d579554e8187c9ddda40e6f281eae766aaed18
-[
-+src/components/UI/CustomChip/CustomChip.tsx,0\0\0051e032f10b68d0f56615c7f3d670e31665a99f
-i
-9src/components/UI/SubContentWrapper/SubContentWrapper.tsx,4\b\4b2be0a2cecac851f3a356d31ab180f84ca038ba
 u
 Esrc/pages/Locations/ShowSingleLocation/ShowSingleLocation.stories.tsx,5\4\547adbd402918bf34b47b7ebc0c214ebee8f9a42

@@ -18,6 +18,7 @@ export default {
     root: {
       marginTop: 0,
       marginBottom: 0,
+      width: 'none',
     },
   },
 };

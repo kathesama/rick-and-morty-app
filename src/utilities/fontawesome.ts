@@ -17,7 +17,8 @@ import {
   faMicroscope,
   faLocationDot,
   faArrowsToCircle,
-  faPeopleRoof
+  faPeopleRoof,
+  faCalendarDays,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -39,4 +40,5 @@ library.add(
   faDna,
   faMicroscope,
   faArrowsToCircle,
+  faCalendarDays
 );

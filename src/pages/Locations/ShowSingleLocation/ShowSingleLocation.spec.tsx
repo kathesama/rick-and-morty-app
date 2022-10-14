@@ -90,18 +90,17 @@ describe('ShowSingleLocationPage test', () => {
   });
 
   it.each`
-    component                    | id
-    ${'Content Wrapper'}         | ${'ContentWrapperComponent'}
-    ${'Location Card'}           | ${'LocationCardComponent'}
-    ${'Container'}               | ${'container-location-card-id'}
-    ${'Grid container'}          | ${'grid-avatar-loc-card-id'}
-    ${'Grid internal'}           | ${'internal-grid-content-loc-card-id'}
-    ${'Grid name'}               | ${'internal-grid-box-card-id'}
-    ${'Typography name'}         | ${'ig-typography-card-id'}
-    ${'Grid icons'}              | ${'ig-grid-icons-card-id'}
-    ${'type name and icon'}      | ${'ig-grid-icons-type-card-id'}
-    ${'dimension name and icon'} | ${'ig-grid-icons-dimension-card-id'}
-    ${'Sub-content wrapper'}     | ${'SubContentWrapperComponent'}
+    component                           | id
+    ${'Content Wrapper'}                | ${'ContentWrapperComponent'}
+    ${'Container'}                      | ${'show-single-location-container-card-id'}
+    ${'Grid container'}                 | ${'show-single-location-grid-avatar-char-card-id'}
+    ${'Grid internal'}                  | ${'show-single-location-grid-avatar-loc-card-id'}
+    ${'Grid name'}                      | ${'show-single-location-internal-grid-content-loc-card-id'}
+    ${'Typography name'}                | ${'show-single-location-internal-grid-box-card-id'}
+    ${'Grid icons'}                     | ${'show-single-location-ig-typography-card-id'}
+    ${'type name and icon'}             | ${'show-single-location-ig-grid-icons-card-id'}
+    ${'dimension name and icon - Grid'} | ${'show-single-location-0-ig-grid-icons-type-card-id'}
+    ${'dimension name and icon - icon'} | ${'show-single-location-1-ig-grid-icons-type-card-id'}
   `('Should has $component', async ({ id }) => {
     await renderComponent();
     await waitFor(() => {

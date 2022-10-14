@@ -1,51 +1,50 @@
 /*
 Created by: Katherine Aguirre
-On: 13/10/2022 : 13/10/2022
+On: 14/10/2022 : 14/10/2022
 Project: rick-and-morty-app
 */
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-
-import { GET_SINGLE_LOCATION } from '../../../graphql/queries';
+import { GET_SINGLE_EPISODE } from '../../../graphql/queries';
 
 import { LoadingCircleComponent } from '../../../components/UI/LoadingCircle/LoadingCircle';
 import { ContentWrapperComponent } from '../../../components/UI/ContentWrapper/ContentWrapper';
 import { DetailsCartWrapperComponent } from '../../../components/DetailsCartWrapper/DetailsCartWrapper';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PropsShowSingleLocationPage {}
+interface PropsShowSingleEpisodePage {}
 
-const ShowSingleLocationPage: FC<any> = (): any => {
+const ShowSingleEpisodePage: FC<PropsShowSingleEpisodePage> = (): any => {
   const { id = '' } = useParams();
 
-  const { data, loading } = useQuery(GET_SINGLE_LOCATION, { variables: { id } });
+  const { data, loading } = useQuery(GET_SINGLE_EPISODE, { variables: { id } });
 
   if (loading) {
     return <LoadingCircleComponent />;
   }
 
   const dataArgs = {
-    componentIdName: 'show-single-location',
-    name: data.location.name,
+    componentIdName: 'show-single-episode',
+    name: data.episode.name,
     elements: {
       icon: 'people-roof',
       iconColor: 'RoyalBlue',
-      type: 'Resident(s)',
-      data: data.location.residents,
+      type: 'Characters(s)',
+      data: data.episode.characters,
     },
     descriptionFields: [
       {
-        icon: 'dna',
+        icon: 'calendar-days',
         iconColor: 'Crimson',
-        data: data.location.type,
+        data: data.episode.air_date,
         type: 'Type',
       },
       {
-        icon: 'microscope',
+        icon: 'film',
         iconColor: 'Indigo',
-        data: data.location.dimension,
-        type: 'Dimension',
+        data: data.episode.episode,
+        type: 'Episode',
       },
     ],
     urlToNavigate: '/characters/',
@@ -58,4 +57,4 @@ const ShowSingleLocationPage: FC<any> = (): any => {
   );
 };
 
-export { ShowSingleLocationPage, PropsShowSingleLocationPage };
+export { ShowSingleEpisodePage, PropsShowSingleEpisodePage };

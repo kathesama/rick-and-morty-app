@@ -13,6 +13,7 @@ import { ShowLocationsPage } from './pages/Locations/ShowLocations/ShowLocations
 import { ShowEpisodesPage } from './pages/Episodes/ShowEpisodes/ShowEpisodes';
 import { ShowSingleCharacterPage } from './pages/Characters/ShowSingleCharacter/ShowSingleCharacter';
 import { ShowSingleLocationPage } from './pages/Locations/ShowSingleLocation/ShowSingleLocation';
+import { ShowSingleEpisodePage } from './pages/Episodes/ShowSingleEpisode/ShowSingleEpisode';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IApplicationProps {}
@@ -33,6 +34,7 @@ const Application: FC<IApplicationProps> = () => (
           </Route>
           <Route path="/episodes">
             <Route index element={<ShowEpisodesPage />} />
+            <Route path=":id" element={<ShowSingleEpisodePage />} />
           </Route>
           <Route path="/readme" element={<UnderConstructionPage url="readme" />} />
           <Route path="*" element={<NotFoundPage />} />
