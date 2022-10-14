@@ -59,14 +59,13 @@ export interface LocationSchemaInterface {
   created: string;
 }
 
-
 // -------------- MOCKING DATA TYPE
 export type MockType<TData, TVariables> = {
   request: {
-    query: DocumentNode
-    variables: TVariables
-  },
+    query: DocumentNode;
+    variables: TVariables;
+  };
   result: {
-    data: TData
-  }
+    data: TData;
+  };
 };

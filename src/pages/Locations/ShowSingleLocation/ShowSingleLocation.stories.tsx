@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ShowLocationsPage } from './ShowLocations';
+import { ShowSingleLocationPage } from './ShowSingleLocation';
 import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import { ApolloProvider } from '@apollo/client';
@@ -9,27 +9,27 @@ import apolloClient from '../../../graphql';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 export default {
-  title: 'Component/Pages/ShowLocations',
-  component: ShowLocationsPage,
+  title: 'Component/Pages/ShowSingleLocation',
+  component: ShowSingleLocationPage,
   decorators: [
     (Story) => (
       <Provider store={store}>
         <ApolloProvider client={apolloClient}>
-          <MemoryRouter initialEntries={[`/locations`]}>
+          <MemoryRouter initialEntries={[`/locations/1`]}>
             <Routes>
-              <Route path="/locations" element={<Story />} />
+              <Route path="/locations/:id" element={<Story />} />
             </Routes>
           </MemoryRouter>
         </ApolloProvider>
       </Provider>
     ),
   ],
-} as ComponentMeta<typeof ShowLocationsPage>;
+} as ComponentMeta<typeof ShowSingleLocationPage>;
 
-const Template: ComponentStory<typeof ShowLocationsPage> = (args) => <ShowLocationsPage {...args} />;
+const Template: ComponentStory<typeof ShowSingleLocationPage> = (args) => <ShowSingleLocationPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   primary: true,
-  label: 'ShowLocationsPage',
+  label: 'ShowSingleLocationPage',
 };

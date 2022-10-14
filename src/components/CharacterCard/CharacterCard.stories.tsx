@@ -5,20 +5,22 @@ import { CharacterCardComponent } from './CharacterCard';
 
 const defaultProps = {
   id: 1,
-  image: "https://rickandmortyapi.com/api/character/avatar/266.jpeg",
-  name: "Piece of Toast",
-  gender: "Genderless",
-  status: "Alive",
-  location: "unknown",
-  species: "unknown",
-  type: "Bread",
-  origin: "unknown",
-  episode: [{
-    id: 8,
-    name: "Rixty Minutes",
-    episode: "S01E08",
-  }]
-}
+  image: 'https://rickandmortyapi.com/api/character/avatar/266.jpeg',
+  name: 'Piece of Toast',
+  gender: 'Genderless',
+  status: 'Alive',
+  location: 'unknown',
+  species: 'unknown',
+  type: 'Bread',
+  origin: 'unknown',
+  episode: [
+    {
+      id: 8,
+      name: 'Rixty Minutes',
+      episode: 'S01E08',
+    },
+  ],
+};
 
 export default {
   title: 'Component/Functional/CharacterCard',

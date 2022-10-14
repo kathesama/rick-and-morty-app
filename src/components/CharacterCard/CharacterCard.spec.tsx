@@ -17,25 +17,27 @@ afterEach(async () => {
 });
 
 const defaultProps = {
-  image: "https://rickandmortyapi.com/api/character/avatar/266.jpeg",
-  name: "Piece of Toast",
-  gender: "Genderless",
-  status: "Alive",
-  location: "unknown",
-  species: "unknown",
-  type: "Bread",
-  origin: "unknown",
-  episode: [{
-    id: 8,
-    name: "Rixty Minutes",
-    episode: "S01E08",
-  }]
-}
+  image: 'https://rickandmortyapi.com/api/character/avatar/266.jpeg',
+  name: 'Piece of Toast',
+  gender: 'Genderless',
+  status: 'Alive',
+  location: 'unknown',
+  species: 'unknown',
+  type: 'Bread',
+  origin: 'unknown',
+  episode: [
+    {
+      id: 8,
+      name: 'Rixty Minutes',
+      episode: 'S01E08',
+    },
+  ],
+};
 
 describe('CharacterCardComponent test', () => {
   const setup = async () => {
     act(() => {
-      ReactDOM.createRoot(container).render(<CharacterCardComponent {...defaultProps}/>);
+      ReactDOM.createRoot(container).render(<CharacterCardComponent {...defaultProps} />);
     });
   };
 
