@@ -42,8 +42,10 @@
 This project was created as a wonderful challenge, the idea was demostrate and integrate a wide family of actual technologies. It involves
 the consumption of the [Rick and Morty API](https://rickandmortyapi.com/documentation/#graphql) more exactly the Graphql Services of this API.
 
-This application is runnig at [**rick-and-morty-app-kathesama.vercel.app**](http://rick-and-morty-app-kathesama.vercel.app/)
+This application is running at [**rick-and-morty-app-kathesama.vercel.app**](http://rick-and-morty-app-kathesama.vercel.app/)
 Down below are detailed what technologies I have implemented and some very useful commands to run this.
+
+**NOTE**: _This is a responsive site_
 
 * React
 * React Router
