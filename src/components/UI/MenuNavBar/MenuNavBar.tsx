@@ -74,9 +74,9 @@ const MenuNavBarComponent: FC<Props> = (): any => {
     },
     {
       menuTitle: 'Readme',
-      pageURL: '/readme',
+      pageURL: 'https://github.com/kathesama/rick-and-morty-app/blob/main/README.md',
       icon: <TextSnippetIcon />,
-      component: 'link',
+      component: 'a',
     },
   ];
 

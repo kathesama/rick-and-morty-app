@@ -4,7 +4,16 @@
 ![ReactJS](https://img.shields.io/badge/-ReactJS-blue?logo=react&logoColor=white&style=for-the-badge)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
-![YARN](https://img.shields.io/badge/YARN-%23000000.svg?style=for-the-badge&logo=yarn&logoColor=white)
+![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
+<br>
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+![ReactTable](https://img.shields.io/badge/-ReactTable-red?logo=react-table&logoColor=white&style=for-the-badge)
+![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+<br>
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 <br>
 [<img src="https://sonarcloud.io/images/project_badges/sonarcloud-white.svg" width="85">](https://sonarcloud.io/summary/new_code?id=kathesama_rick-and-morty-app)
 [![CodeQL](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kathesama/rick-and-morty-app/actions/workflows/codeql-analysis.yml)
@@ -30,23 +39,37 @@
 # Rick and Morty Application
 
 ---
+This project was created as a wonderful challenge, the idea was demostrate and integrate a wide family of actual technologies. It involves
+the consumption of the [Rick and Morty API](https://rickandmortyapi.com/documentation/#graphql) more exactly the Graphql Services of this API.
+
+This application is runnig at [**rick-and-morty-app-kathesama.vercel.app**](http://rick-and-morty-app-kathesama.vercel.app/)
+Down below are detailed what technologies I have implemented and some very useful commands to run this.
+
+* React
+* React Router
+* Typescript
+* Redux
+* React Table
+* Apollo Client + queries and lazy queries
+* SCSS
+* Storybook
+* Material UI
+* Eslint
+* Jest
+* Prettier
+* Git
+---
 # Getting Started with Create React Application
 
-Creation:
+This project was created with this command:
 ```npx create-react-app my-app --template redux-typescript```
-
-Added:
-```yarn add @apollo/graphql grapqhl```
-
-
-
 This project was bootstrapped with [Create React Application](https://github.com/facebook/create-react-app).
+---
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
+## Running:
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -54,12 +77,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
+## Testing
+### `yarn test`
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Another useful commands are with more detailed information output:
+### `yarn test: open`
+### `yarn test: verbose`
+### `yarn test: coverage`
+
+## Building
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -69,7 +98,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Ejecting
+### `yarn run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -79,8 +109,48 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React Application documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Another very useful commands
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Formatting code
+### `yarn format`
+
+## Checking errors and warnings
+### `yarn lint:tsc`
+This command check for all warnings and errors in the code
+
+### `yarn lint:eslint`
+This command check for all warnings and errors in the code with linter
+
+### `yarn lint:fix`
+This command run linter and fix automatically the errors and warnings
+
+## Checking prettier
+### `yarn prettier:check`
+### `yarn prettier:fix`
+
+Those commands run prettier and check prettify rules, instead this commands runs with ```yarn format``` so
+is not necessary run it.
+
+## Running Storybook
+
+### `yarn storybook`
+
+Run storybook instance.
+Open [http://localhost:6006/](http://localhost:6006/) to view it in the browser.
+
+### `yarn build-storybook`
+Same as ```yarn build``` this command builds the documentation for storybook components, kind of swagger.
+
+You can read more here. [https://storybook.js.org/](https://storybook.js.org/)
+
+## Creating all the GraphQL schema and important stuff related with data.
+### `yarn schema:download`
+
+This downloads the schema from the api graphql and store it on the src folder
+
+### `yarn schema:generate`
+Every change you do to queries requires a schema update to reply those changes, this command will do that.
+
+### `yarn schema:generate-watch`
+Same as the previous command but this keeps running.
