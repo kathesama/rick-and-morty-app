@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 import { Badge, Stack, styled, Typography } from '@mui/material';
 import logo from '../../../assets/img/portalRandM.png';
 import { styles } from './Logo.module';
@@ -40,16 +41,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Logo = ({ logoText = 'Rick and Morty' }: LogoProps) => (
   <header>
-    <div className="wrapper" data-testid="logo-test-id">
-      <Stack direction="row" spacing={2}>
-        <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" data-testid="styled-badge-test-id">
-          <Typography variant="h6" noWrap component="div" sx={styles.typography.large} data-testid="rick-and-morty-test-id">
-            {logoText}
-            <Avatar alt={logoText} src={logo} data-testid="avatar-test-id" />
-          </Typography>
-        </StyledBadge>
-      </Stack>
-    </div>
+    <Link to="/">
+      <div className="wrapper" data-testid="logo-test-id" >
+        <Stack direction="row" spacing={2}>
+          <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" data-testid="styled-badge-test-id">
+            <Typography variant="h6" noWrap component="div" sx={styles.typography.large} data-testid="rick-and-morty-test-id">
+              {logoText}
+              <Avatar alt={logoText} src={logo} data-testid="avatar-test-id" />
+            </Typography>
+          </StyledBadge>
+        </Stack>
+      </div>
+    </Link>
   </header>
 );
 
