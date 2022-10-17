@@ -60,7 +60,7 @@ Down below are detailed what technologies I have implemented and some very usefu
 * Jest
 * Prettier
 * Git
-*i18next
+* i18next
 ---
 # Getting Started with Create React Application
 
