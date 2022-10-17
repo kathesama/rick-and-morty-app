@@ -1,0 +1,19 @@
+{
+  "Characters": "Characters",
+  "Episodes": "Episodes",
+  "Locations": "Locations",
+  "signUp": "Sign Up",
+  "username": "Username",
+  "email": "Email",
+  "password": "Password",
+  "passwordRepeat": "Confirm Password",
+  "signUpBtn": "Sign Up",
+  "passwordMismatchValidation": "Password mismatch",
+  "headerPage": "Header Page",
+  "linkGoHome": "Home",
+  "logIn": "Login",
+  "users": "Users",
+  "nextPage": "next >",
+  "previousPage": "< previous",
+  "login": "Login"
+}

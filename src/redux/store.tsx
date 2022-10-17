@@ -8,7 +8,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: [],
-  whitelist: [''],
+  // whitelist: [''],
 };
 const ignoredActions = [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER];
 

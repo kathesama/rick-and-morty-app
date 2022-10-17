@@ -6,6 +6,7 @@ Project: rick-and-morty-app
 import React, { FC, useCallback } from 'react';
 import { Avatar, Box, Container, Divider, Grid, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { getCharStatusIcon, getGenderIcon } from '../../utilities/uiFunctions';
 import cssStyle from './CharacterCard.module.scss';
@@ -33,6 +34,7 @@ const ListItem = styled('li')(({ theme }) => ({
 
 const CharacterCardComponent: FC<PropsCharacterCardComponent> = ({ image, name, gender, status, location, species, type, origin, episode }: PropsCharacterCardComponent): any => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const callBackFn = useCallback((url: string) => navigate(url), [navigate]);
 
@@ -52,34 +54,34 @@ const CharacterCardComponent: FC<PropsCharacterCardComponent> = ({ image, name, 
               </Box>
               <Grid container spacing={2} mb={3} data-testid="ig-grid-icons-card-id" id="ig-grid-icons-card-id">
                 <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-gender-card-id" id="ig-grid-icons-gender-card-id">
-                  {getGenderIcon(gender)}&nbsp;{gender}
+                  {getGenderIcon(gender)}&nbsp;{t(gender)}
                 </Grid>
                 <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-status-card-id" id="ig-grid-status-gender-card-id">
-                  {getCharStatusIcon(status)}&nbsp;{status}
+                  {getCharStatusIcon(status, status)}&nbsp;{t(status)}
                 </Grid>
                 <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-species-card-id">
                   <SubContentTitleComponent icon="dna" iconColor="Crimson" title="Specie">
-                    &nbsp;{species || '?'}
+                    &nbsp;{t(species) || '?'}
                   </SubContentTitleComponent>
                 </Grid>
                 <Grid item className={cssStyle.boxItems} data-testid="ig-grid-icons-type-card-id">
                   <SubContentTitleComponent icon="microscope" iconColor="Indigo" title="Type">
-                    &nbsp;{type || '?'}
+                    &nbsp;{t(type) || '?'}
                   </SubContentTitleComponent>
                 </Grid>
               </Grid>
               <Divider variant="middle" data-testid="ig-grid-origin-divider-card-id" />
 
-              <SubContentWrapperComponent icon="map-location-dot" iconColor="SeaGreen" title="Origin">
+              <SubContentWrapperComponent icon="map-location-dot" iconColor="SeaGreen" title={t('Origin')}>
                 <CustomChipComponent label={origin?.name} url={origin?.id ? `/locations/${origin?.id}` : undefined} callBackFunction={origin?.id ? callBackFn : undefined} isButton={false} />
               </SubContentWrapperComponent>
 
               <Divider variant="middle" data-testid="ig-grid-location-divider-card-id" />
-              <SubContentWrapperComponent icon="location-dot" iconColor="Indigo" title="Location">
+              <SubContentWrapperComponent icon="location-dot" iconColor="Indigo" title={t('Location')}>
                 <CustomChipComponent label={`${location?.type} / ${location?.name}` || '?'} url={location?.id ? `/locations/${location?.id}` : undefined} callBackFunction={location?.id ? callBackFn : undefined} isButton={false} />
               </SubContentWrapperComponent>
               <Divider variant="middle" />
-              <SubContentWrapperComponent icon="film" iconColor="RoyalBlue" title="Episode(s)">
+              <SubContentWrapperComponent icon="film" iconColor="RoyalBlue" title={t('Episode(s)')}>
                 {episode?.map((data) => (
                   <ListItem key={data.id}>
                     <CustomChipComponent label={data?.episode} url={`/episodes/${data?.id}`} callBackFunction={callBackFn} />

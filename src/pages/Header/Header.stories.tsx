@@ -1,16 +1,26 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HeaderPage } from './HeaderPage';
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '../../graphql';
 
 export default {
   title: 'Component/Pages/Header',
   component: HeaderPage,
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <MemoryRouter initialEntries={[`/characters`]}>
+            <Routes>
+              <Route path="/characters" element={<Story />} />
+            </Routes>
+          </MemoryRouter>
+        </ApolloProvider>
+      </Provider>
     ),
   ],
   parameters: {

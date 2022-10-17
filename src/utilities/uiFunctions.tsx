@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
 
 const getGenderIcon = (gender: string) => {
   let output = <ContactSupportRoundedIcon />;
@@ -27,18 +27,18 @@ const getGenderIcon = (gender: string) => {
   );
 };
 
-const getCharStatusIcon = (status: string) => {
+const getCharStatusIcon = (status: string, title: string) => {
   let output = <ContactSupportRoundedIcon />;
   // eslint-disable-next-line default-case
   switch (status.toLowerCase()) {
     case 'alive':
-      output = <FontAwesomeIcon icon="heart-pulse" color="LawnGreen" size="lg" title="Status" />;
+      output = <FontAwesomeIcon icon="heart-pulse" color="LawnGreen" size="lg" title={title} />;
       break;
     case 'dead':
-      output = <FontAwesomeIcon icon="skull-crossbones" color="OrangeRed" size="lg" title="Status" />;
+      output = <FontAwesomeIcon icon="skull-crossbones" color="OrangeRed" size="lg" title={title} />;
       break;
     case 'unknown':
-      output = <FontAwesomeIcon icon="circle-xmark" color="SlateGrey" size="lg" title="Status" />;
+      output = <FontAwesomeIcon icon="circle-xmark" color="SlateGrey" size="lg" title={title} />;
       break;
   }
 

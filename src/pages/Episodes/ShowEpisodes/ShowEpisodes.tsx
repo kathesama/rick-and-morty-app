@@ -9,6 +9,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // eslint-disable-next-line camelcase
 import { GetAllEpisodesPage_episodes_results } from '../../../graphql/__generated__/GetAllEpisodesPage';
@@ -27,6 +28,7 @@ interface PropsShowEpisodesPage {}
 const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { pageIndex = 0, filterValue } = useSelector(getEpisodesState);
 
@@ -57,21 +59,21 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         ),
       },
       {
-        Header: 'Name',
+        Header: t('Name'),
         id: 'name',
         accessor: 'name',
         sortType: 'string',
         customAttribute: 'inputField',
       },
       {
-        Header: 'Episode',
+        Header: t('Episode'),
         id: 'episode',
         accessor: 'episode',
         sortType: 'string',
         customAttribute: 'inputField',
       },
     ],
-    []
+    [t]
   );
 
   // alt={cell.row.original.episode}
@@ -94,8 +96,8 @@ const ShowEpisodesPage: FC<PropsShowEpisodesPage> = (): any => {
         })),
     };
 
-    return <DynamicFilterComponent variant="outlined" label="Filter(s) by" data={createFilterSchema} extraData={{}} />;
-  }, [columns, fetchUpdateFilter, filterValue]);
+    return <DynamicFilterComponent variant="outlined" label={t('FilterBy')} data={createFilterSchema} extraData={{}} />;
+  }, [columns, fetchUpdateFilter, filterValue, t]);
 
   useEffect(() => {
     fetchEpisodesData({

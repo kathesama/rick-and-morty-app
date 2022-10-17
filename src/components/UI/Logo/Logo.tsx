@@ -7,7 +7,7 @@ import { styles } from './Logo.module';
 import './Logo.css';
 
 interface LogoProps {
-  logoText?: string;
+  logoText?: string | null;
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -47,7 +47,7 @@ const Logo = ({ logoText = 'Rick and Morty' }: LogoProps) => (
           <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" data-testid="styled-badge-test-id">
             <Typography variant="h6" noWrap component="div" sx={styles.typography.large} data-testid="rick-and-morty-test-id">
               {logoText}
-              <Avatar alt={logoText} src={logo} data-testid="avatar-test-id" />
+              <Avatar alt={logoText || ''} src={logo} data-testid="avatar-test-id" />
             </Typography>
           </StyledBadge>
         </Stack>

@@ -9,6 +9,7 @@ import { Avatar, Badge, CardContent } from '@mui/material';
 import { Column } from 'react-table';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // eslint-disable-next-line camelcase
 import { GetCharactersPage_characters_results } from '../../../graphql/__generated__/GetCharactersPage';
@@ -28,6 +29,7 @@ interface PropsShowCharactersPage {}
 const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const {
     pageIndex = 0,
@@ -74,32 +76,32 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         ),
       },
       {
-        Header: 'Name',
+        Header: t('Name'),
         id: 'name',
         accessor: 'name',
         sortType: 'string',
         customAttribute: 'inputField',
       },
       {
-        Header: 'Status',
+        Header: t('Status'),
         id: 'status',
         accessor: 'status',
         sortType: 'string',
         customAttribute: 'dropdown',
         // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => getCharStatusIcon(cell.row.original.status),
+        Cell: ({ cell }: any) => getCharStatusIcon(cell.row.original.status, t(cell.row.original.status)),
       },
       {
-        Header: 'Gender',
+        Header: t('Gender'),
         id: 'gender',
         accessor: 'gender',
         sortType: 'string',
         customAttribute: 'dropdown',
         // eslint-disable-next-line react/no-unstable-nested-components
-        Cell: ({ cell }: any) => getGenderIcon(cell.row.original.gender),
+        Cell: ({ cell }: any) => getGenderIcon(cell.row.original.gender.toLowerCase()),
       },
     ],
-    []
+    [t]
   );
 
   const fetchUpdateFilter = useCallback(
@@ -124,7 +126,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
     return (
       <DynamicFilterComponent
         variant="outlined"
-        label="Filter(s) by"
+        label={t('FilterBy')}
         data={createFilterSchema}
         extraData={{
           gender: genderSelector,
@@ -132,7 +134,7 @@ const ShowCharactersPage: FC<PropsShowCharactersPage> = () => {
         }}
       />
     );
-  }, [columns, fetchUpdateFilter, filterValue, genderSelector, statusSelector]);
+  }, [columns, fetchUpdateFilter, filterValue, genderSelector, statusSelector, t]);
 
   useEffect(() => {
     fetchCharactersData({
