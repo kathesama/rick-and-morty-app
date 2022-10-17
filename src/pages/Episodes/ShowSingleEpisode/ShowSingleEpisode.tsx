@@ -6,8 +6,9 @@ Project: rick-and-morty-app
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_SINGLE_EPISODE } from '../../../graphql/queries';
+import { useTranslation } from 'react-i18next';
 
+import { GET_SINGLE_EPISODE } from '../../../graphql/queries';
 import { LoadingCircleComponent } from '../../../components/UI/LoadingCircle/LoadingCircle';
 import { ContentWrapperComponent } from '../../../components/UI/ContentWrapper/ContentWrapper';
 import { DetailsCartWrapperComponent } from '../../../components/DetailsCartWrapper/DetailsCartWrapper';
@@ -17,6 +18,7 @@ interface PropsShowSingleEpisodePage {}
 
 const ShowSingleEpisodePage: FC<PropsShowSingleEpisodePage> = (): any => {
   const { id = '' } = useParams();
+  const { t } = useTranslation();
 
   const { data, loading } = useQuery(GET_SINGLE_EPISODE, { variables: { id } });
 
@@ -30,7 +32,7 @@ const ShowSingleEpisodePage: FC<PropsShowSingleEpisodePage> = (): any => {
     elements: {
       icon: 'people-roof',
       iconColor: 'RoyalBlue',
-      type: 'Characters(s)',
+      type: t('Characters(s)'),
       data: data.episode.characters,
     },
     descriptionFields: [
@@ -38,13 +40,13 @@ const ShowSingleEpisodePage: FC<PropsShowSingleEpisodePage> = (): any => {
         icon: 'calendar-days',
         iconColor: 'Crimson',
         data: data.episode.air_date,
-        type: 'Type',
+        type: t('AirDate'),
       },
       {
         icon: 'film',
         iconColor: 'Indigo',
         data: data.episode.episode,
-        type: 'Episode',
+        type: t('Episode'),
       },
     ],
     urlToNavigate: '/characters/',

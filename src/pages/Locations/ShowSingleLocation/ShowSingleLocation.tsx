@@ -6,6 +6,7 @@ Project: rick-and-morty-app
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import { useTranslation } from 'react-i18next';
 
 import { GET_SINGLE_LOCATION } from '../../../graphql/queries';
 
@@ -18,6 +19,7 @@ interface PropsShowSingleLocationPage {}
 
 const ShowSingleLocationPage: FC<any> = (): any => {
   const { id = '' } = useParams();
+  const { t } = useTranslation();
 
   const { data, loading } = useQuery(GET_SINGLE_LOCATION, { variables: { id } });
 
@@ -31,7 +33,7 @@ const ShowSingleLocationPage: FC<any> = (): any => {
     elements: {
       icon: 'people-roof',
       iconColor: 'RoyalBlue',
-      type: 'Resident(s)',
+      type: t('Resident(s)'),
       data: data.location.residents,
     },
     descriptionFields: [
@@ -39,13 +41,13 @@ const ShowSingleLocationPage: FC<any> = (): any => {
         icon: 'dna',
         iconColor: 'Crimson',
         data: data.location.type,
-        type: 'Type',
+        type: t('Type'),
       },
       {
         icon: 'microscope',
         iconColor: 'Indigo',
         data: data.location.dimension,
-        type: 'Dimension',
+        type: t('Dimension'),
       },
     ],
     urlToNavigate: '/characters/',

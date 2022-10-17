@@ -3,6 +3,12 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import ReactDOM from 'react-dom/client';
 import Application from './Application';
 import i18n from './locale/i18n';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from './graphql';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MenuNavBarComponent } from './components/UI/MenuNavBar/MenuNavBar';
 
 let container: any;
 
@@ -19,19 +25,23 @@ afterEach(async () => {
   });
 });
 
+const renderComponent = () =>
+  act(() => {
+    ReactDOM.createRoot(container).render(
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <Application />
+        </ApolloProvider>
+      </Provider>
+    );
+  });
+
 const setup = (path: string) => {
   window.history.pushState({}, '', path);
-  render(<Application />);
+  renderComponent();
 };
 
 describe('App', () => {
-  const setup = async (path: string) => {
-    act(() => {
-      ReactDOM.createRoot(container).render(<Application />);
-      window.history.pushState({}, '', path);
-    });
-  };
-
   it.each`
     path          | pageTestId
     ${'/'}        | ${'home-page'}

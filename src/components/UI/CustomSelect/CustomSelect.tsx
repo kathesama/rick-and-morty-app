@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { useTranslation } from 'react-i18next';
 
 // eslint-disable-next-line no-unused-vars
 export type dropdownClickHandler<T extends object> = (row: T) => void | string | Promise<void> | Record<string, unknown> | any;
@@ -31,6 +32,7 @@ interface PropsCustomSelectComponent<T extends object> {
 
 const CustomSelectComponent: FC<PropsCustomSelectComponent<object>> = ({ options, handlerOnChange, label, variant = 'outlined', widthValue = '', actualValue }: PropsCustomSelectComponent<object>): any => {
   const [value, setValue] = useState<string>('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     setValue(actualValue);
@@ -59,14 +61,14 @@ const CustomSelectComponent: FC<PropsCustomSelectComponent<object>> = ({ options
     >
       <FormControl fullWidth data-testid="form-control-select-id" key={`custom-select-form-control-for-${label}`}>
         <InputLabel id="custom-selector-input-id-label" data-testid="input-label-select-id" key={`custom-select-input-label-for-${label}`}>
-          {label}
+          {t(label)}
         </InputLabel>
         <Select
           labelId="custom-selector-id-label"
           key={`custom-selector-key-for-${label}`}
           id={`custom-selector-id-for-${label}`}
           value={value}
-          label={label}
+          label={t(label)}
           onChange={handleChange}
           data-testid="select-select-id"
           variant={variant}

@@ -29,3 +29,15 @@ export interface ILocations {
   filterValue?: IFilterLocations | undefined;
   pageIndex: number;
 }
+
+// -------------- SETTINGS
+
+export interface ISettings {
+  language?: string | undefined;
+}
+
+export interface ISettingsEmptyState extends ISettings {
+  filterFillersData: {
+    languages: string[];
+  };
+}

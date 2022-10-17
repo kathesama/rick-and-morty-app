@@ -9,6 +9,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { Column } from 'react-table';
 import { Badge, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { getLocationState, setPageFilter, setPageIndex } from '../../../redux/locations/locations.slice';
 
@@ -28,6 +29,7 @@ interface PropsShowLocationsPage {}
 const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { pageIndex = 0, filterValue } = useSelector(getLocationState);
 
@@ -58,43 +60,28 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         ),
       },
       {
-        Header: 'Name',
+        Header: t('Name'),
         id: 'name',
         accessor: 'name',
         sortType: 'string',
         customAttribute: 'inputField',
       },
       {
-        Header: 'Dimension',
+        Header: t('Dimension'),
         id: 'dimension',
         accessor: 'dimension',
         sortType: 'string',
         customAttribute: 'inputField',
       },
       {
-        Header: 'Type',
+        Header: t('Type'),
         id: 'type',
         accessor: 'type',
         sortType: 'string',
         customAttribute: 'inputField',
-
-        /* // eslint-disable-next-line react/no-unstable-nested-components
-           Cell: ({ cell }: any) => (
-             <Chip
-               variant="soft"
-               size="md"
-               sx={{
-                 fontSize: '12px',
-               }}
-               startDecorator={
-                 <FontAwesomeIcon icon="map-location-dot" color="OrangeRed" size="lg" title={cell.row.original.status} />
-               }>
-               {cell.row.original.type}
-             </Chip>
-           ), */
       },
     ],
-    []
+    [t]
   );
 
   const fetchUpdateFilter = useCallback(
@@ -116,8 +103,8 @@ const ShowLocationsPage: FC<PropsShowLocationsPage> = (): any => {
         })),
     };
 
-    return <DynamicFilterComponent variant="outlined" label="Filter(s) by" data={createFilterSchema} extraData={{}} />;
-  }, [columns, fetchUpdateFilter, filterValue]);
+    return <DynamicFilterComponent variant="outlined" label={t('FilterBy')} data={createFilterSchema} extraData={{}} />;
+  }, [columns, fetchUpdateFilter, filterValue, t]);
 
   useEffect(() => {
     fetchLocationsData({
